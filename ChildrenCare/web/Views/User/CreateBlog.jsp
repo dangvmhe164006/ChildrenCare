@@ -14,6 +14,7 @@
     <title>Create Blog</title>
 </head>
 <body>
+    <<!-- comment -->
 <section class="vh-100" style="background-color: #2779e2;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
