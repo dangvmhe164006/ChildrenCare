@@ -3,24 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package vn.fpt.dao;
-
-import vn.fpt.model.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import java.sql.SQLException;
-
-
-
-
 /**
  *
  * @author dangv
  *  
  */
 
-  
-    
 public class DBConnect {
     protected Connection connection;
     public DBConnect()
