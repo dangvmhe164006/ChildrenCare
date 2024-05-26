@@ -71,29 +71,43 @@ public class BlogController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+       BlogDAO blogDAO = new BlogDAO();
+       String service = request.getParameter("service");
 
-BlogDAO blogDAO = new BlogDAO();
-     LocalDateTime now = LocalDateTime.now();
-     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-    String title = request.getParameter("title");
-    String content = request.getParameter("content");
-    String image = request.getParameter("image");
+       if(service.equals("createBlog")){
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        String image = request.getParameter("image");
+        
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+
+        Blog blog = new Blog();
+        blog.setTitle(title);
+        blog.setContent(content);
+        blog.setImage_url(image);
+        blog.setCreate_at(now.format(formatter));
+        blog.setCreate_by(2);
+
+        int result = blogDAO.createBlog(blog);
+
+        if (result > 0) {
+            response.getWriter().write("Blog created successfully!");
+        } else {
+            response.getWriter().write("Failed to create blog.");
+        }
+       }
+       
+       if(service.equals("deleteBlog")){
+       
+       }
+       
+       if(service.equals("updateBlog")){
+       
+       }
+       
+    }
     
-    Blog blog = new Blog();
-    blog.setTitle(title);
-    blog.setContent(content);
-    blog.setImage_url(image); 
-    blog.setCreate_at(now.format(formatter));
-    blog.setCreate_by(2);
-
-    int result = blogDAO.createBlog(blog);
-
-    if (result > 0) {
-        response.getWriter().write("Blog created successfully!");
-    } else {
-        response.getWriter().write("Failed to create blog.");
-    }
-    }
 
     /** 
      * Returns a short description of the servlet.

@@ -1,7 +1,5 @@
 package vn.fpt.model;
 
-import java.time.LocalDateTime;
-
 public class Blog {
     
     private int blog_id;

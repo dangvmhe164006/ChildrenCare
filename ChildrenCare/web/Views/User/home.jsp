@@ -34,7 +34,7 @@
     </head>
     <body>
 
-        <jsp:include page="../User/Header.jsp"></jsp:include>
+        <jsp:include page="../User/header.jsp"></jsp:include>
 
             <!-- Start Hero -->
             <section class="bg-half-260 d-table w-100" style="background: url('../assets/images/bg/01.jpg') center;">

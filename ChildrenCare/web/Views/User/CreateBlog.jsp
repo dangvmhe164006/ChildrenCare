@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,26 +6,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <title>Create Blog</title>
-        <script>
-//            function validateImage() {
-//                const imageInput = document.getElementById('image');
-//                const image = imageInput.files[0];
-//
-//                if (!image) {
-//                    alert('Please upload an image.');
-//                    return false;
-//                }
-//
-//                const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
-//                if (!validImageTypes.includes(image.type)) {
-//                    alert('Please upload a valid image file (jpg, jpeg, png, gif).');
-//                    imageInput.value = ''; // Reset file input
-//                    return false;
-//                }
-//
-//                return true;
-//            }
-        </script>
+
     </head>
     <body>
         <section class="vh-100" style="background-color: #2779e2;">
@@ -38,18 +19,18 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body">
 
-                                <form action="BlogController" method="POST"  enctype="multipart/form-data">
+                                <form action="BlogController" method="post">
+                                           <input type="hidden"  name="service" value="createBlog" >
+
                                     <div class="row align-items-center pt-4 pb-3">
                                         <div class="col-md-3 ps-5">
                                             <label for="title" class="form-label">Title</label>
                                         </div>
                                         <div class="col-md-9 pe-5">
-                                            <input type="text" class="form-control form-control-lg" id="title" name="title"/>
+                                            <input type="text" class="form-control form-control-lg" id="title" name="title" required />
                                         </div>
                                     </div>
-
                                     <hr class="mx-n3">
-
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-3 ps-5">
                                             <label for="content" class="form-label">Content</label>
@@ -58,22 +39,16 @@
                                             <textarea class="form-control" rows="3" id="content" name="content" placeholder="Content of blog"></textarea>
                                         </div>
                                     </div>
-
                                     <hr class="mx-n3">
-
                                     <div class="row align-items-center py-3">
-                                       
-
                                         <div class="col-md-3 ps-5">
                                             <label for="image" class="form-label">URL</label>
                                         </div>
                                         <div class="col-md-9 pe-5">
-                                            <input type="text" class="form-control form-control-lg" id="image" name="image"/>
+                                            <input type="text" class="form-control form-control-lg" id="image" name="image" />
                                         </div>
                                     </div>
-
                                     <hr class="mx-n3">
-
                                     <div class="px-5 py-4">
                                         <button type="submit" class="btn btn-primary btn-lg">Create Blog</button>
                                     </div>
