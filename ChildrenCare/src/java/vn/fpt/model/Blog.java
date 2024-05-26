@@ -3,7 +3,7 @@ package vn.fpt.model;
 public class Blog {
     
     private int blog_id;
-    private String title;
+private String title;
     private String content;
     private String image_url;
     private String create_at;

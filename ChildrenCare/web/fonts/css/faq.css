@@ -1,0 +1,187 @@
+/*
+Template Name: Doctor
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+/*********************faq****************/
+.center_gal {
+background-image: url(../img/3.jpg);
+background-position:center;
+}
+.center_list_m{
+ padding-top:120px;
+ padding-bottom:120px;
+ background-color: #ffffffc7;
+ }
+.center_gal_1 h1{
+ font-size:70px;
+ display:inline-block;
+ border-bottom:2px solid #e10f28; 
+ padding-bottom:15px;
+ }
+#faq{
+padding-top:50px;
+padding-bottom:50px; 
+ }
+
+.accordion {
+  background-color: #e10f280f;
+  color: #000;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  font-size:16px;
+}
+
+.active, .accordion:hover {
+  background-color: #e10f28;
+  color:#fff;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: #e10f280f;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border:none;
+}
+.faq_2{
+margin-top:40px; 
+ }
+#touch{
+background:#e10f28;
+color:#fff;
+padding-top:80px;
+padding-bottom:80px; 
+ }
+#touch .team_h_1r hr{
+border-color:#000; 
+width:60px;
+border-width:2px;
+ }
+.touch_1i span i{
+ background:#fff;
+ width:100px;
+ height:100px;
+ line-height:100px;
+ background:#fff;
+ border-radius:50%;
+ color:#000;
+ font-size:50px;
+ border:2px solid #fff;
+ }
+.touch_1i span i:hover{
+background:none;
+color:#fff; 
+ }
+.touch_1i hr{
+border-color:#000; 
+width:50px;
+border-width:2px;
+ }
+.touch_1{
+margin-top:40px;
+width:60%;
+margin-left:auto;
+margin-right:auto; 
+ }
+ 
+#ques .faq_2r{
+margin-top:40px; 
+ }
+.list_h_1i1 .bg_2{
+ background:#000;
+ }
+.list_h_1i1i1 span i{
+font-size:40px;
+float:left;
+margin-right:20px;
+vertical-align:middle;
+ }
+.list_h_1i1i1{
+margin-top:20px; 
+ }
+.list_h_1i1i {
+    background: #e10f28;
+    padding: 30px 15px;
+}
+#ques{
+padding-top:50px;
+padding-bottom:50px; 
+ }
+.list_h_1i1{
+margin-top:330px; 
+ }
+/*********************faq_end****************/
+
+
+@media screen and (max-width : 767px){
+#faq{
+text-align:center;
+ }
+.faq_2r {
+margin-top:15px; 
+ }
+.touch_1i {
+margin-bottom:15px; 
+ }
+#ques{
+text-align:center;
+ }
+.list_h_1i1{
+margin-top:10px; 
+ }
+.list_h_1i1i1 span i{
+float:none;
+display:inline-block;
+margin-bottom:15px;
+margin-right:0; 
+ }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+.touch_1 {
+width: 80%;
+}
+.list_h_1i1i1 h5{
+font-size:14px; 
+ }
+.list_h_1i1i{
+padding:30px 10px; 
+ }
+ }
+@media (min-width:992px) and (max-width:1200px) {
+.list_h_1i1i1 h5{
+font-size:14px; 
+ }
+.list_h_1i1i{
+padding:30px 10px; 
+ }
+ }
+@media (min-width:1201px) and (max-width:1350px) {
+
+ }
+
+
+
+
