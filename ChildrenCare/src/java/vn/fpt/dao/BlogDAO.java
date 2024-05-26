@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vn.fpt.model.Blog;
-import vn.fpt.model.DBConnect;
+import vn.fpt.dao.DBConnect;
 
 public class BlogDAO extends DBConnect {
     
