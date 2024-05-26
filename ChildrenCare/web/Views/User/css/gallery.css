@@ -1,0 +1,89 @@
+/*
+Template Name: Doctor
+File: Layout CSS
+Author: TemplatesOnWeb
+Author URI: https://www.templateonweb.com/
+Licence: <a href="https://www.templateonweb.com/license">Website Template Licence</a>
+*/
+/*********************gallery****************/
+.center_gal {
+background-image: url(../img/2.jpg);
+background-position:center;
+}
+.center_list_m{
+ padding-top:120px;
+ padding-bottom:120px;
+ background-color: #ffffffc7;
+ }
+.center_gal_1 h1{
+ font-size:70px;
+ display:inline-block;
+ border-bottom:2px solid #e10f28; 
+ padding-bottom:15px;
+ }
+.team_h_1r h1{
+font-size:70px; 
+ }
+.team_h_1r h4{
+border-bottom:2px solid #e10f28;
+display:inline-block;
+padding-bottom:15px; 
+ }
+#patient{
+padding-top:50px;
+padding-bottom:50px; 
+ }
+
+.blog_h_2i1i1 span i{
+font-size:40px; 
+ }
+.blog_h_2i1{
+position:relative;
+}
+.blog_h_2i1:hover .blog_h_2i1i1{
+display:block;
+}
+.blog_h_2i1i1{
+position:absolute;
+width:100%;
+top:0;
+background-color: #ffffffa6;
+height:100%;
+display:none; 
+padding-top:110px;
+ }
+.blog_h_2{
+margin-top:30px; 
+ }
+/*********************gallery_end****************/
+
+
+@media screen and (max-width : 767px){
+#patient{
+text-align:center;
+ }
+.blog_h_2i1i img{
+min-height:280px; 
+ }
+.blog_h_2i1 {
+margin-top:10px; 
+ }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+.blog_h_2i1i img{
+min-height:280px; 
+ }
+ }
+@media (min-width:992px) and (max-width:1200px) {
+.blog_h_2i1i img{
+min-height:280px; 
+ }
+ }
+@media (min-width:1201px) and (max-width:1350px) {
+
+ }
+
+
+
+

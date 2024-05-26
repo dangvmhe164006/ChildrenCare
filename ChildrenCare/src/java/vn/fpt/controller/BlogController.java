@@ -57,7 +57,8 @@ public class BlogController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-   request.getRequestDispatcher("Views/User/CreateBlog.jsp").forward(request,response);
+      request.getRequestDispatcher("Views/User/CreateBlog.jsp").forward(request, response);
+
     } 
 
     /** 
@@ -70,23 +71,20 @@ public class BlogController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        BlogDAO blogDAO = new BlogDAO();
 
+BlogDAO blogDAO = new BlogDAO();
+     LocalDateTime now = LocalDateTime.now();
+     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
     String title = request.getParameter("title");
     String content = request.getParameter("content");
-//    String imageUrl = request.getParameter("image_url"); // Corrected to use request parameter
-//    int createdBy = Integer.parseInt(request.getParameter("created_by"));
-
+    String image = request.getParameter("image");
+    
     Blog blog = new Blog();
     blog.setTitle(title);
     blog.setContent(content);
-    blog.setImage_url("dd"); // Corrected to use imageUrl obtained from request parameter
-   
-    LocalDateTime now = LocalDateTime.now();
-
-DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+    blog.setImage_url(image); 
     blog.setCreate_at(now.format(formatter));
-    blog.setCreate_by(1);
+    blog.setCreate_by(2);
 
     int result = blogDAO.createBlog(blog);
 
