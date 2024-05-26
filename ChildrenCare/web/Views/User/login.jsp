@@ -20,19 +20,18 @@
         <meta name="Version" content="v1.2.0" />
 
         <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico.png">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico.png">
 
         <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/remixicon.css" rel="stylesheet" type="text/css" />
         <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"  rel="stylesheet">
 
         <!-- Css -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
-
+        <link href="../assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     </head>
     <body>
         <!-- Loader -->
@@ -124,11 +123,11 @@
         <!-- Hero End -->
 
         <!-- javascript -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <!-- Icons -->
-        <script src="assets/js/feather.min.js"></script>
+        <script src="../assets/js/feather.min.js"></script>
         <!-- Main Js -->
-        <script src="assets/js/app.js"></script>
+        <script src="../assets/js/app.js"></script>
 
     </body>
 </html>

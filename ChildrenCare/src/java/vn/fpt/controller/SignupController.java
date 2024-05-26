@@ -80,7 +80,7 @@ public class SignupController extends HttpServlet {
         
         UserDao d = new UserDao();
         d.registerUsers(userName, password, email, fullName, phone, address, gender);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("../User/Login.jsp").forward(request, response);
         
     }
 

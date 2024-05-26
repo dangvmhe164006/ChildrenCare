@@ -20,24 +20,24 @@
         <meta name="website" content="index.html" />
         <meta name="Version" content="v1.2.0" />
         <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico.png">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico.png">
         <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/remixicon.css" rel="stylesheet" type="text/css" />
         <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"  rel="stylesheet">
         <!-- SLIDER -->
-        <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
+        <link rel="stylesheet" href="../assets/css/tiny-slider.css"/>
         <!-- Css -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="../assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     </head>
     <body>
 
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="../User/Header.jsp"></jsp:include>
 
             <!-- Start Hero -->
-            <section class="bg-half-260 d-table w-100" style="background: url('assets/images/bg/01.jpg') center;">
+            <section class="bg-half-260 d-table w-100" style="background: url('../assets/images/bg/01.jpg') center;">
                 <div class="bg-overlay bg-overlay-dark"></div>
                 <div class="container">
                     <div class="row mt-5 mt-lg-0">
@@ -119,7 +119,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5 col-md-6">
                             <div class="position-relative">
-                                <img src="assets/images/about/about-2.png" class="img-fluid" alt="">
+                                <img src="../assets/images/about/about-2.png" class="img-fluid" alt="">
                                 <div class="play-icon">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#watchvideomodal" class="play-btn video-play-icon">
                                         <i class="mdi mdi-play text-primary rounded-circle bg-white title-bg-dark shadow"></i>
@@ -162,7 +162,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
                             <div class="card team border-0 rounded shadow overflow-hidden">
                                 <div class="team-img position-relative">
-                                    <img src="assets/images/doctors/01.jpg" class="img-fluid" alt="">
+                                    <img src="../assets/images/doctors/01.jpg" class="img-fluid" alt="">
                                     <ul class="list-unstyled team-social mb-0">
                                         <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
@@ -180,7 +180,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
                             <div class="card team border-0 rounded shadow overflow-hidden">
                                 <div class="team-img position-relative">
-                                    <img src="assets/images/doctors/02.jpg" class="img-fluid" alt="">
+                                    <img src="../assets/images/doctors/02.jpg" class="img-fluid" alt="">
                                     <ul class="list-unstyled team-social mb-0">
                                         <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
@@ -198,7 +198,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
                             <div class="card team border-0 rounded shadow overflow-hidden">
                                 <div class="team-img position-relative">
-                                    <img src="assets/images/doctors/03.jpg" class="img-fluid" alt="">
+                                    <img src="../assets/images/doctors/03.jpg" class="img-fluid" alt="">
                                     <ul class="list-unstyled team-social mb-0">
                                         <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
@@ -216,7 +216,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-6 mt-4 pt-2">
                             <div class="card team border-0 rounded shadow overflow-hidden">
                                 <div class="team-img position-relative">
-                                    <img src="assets/images/doctors/04.jpg" class="img-fluid" alt="">
+                                    <img src="../assets/images/doctors/04.jpg" class="img-fluid" alt="">
                                     <ul class="list-unstyled team-social mb-0">
                                         <li><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="facebook" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="#" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="linkedin" class="icons"></i></a></li>
@@ -249,19 +249,19 @@
                 </div>
             </div>
 
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="../User/Footer.jsp"></jsp:include>
 
 
         <!-- javascript -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <!-- SLIDER -->
-        <script src="assets/js/tiny-slider.js"></script>
-        <script src="assets/js/tiny-slider-init.js"></script>
+        <script src="../assets/js/tiny-slider.js"></script>
+        <script src="../assets/js/tiny-slider-init.js"></script>
         <!-- Counter -->
-        <script src="assets/js/counter.init.js"></script>
+        <script src="../assets/js/counter.init.js"></script>
         <!-- Icons -->
-        <script src="assets/js/feather.min.js"></script>
+        <script src="../assets/js/feather.min.js"></script>
         <!-- Main Js -->
-        <script src="assets/js/app.js"></script>
+        <script src="../assets/js/app.js"></script>
     </body>
 </html>

@@ -20,17 +20,17 @@
         <meta name="website" content="index.html" />
         <meta name="Version" content="v1.2.0" />
         <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico.png">
+        <link rel="shortcut icon" href="../assets/images/favicon.ico.png">
         <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/remixicon.css" rel="stylesheet" type="text/css" />
         <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"  rel="stylesheet">
         <!-- SLIDER -->
-        <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
+        <link rel="stylesheet" href="../assets/css/tiny-slider.css"/>
         <!-- Css -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="../assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     </head>
     <body>
 
@@ -52,10 +52,10 @@
                 <div>
                     <a class="logo" href="index.html">
                         <span class="logo-light-mode">
-                            <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
-                            <img src="assets/images/logo-light.png" class="l-light" height="24" alt="">
+                            <img src="../assets/images/logo-dark.png" class="l-dark" height="24" alt="">
+                            <img src="../assets/images/logo-light.png" class="l-light" height="24" alt="">
                         </span>
-                        <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
+                        <img src="../assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
                     </a>
                 </div>
                 <!-- End Logo container-->
@@ -92,10 +92,10 @@
 
                     <li class="list-inline-item mb-0 ms-1">
                         <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-pills btn-soft-primary dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt=""></button>
+                            <button type="button" class="btn btn-pills btn-soft-primary dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt=""></button>
                             <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px;">
                                 <a class="dropdown-item d-flex align-items-center text-dark" href="doctor-profile.html">
-                                    <img src="assets/images/doctors/01.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                                    <img src="../assets/images/doctors/01.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                     <div class="flex-1 ms-2">
                                         <span class="d-block mb-1">Calvin Carlo</span>
                                         <small class="text-muted">Orthopedic</small>
@@ -198,15 +198,15 @@
         <!-- Navbar End -->
 
         <!-- javascript -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <!-- SLIDER -->
-        <script src="assets/js/tiny-slider.js"></script>
-        <script src="assets/js/tiny-slider-init.js"></script>
+        <script src="../assets/js/tiny-slider.js"></script>
+        <script src="../assets/js/tiny-slider-init.js"></script>
         <!-- Counter -->
-        <script src="assets/js/counter.init.js"></script>
+        <script src="../assets/js/counter.init.js"></script>
         <!-- Icons -->
-        <script src="assets/js/feather.min.js"></script>
+        <script src="../assets/js/feather.min.js"></script>
         <!-- Main Js -->
-        <script src="assets/js/app.js"></script>
+        <script src="../assets/js/app.js"></script>
     </body>
 </html>

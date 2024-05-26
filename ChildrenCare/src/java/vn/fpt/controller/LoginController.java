@@ -98,12 +98,12 @@ public class LoginController extends HttpServlet {
         
         if(u == null){
             request.setAttribute("mes", "You enter wrong! Enter again!!!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("../User/Login.jsp").forward(request, response);
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("acc", u);
             //response.sendRedirect("home");
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            request.getRequestDispatcher("../User/Home.jsp").forward(request, response);
         }
         
     }
