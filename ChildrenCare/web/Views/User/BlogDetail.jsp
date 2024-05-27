@@ -1,15 +1,7 @@
-<%-- 
-    Document   : BlogDetail
-    Created on : May 25, 2024, 8:36:47 PM
-    Author     : dangv
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="vn.fpt.model.Blog" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +17,6 @@
         <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
         <script src="js/jquery-2.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <title>Blog Detail</title>
     </head>
     <body>
         <section id="blog"> 
@@ -55,93 +46,84 @@
                                 </div>
                             </div>
 
-
                             <div class="blog_detail_l2 clearfix">
                                 <div class="blog_detail_l2i clearfix">
-                                    <h3 class="mgt">04 Comments</h3>
+                                    <h3 class="mgt">Comments</h3>
                                 </div>
+                            <c:forEach var="comment" items="${listComment}">
                                 <div class="blog_detail_l2i1 pdb border_none clearfix">
                                     <div class="col-sm-2 space_left">
                                         <img src="img/52.jpg" class="iw img-circle" alt="abc">
                                     </div>
                                     <div class="col-sm-10 space_left">
-                                        <h4 class="mgt">Lacinia Arcu </h4>
-                                        <h6 class="col_1">19TH MAY 2020</h6>
-                                        <p></p>
+                                        <h4 class="mgt">Name User </h4>
+                                        <h6 class="col_1">${comment.create_at}</h6>
+                                        <p>
+                                           ${comment.content}
+                                        </p>
                                     </div>
                                 </div>
+                            </c:forEach>
+
                             </div>
 
-                            <form action="CommentController" method="post">
+                            <form id="commentForm">
                                 <div class="contact_1r blog_1ln clearfix">
-                                    <textarea name="commentContent" placeholder="Your Comments" class="form-control form_1"></textarea>
-                                    <input type="hidden" name="service" value="insert"/>
-                                    <input type="hidden" name="blogId" value="<%= ((Blog)request.getAttribute("blog")).getBlog_id() %>"> 
+                                    <textarea id="commentContent" name="commentContent" placeholder="Your Comments" class="form-control form_1"></textarea>                                   
                                     <button type="submit" class="button block">Comment</button>
                                 </div>
                             </form>
-
                         </div>
                         <div class="col-sm-4">
                             <div class="blog_1r clearfix">
                                 <jsp:include page="../User/RecentPosts.jsp"></jsp:include>
-
-                            </div>
-                            <div class="blog_1r2 clearfix">
-                                <h4 class="mgt">BLOG ARCHIVE</h4><br><br>
-                                <h6 class="normal"><a href="#">December 2017 <span class="pull-right">(2)</span></a></h6>
-                                <h6 class="normal border_none pdb"><a href="#">November 2017 <span class="pull-right">(2)</span></a></h6>
-                            </div>
-                            <div class="blog_1r2 clearfix">
-                                <h4 class="mgt">Service</h4><br><br>
-                                <ul class="nav_m mgt">
-                                    <li class="dropdown">
-                                        <a class="tag_m" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Select Category <i class="fa fa-chevron-down pull-right"></i></a>
-                                        <ul class="dropdown-menu drop_m" role="menu">
-                                            <li><a href="#">Announcements  (5)</a></li>
-
-                                            <li><a class="border_none" href="#">News (5)</a></li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="blog_1r3 clearfix">
-                                <h4 class="mgt">TAGS</h4><br><br>
-                                <ul class="mgt">
-
-                                    <li><a href="#">VIDEO</a></li>
-                                </ul>
+                                </div>
+                                <div class="blog_1r2 clearfix">
+                                    <h4 class="mgt">BLOG ARCHIVE</h4><br><br>
+                                    <h6 class="normal"><a href="#">December 2017 <span class="pull-right">(2)</span></a></h6>
+                                    <h6 class="normal border_none pdb"><a href="#">November 2017 <span class="pull-right">(2)</span></a></h6>
+                                </div>
+                                <div class="blog_1r2 clearfix">
+                                    <h4 class="mgt">Service</h4><br><br>
+                                    <ul class="nav_m mgt">
+                                        <li class="dropdown">
+                                            <a class="tag_m" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Select Category <i class="fa fa-chevron-down pull-right"></i></a>
+                                            <ul class="dropdown-menu drop_m" role="menu">
+                                                <li><a href="#">Announcements  (5)</a></li>
+                                                <li><a class="border_none" href="#">News (5)</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="blog_1r3 clearfix">
+                                    <h4 class="mgt">TAGS</h4><br><br>
+                                    <ul class="mgt">
+                                        <li><a href="#">VIDEO</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
+            <script type="text/javascript">
+                document.getElementById('commentForm').addEventListener('submit', function (event) {
+                    event.preventDefault();
 
- <script type="text/javascript">
-   document.getElementById('commentForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Ngăn chặn form được gửi đi một cách thông thường
+                    var commentContent = document.getElementById('commentContent').value;
+                    var blogId = <%= ((Blog)request.getAttribute("blog")).getBlog_id() %>;
 
-    var commentContent = document.getElementById('commentContent').value;
-    var blogId = 45; // Thay 45 bằng ID thực tế của blog
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/ChildrenCare/comment', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-           
-        }
-    };
-    xhr.send('blogId=' + blogId + '&commentContent=' + encodeURIComponent(commentContent));
-});
-   
-   
-</script>
-
-
-</body>
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/ChildrenCare/comment', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                         window.location.reload();                
+                        }
+                    };
+                    xhr.send('blogId=' + blogId + '&commentContent=' + encodeURIComponent(commentContent));
+                });
+        </script>
+    </body>
 </html>

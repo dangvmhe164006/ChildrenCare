@@ -76,5 +76,55 @@ public class CommentDAO extends DBConnect {
 
         return comments;
     }
+    
+    
+     public ArrayList<Comment> getCommentsByBlogid(int blogID) {
+        ArrayList<Comment> comments = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Comment] where blog_id  = ?";
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, blogID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int commentId = resultSet.getInt("comment_id");
+                int blogId = resultSet.getInt("blog_id");
+                String content = resultSet.getString("comment_content");
+                String createdAt = resultSet.getString("created_at");
+                int createdBy = resultSet.getInt("created_by");
+
+                Comment comment = new Comment(commentId, blogId, content, createdAt, createdBy);
+                comments.add(comment);
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return comments;
+    }
+    
+
+       public static void main(String[] args) {
+       CommentDAO dao  = new CommentDAO();
+       Comment c  = new Comment();
+       c.setBlog_id(45);
+       c.setContent("test");
+       c.setCreate_by(1);
+      
+      int n=  dao.insertComment(c);
+      if(n>0){
+          System.out.println("tv");
+      }else{
+          System.out.println("fail");
+      
+      }
+         
+
+    }
 }

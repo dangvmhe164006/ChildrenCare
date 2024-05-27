@@ -15,7 +15,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import vn.fpt.dao.BlogDAO;
+import vn.fpt.dao.CommentDAO;
 import vn.fpt.model.Blog;
+import vn.fpt.model.Comment;
 
 /**
  *
@@ -67,10 +69,14 @@ public class BlogController extends HttpServlet {
         request.setAttribute("recent", recentBlog);
 //        HttpSession session = request.getSession();
 //        int userID =(int) session.getAttribute("acc");
-
+        CommentDAO cDAO = new CommentDAO();
+       
+         
         if (id != null && !id.equals("")) {
             int blogId = Integer.parseInt(id);
             Blog blog = blogDAO.getBlogById(blogId);
+            ArrayList<Comment> listC = cDAO.getCommentsByBlogid(blogId);
+            request.setAttribute("listComment", listC);
             request.setAttribute("blog", blog);
             request.getRequestDispatcher("Views/User/BlogDetail.jsp").forward(request, response);
         } else {
