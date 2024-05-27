@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -34,16 +35,16 @@
                                 <div class="blog_1l clearfix">
                                     <div class="col-sm-2 space_left">
                                         <div class="blog_1ll text-center clearfix"> 
-                                            <a href="blog_detail.html"><img src="img/43.jpg" class="iw img-circle" alt="abc"></a>
-                                            <h5><a class="col_1" href="blog_detail.html"><i class="fa fa-user"></i> Name</a></h5>
+                                            <a href=""><img src="img/43.jpg" class="iw img-circle" alt="abc"></a>
+                                            <h5><a class="col_1" href=""><i class="fa fa-user"></i> Name</a></h5>
                                             <h6 class="col_2 normal"><i class="fa fa-clock-o"></i> ${blog.create_at}</h6>
                                         </div>
                                     </div>
                                     <div class="col-sm-10 space_all">
                                         <div class="blog_1lr clearfix">
-                                            <a href="blog_detail.html"><img src="${blog.image_url}" class="iw" alt="abc"></a>
-                                            <h5><a href="blog_detail.html"> <a href="blog_detail.html"><i class="fa fa-comments"></i> 2</a></h5>
-                                            <h1><a href="blog_detail.html"> ${blog.title} </a></h1>
+                                            <a href="/ChildrenCare/BlogController?id=${blog.blog_id}"><img src="${blog.image_url}" class="iw" alt="abc"></a>
+                                            <h5><a href="/BlogController"> <a href=""><i class="fa fa-comments"></i> 2</a></h5>
+                                            <h1><a href="/ChildrenCare/BlogController?id=${blog.blog_id}"> ${blog.title} </a></h1>
                                             <p>${blog.content}</p>
                                             <div class="blog_1lri clearfix">
                                                 <div class="col-sm-6 space_left">
@@ -75,27 +76,13 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="blog_1r clearfix">
-                                <div class="blog_1r1 clearfix">
-                                    <h4 class="mgt">RECENT POSTS</h4>
+                                        <jsp:include page="../User/RecentPosts.jsp"></jsp:include>
 
-                                    <div class="blog_1r1i clearfix">
-                                        <div class="col-sm-4 space_left">
-                                            <div class="blog_1r1il clearfix">
-                                                <a href="blog_detail.html"><img src="img/50.jpg" class="iw" alt="abc"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-8 space_left">
-                                            <div class="blog_1r1il clearfix">
-                                                <h6 class="col_2 mgt normal">FEBRUARY 7, 2018</h6>
-                                                <h5><a class="col_1" href="blog_detail.html">Beta-blocker therapy post</a></h5>
-                                                <p>Quickly cultivate optimal processes and tactical.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                                
                                 <div class="blog_1r2 clearfix">
                                     <h4 class="mgt">BLOG ARCHIVE</h4><br><br>
-                                    <h6 class="normal mgt"><a href="blog_detail.html">February 2018 <span class="pull-right">(2)</span></a></h6>
+                                    <h6 class="normal mgt"><a href="/BlogController">February 2018 <span class="pull-right">(2)</span></a></h6>
                                     <h6 class="normal"><a href="blog_detail.html">January 2018 <span class="pull-right">(4)</span></a></h6>
                                     <h6 class="normal"><a href="blog_detail.html">December 2017 <span class="pull-right">(2)</span></a></h6>
                                     <h6 class="normal border_none pdb"><a href="blog_detail.html">November 2017 <span class="pull-right">(2)</span></a></h6>
@@ -107,8 +94,7 @@
                                             <a class="tag_m" href="blog_detail.html" data-toggle="dropdown" role="button" aria-expanded="false">Select Category <i class="fa fa-chevron-down pull-right"></i></a>
                                             <ul class="dropdown-menu drop_m" role="menu">
                                                 <li><a href="blog_detail.html">Announcements  (5)</a></li>
-                                                <li><a href="blog_detail.html">Discounts  (4)</a></li>
-                                                <li><a href="blog_detail.html">Healtcare (4)</a></li>
+                                   
                                                 <li><a class="border_none" href="blog_detail.html">News (5)</a></li>
                                             </ul>
                                         </li>

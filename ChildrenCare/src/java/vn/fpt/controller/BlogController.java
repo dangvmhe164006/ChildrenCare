@@ -60,11 +60,22 @@ public class BlogController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String id = request.getParameter("id");
         BlogDAO blogDAO = new BlogDAO();
-        ArrayList<Blog> listBlog = blogDAO.getAllBlogs();
-        request.setAttribute("listBlog", listBlog);
-        request.getRequestDispatcher("Views/User/listBlog.jsp").forward(request, response);
+        ArrayList<Blog> recentBlog = blogDAO.getLatestBlogs(5);
+        request.setAttribute("recent", recentBlog);
+
+
+        if (id != null && !id.equals("")) {
+            int blogId = Integer.parseInt(id);
+            Blog blog = blogDAO.getBlogById(blogId);
+            request.setAttribute("blog", blog);
+            request.getRequestDispatcher("Views/User/BlogDetail.jsp").forward(request, response);
+        } else {
+            ArrayList<Blog> listBlog = blogDAO.getAllBlogs();
+            request.setAttribute("listBlog", listBlog);
+            request.getRequestDispatcher("Views/User/listBlog.jsp").forward(request, response);
+        }
 
     }
 

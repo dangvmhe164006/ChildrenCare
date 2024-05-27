@@ -69,6 +69,35 @@ public class BlogDAO extends DBConnect {
         return blogs;
     }
     
+     public ArrayList<Blog> getLatestBlogs(int limit) {
+    ArrayList<Blog> blogs = new ArrayList<>();
+    String sql = "SELECT TOP " + limit + " * FROM [dbo].[Blog] ORDER BY created_at DESC";
+
+    try {
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            int id = resultSet.getInt("blog_id");
+            String title = resultSet.getString("title");
+            String content = resultSet.getString("content");
+            String imageUrl = resultSet.getString("image_url");
+            String createdAt = resultSet.getString("created_at");
+            int createdBy = resultSet.getInt("created_by");
+            Blog blog = new Blog(id, title, content, imageUrl, createdAt, createdBy);
+            blogs.add(blog);
+        }
+
+        resultSet.close();
+        preparedStatement.close();
+
+    } catch (SQLException ex) {
+        Logger.getLogger(BlogDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    return blogs;
+}
+
      
      public Blog getBlogById(int id) {
         Blog blog = null;
