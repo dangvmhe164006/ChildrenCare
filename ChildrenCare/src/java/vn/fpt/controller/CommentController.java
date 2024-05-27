@@ -11,6 +11,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import vn.fpt.dao.CommentDAO;
+import vn.fpt.model.Comment;
+import vn.fpt.model.Users;
 
 /**
  *
@@ -66,7 +72,27 @@ public class CommentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession session = request.getSession();
+        CommentDAO commentDAO = new CommentDAO();
+//        int userID =(int) session.getAttribute("acc");
+
+        String commentContent = request.getParameter("commentContent");
+        int blogId = Integer.parseInt(request.getParameter("blogId"));
+        
+        Comment comment = new Comment();
+        comment.setBlog_id(blogId);
+        comment.setContent(commentContent);
+        Date currentDate = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String createdAt = formatter.format(currentDate);
+        comment.setCreate_at(createdAt);
+        comment.setCreate_by(1);
+        
+        commentDAO.insertComment(comment);
+        
+       
+        
     }
 
     /** 

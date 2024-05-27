@@ -101,7 +101,7 @@ public class LoginController extends HttpServlet {
             request.getRequestDispatcher("../User/Login.jsp").forward(request, response);
         }else{
             HttpSession session = request.getSession();
-            session.setAttribute("acc", u);
+            session.setAttribute("acc", u.getUser_id());
             //response.sendRedirect("home");
             request.getRequestDispatcher("../User/Home.jsp").forward(request, response);
         }

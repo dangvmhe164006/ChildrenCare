@@ -71,11 +71,15 @@
                                     </div>
                                 </div>
                             </div>
-                           
-                           <div class="contact_1r blog_1ln clearfix">
-                                <textarea placeholder="Your Comments" class="form-control form_1"></textarea>
-                                <h5 class="text-center"><a class="button block" href="#"> Comment </a></h5>
-                            </div>
+
+                            <form action="CommentController" method="post">
+                                <div class="contact_1r blog_1ln clearfix">
+                                    <textarea name="commentContent" placeholder="Your Comments" class="form-control form_1"></textarea>
+                                    <input type="hidden" name="service" value="insert"/>
+                                    <input type="hidden" name="blogId" value="<%= ((Blog)request.getAttribute("blog")).getBlog_id() %>"> 
+                                    <button type="submit" class="button block">Comment</button>
+                                </div>
+                            </form>
 
                         </div>
                         <div class="col-sm-4">
@@ -116,6 +120,27 @@
         </div>
     </section>
 
+
+ <script type="text/javascript">
+   document.getElementById('commentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Ngăn chặn form được gửi đi một cách thông thường
+
+    var commentContent = document.getElementById('commentContent').value;
+    var blogId = 45; // Thay 45 bằng ID thực tế của blog
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/ChildrenCare/comment', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+           
+        }
+    };
+    xhr.send('blogId=' + blogId + '&commentContent=' + encodeURIComponent(commentContent));
+});
+   
+   
+</script>
 
 
 </body>

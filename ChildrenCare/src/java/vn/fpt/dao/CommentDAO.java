@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vn.fpt.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vn.fpt.model.Comment;
+import java.sql.ResultSet;
 
 /**
  *
@@ -39,17 +37,44 @@ public class CommentDAO extends DBConnect {
         String sql = "DELETE FROM [dbo].[Comment] WHERE comment_id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
             preparedStatement.setInt(1, commentId);
-
             rowsDeleted = preparedStatement.executeUpdate();
-
             preparedStatement.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rowsDeleted;
+    }
+
+    public ArrayList<Comment> getAllComments() {
+        ArrayList<Comment> comments = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Comment]";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int commentId = resultSet.getInt("comment_id");
+                int blogId = resultSet.getInt("blog_id");
+                String content = resultSet.getString("comment_content");
+                String createdAt = resultSet.getString("created_at");
+                int createdBy = resultSet.getInt("created_by");
+
+                Comment comment = new Comment(commentId, blogId, content, createdAt, createdBy);
+                comments.add(comment);
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return comments;
     }
 
 }

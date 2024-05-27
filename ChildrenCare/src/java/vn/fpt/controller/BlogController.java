@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -64,7 +65,8 @@ public class BlogController extends HttpServlet {
         BlogDAO blogDAO = new BlogDAO();
         ArrayList<Blog> recentBlog = blogDAO.getLatestBlogs(5);
         request.setAttribute("recent", recentBlog);
-
+//        HttpSession session = request.getSession();
+//        int userID =(int) session.getAttribute("acc");
 
         if (id != null && !id.equals("")) {
             int blogId = Integer.parseInt(id);
