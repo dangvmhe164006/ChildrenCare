@@ -1,23 +1,34 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package vn.fpt.model;
 
-public class Blog {
+/**
+ *
+ * @author dangv
+ */
+public class BlogDTO {
     
+     
     private int blog_id;
     private String title;
     private String content;
     private String image_url;
     private String create_at;
+    private String username;
     private int create_by;
 
-    public Blog() {
+    public BlogDTO() {
     }
 
-    public Blog(int blog_id, String title, String content, String image_url, String create_at, int create_by) {
+    public BlogDTO(int blog_id, String title, String content, String image_url, String create_at, String username, int create_by) {
         this.blog_id = blog_id;
         this.title = title;
         this.content = content;
         this.image_url = image_url;
         this.create_at = create_at;
+        this.username = username;
         this.create_by = create_by;
     }
 
@@ -61,11 +72,22 @@ public class Blog {
         this.create_at = create_at;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public int getCreate_by() {
         return create_by;
     }
 
     public void setCreate_by(int create_by) {
         this.create_by = create_by;
-    }            
+    }
+    
+    
+    
 }

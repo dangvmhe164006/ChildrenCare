@@ -56,8 +56,8 @@
                                         <img src="img/52.jpg" class="iw img-circle" alt="abc">
                                     </div>
                                     <div class="col-sm-10 space_left">
-                                        <h4 class="mgt">Name User </h4>
-                                        <h6 class="col_1">${comment.create_at}</h6>
+                                        <h4 class="mgt"> ${comment.username}</h4>
+                                        <h6 class="col_1">${comment.createdAt}</h6>
                                         <p>
                                            ${comment.content}
                                         </p>
