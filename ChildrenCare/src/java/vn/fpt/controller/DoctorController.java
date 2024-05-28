@@ -8,17 +8,15 @@ package vn.fpt.edu.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ACER
+ * @author dangv
  */
-@WebServlet(name="HomeController", urlPatterns={"/home"})
-public class HomeController extends HttpServlet {
+public class DoctorController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,10 +33,10 @@ public class HomeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");  
+            out.println("<title>Servlet DoctorController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomeController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet DoctorController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,9 +53,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
-     response.sendRedirect("Views/User/Home.jsp");
-     
+        processRequest(request, response);
     } 
 
     /** 
@@ -72,7 +68,6 @@ public class HomeController extends HttpServlet {
     throws ServletException, IOException {
         processRequest(request, response);
     }
-
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description

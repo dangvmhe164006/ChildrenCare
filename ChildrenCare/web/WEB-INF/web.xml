@@ -2,15 +2,15 @@
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>UserController</servlet-name>
-        <servlet-class>vn.fpt.edu.controller.UserController</servlet-class>
+        <servlet-class>vn.fpt.controller.UserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BlogController</servlet-name>
-        <servlet-class>vn.fpt.edu.controller.BlogController</servlet-class>
+        <servlet-class>vn.fpt.controller.BlogController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CommentController</servlet-name>
-        <servlet-class>vn.fpt.edu.controller.CommentController</servlet-class>
+        <servlet-class>vn.fpt.controller.CommentController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DoctorController</servlet-name>
