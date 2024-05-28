@@ -1,13 +1,13 @@
-package vn.fpt.dao;
+package vn.fpt.edu.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import vn.fpt.model.Comment;
+import vn.fpt.edu.model.Comment;
 import java.sql.ResultSet;
-import vn.fpt.model.CommentDTO;
+import vn.fpt.edu.model.CommentDTO;
 
 /**
  *

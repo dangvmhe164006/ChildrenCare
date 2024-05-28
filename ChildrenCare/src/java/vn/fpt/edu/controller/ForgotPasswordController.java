@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
-import vn.fpt.dao.UserDao;
-import vn.fpt.model.Users;
+import vn.fpt.edu.dao.UserDao;
+import vn.fpt.edu.model.Users;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;

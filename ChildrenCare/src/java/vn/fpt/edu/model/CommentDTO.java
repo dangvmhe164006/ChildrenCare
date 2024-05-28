@@ -1,5 +1,5 @@
 
-package vn.fpt.model;
+package vn.fpt.edu.model;
 
 
 public class CommentDTO {

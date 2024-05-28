@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,11 +14,11 @@ import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import vn.fpt.dao.BlogDAO;
-import vn.fpt.dao.CommentDAO;
-import vn.fpt.model.Blog;
-import vn.fpt.model.Comment;
-import vn.fpt.model.CommentDTO;
+import vn.fpt.edu.dao.BlogDAO;
+import vn.fpt.edu.dao.CommentDAO;
+import vn.fpt.edu.model.Blog;
+import vn.fpt.edu.model.Comment;
+import vn.fpt.edu.model.CommentDTO;
 
 /**
  *

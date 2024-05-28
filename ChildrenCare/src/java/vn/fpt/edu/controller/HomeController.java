@@ -3,26 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
-import vn.fpt.dao.UserDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import vn.fpt.model.Users;
 
 /**
  *
  * @author ACER
  */
-@WebServlet(name="LoginServlet", urlPatterns={"/login"})
-public class LoginController extends HttpServlet {
+@WebServlet(name="HomeController", urlPatterns={"/home"})
+public class HomeController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,10 +35,10 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");  
+            out.println("<title>Servlet HomeController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet HomeController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +55,9 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-     request.getRequestDispatcher("Views/User/login.jsp").forward(request, response);
+        
+     response.sendRedirect("Views/User/Home.jsp");
+     
     } 
 
     /** 
@@ -72,40 +70,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        String remember = request.getParameter("remember");
-        
-        Cookie cu = new Cookie("cu", email);
-        Cookie cp = new Cookie("cp", pass);
-        Cookie cr = new Cookie("cr", remember);
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-        response.addCookie(cu);
-        response.addCookie(cp);
-        response.addCookie(cr);
-        
-        UserDao d = new UserDao();
-        
-        Users u = d.loginUser(email, pass);
-        
-        if(u == null){
-            request.setAttribute("mes", "You enter wrong! Enter again!!!");
-            request.getRequestDispatcher("../User/Login.jsp").forward(request, response);
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", u.getUser_id());
-            //response.sendRedirect("home");
-            request.getRequestDispatcher("../User/Home.jsp").forward(request, response);
-        }
-        
+        processRequest(request, response);
     }
 
     /** 
