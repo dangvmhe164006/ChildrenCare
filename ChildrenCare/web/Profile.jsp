@@ -69,9 +69,20 @@
                                         <p class="text-muted mb-0">For best results, use an image at least 256px by 256px in either .jpg or .png format</p>
                                     </div><!--end col-->
 
-                                    <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0">                                        
-                                        <a href="#" class="btn btn-primary">Upload</a>
-                                        <a href="removeimg" class="btn btn-soft-primary ms-2">Remove</a>
+                                    <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0">  
+                                        <form action="changeimg" method="post" enctype="multipart/form-data" onsubmit="return checkFileExtension()" style="margin: -26px">
+                                            <div>
+                                                <input style="border: 0.2px #00000036 solid;margin: auto;" type="file" name="photo" id="imageMain">
+                                                <input type="hidden" name="id" value="${requestScope.users.user_id}">
+                                            </div>
+                                            <div class="small font-italic text-muted mb-4">JPG hoặc PNG không lớn hơn 5 MB</div>
+                                            <div class="row"> 
+                                                <div style="margin-left: -55px;">
+                                                    <button class="btn btn-primary" type="submit">Upload</button>
+                                                    <a href="removeimg" class="btn btn-soft-primary ms-2">Remove</a>
+                                                </div>   
+                                            </div>
+                                        </form>
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </div>
