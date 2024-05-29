@@ -122,4 +122,91 @@ public class UserDao extends DBConnect {
         }
     }
 
+    public void chagePasswordById(String id, String newpass) {
+        String spl = "UPDATE [dbo].[User]\n"
+                + "   SET [password] = ?\n"
+                + " WHERE USER_ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, newpass);
+            st.setString(2, id);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public Users getUsersById(int id) {
+        String spl = " select * from [dbo].[User]\n"
+                + "  where user_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Users u = new Users(rs.getInt("user_id"), rs.getString("user_name"),
+                        rs.getString("password"), rs.getString("email"),
+                        rs.getString("full_name"), rs.getString("phone_number"),
+                        rs.getString("address"), rs.getBoolean("gender"),
+                        rs.getString("image_url"), rs.getString("role"),
+                        rs.getString("created_at"));
+                return u;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public void editProfile(String userName, String email, String fullName, String phone, String address, String gender, String id) {
+        String spl = "UPDATE [dbo].[User]\n"
+                + "   SET [user_name] = ?\n"
+                + "      ,[email] = ?\n"
+                + "      ,[full_name] = ?\n"
+                + "      ,[phone_number] = ?\n"
+                + "      ,[address] = ?\n"
+                + "      ,[gender] = ?\n"
+                + " WHERE user_id =  ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, userName);
+            st.setString(2, email);
+            st.setString(3, fullName);
+            st.setString(4, phone);
+            st.setString(5, address);
+            st.setString(6, gender);
+            st.setString(7, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public boolean checkPassWord(String id, String pass) {
+        String spl = "select * from [dbo].[User]\n"
+                + "where USER_ID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Users u = new Users(rs.getInt("user_id"), rs.getString("user_name"),
+                        rs.getString("password"), rs.getString("email"),
+                        rs.getString("full_name"), rs.getString("phone_number"),
+                        rs.getString("address"), rs.getBoolean("gender"),
+                        rs.getString("image_url"), rs.getString("role"),
+                        rs.getString("created_at"));
+                if (u.getPassword().equals(pass)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
 }

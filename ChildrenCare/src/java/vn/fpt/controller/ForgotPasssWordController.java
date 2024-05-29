@@ -4,8 +4,6 @@
  */
 package vn.fpt.controller;
 
-import vn.fpt.edu.dao.UserDao;
-import vn.fpt.edu.model.Users;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -17,19 +15,19 @@ import jakarta.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.security.SecureRandom;
 import java.util.Properties;
+import vn.fpt.edu.dao.UserDao;
+import vn.fpt.edu.model.Users;
 
 /**
  *
  * @author ACER
  */
-@WebServlet(name = "forgotPassword", urlPatterns = {"/fogot"})
-public class ForgotPasswordController extends HttpServlet {
+public class ForgotPasssWordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,10 +46,10 @@ public class ForgotPasswordController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet forgotPassword</title>");
+            out.println("<title>Servlet ForgotPasssWordController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet forgotPassword at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ForgotPasssWordController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -88,7 +86,7 @@ public class ForgotPasswordController extends HttpServlet {
         Users account = d.getCustomerByEmail(email);
         if (account == null) {
             request.setAttribute("ms", "You enter email wrong!!!");
-            request.getRequestDispatcher("forgot.jsp").forward(request, response);
+            request.getRequestDispatcher("Forgot.jsp").forward(request, response);
         } else {
             String pass = randomPassword(8);
             // Cấu hình thông tin email
@@ -150,11 +148,11 @@ public class ForgotPasswordController extends HttpServlet {
                 d.chagePassword(email, pass);
 
                 // Chuyển hướng người dùng sau khi gửi email thành công
-                response.sendRedirect("../User/Login.jsp");
+                response.sendRedirect("Login.jsp");
             } catch (MessagingException mex) {
                 // Xử lý lỗi nếu có
                 mex.printStackTrace();
-                response.sendRedirect("../User/Forgot.jsp");
+                response.sendRedirect("Forgot.jsp");
             }
         }
     }

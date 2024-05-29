@@ -2,17 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package vn.fpt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import vn.fpt.edu.dao.UserDao;
 import vn.fpt.edu.model.Users;
 
@@ -20,35 +17,38 @@ import vn.fpt.edu.model.Users;
  *
  * @author ACER
  */
-public class LoginController extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+public class ChangePassWors extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");  
+            out.println("<title>Servlet ChangePassWors</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet ChangePassWors at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -56,12 +56,13 @@ public class LoginController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-         response.sendRedirect("Login.jsp");
-    } 
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -69,45 +70,53 @@ public class LoginController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        String remember = request.getParameter("remember");
-        
-        Cookie cu = new Cookie("cu", email);
-        Cookie cp = new Cookie("cp", pass);
-        Cookie cr = new Cookie("cr", remember);
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-        response.addCookie(cu);
-        response.addCookie(cp);
-        response.addCookie(cr);
-        
+            throws ServletException, IOException {
+        String cid = request.getParameter("id");
+        String oldpass = request.getParameter("old");
+        String newpass = request.getParameter("new");
+        String newpass2 = request.getParameter("new2");
+
         UserDao d = new UserDao();
-        
-        Users u = d.loginUser(email, pass);
-        
-        if(u == null){
-            request.setAttribute("mes", "You enter wrong! Enter again!!!");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", u);
-            //response.sendRedirect("home");
-            request.getRequestDispatcher("Home.jsp").forward(request, response);
+
+        if (d.checkPassWord(cid, oldpass)) {
+            if (newpass.equals(newpass2)) {
+                d.chagePasswordById(cid, newpass);
+                try {
+                    int id = Integer.parseInt(cid);
+                    Users u = d.getUsersById(id);
+                    request.setAttribute("users", u);
+                    request.setAttribute("err", "Successful ...");
+                    request.getRequestDispatcher("Profile.jsp").forward(request, response);
+                } catch (NumberFormatException e) {
+                    System.out.println(e);
+                }
+            } else {
+                try {
+                    int id = Integer.parseInt(cid);
+                    Users u = d.getUsersById(id);
+                    request.setAttribute("users", u);
+                    request.setAttribute("err", "New passwords are not the same!!!");
+                    request.getRequestDispatcher("Profile.jsp").forward(request, response);
+                } catch (NumberFormatException e) {
+                    System.out.println(e);
+                }
+            }
+        } else {
+            try {
+                int id = Integer.parseInt(cid);
+                Users u = d.getUsersById(id);
+                request.setAttribute("users", u);
+                request.setAttribute("err", "You enter wrong password!!!");
+                request.getRequestDispatcher("Profile.jsp").forward(request, response);
+            } catch (NumberFormatException e) {
+                System.out.println(e);
+            }
         }
-        
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

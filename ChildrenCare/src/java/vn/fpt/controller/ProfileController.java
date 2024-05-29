@@ -8,11 +8,9 @@ package vn.fpt.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import vn.fpt.edu.dao.UserDao;
 import vn.fpt.edu.model.Users;
 
@@ -20,7 +18,7 @@ import vn.fpt.edu.model.Users;
  *
  * @author ACER
  */
-public class LoginController extends HttpServlet {
+public class ProfileController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +35,10 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");  
+            out.println("<title>Servlet ProfileController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet ProfileController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +55,16 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         response.sendRedirect("Login.jsp");
+        String cid = request.getParameter("cid");
+        try {
+            int id = Integer.parseInt(cid);
+            UserDao d = new UserDao();
+            Users u = d.getUsersById(id);
+            request.setAttribute("users", u);
+            request.getRequestDispatcher("Profile.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
     } 
 
     /** 
@@ -70,40 +77,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        String remember = request.getParameter("remember");
-        
-        Cookie cu = new Cookie("cu", email);
-        Cookie cp = new Cookie("cp", pass);
-        Cookie cr = new Cookie("cr", remember);
-        if (remember != null) {
-            cu.setMaxAge(60 * 60 * 24 * 7);
-            cp.setMaxAge(60 * 60 * 24 * 7);
-            cr.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            cu.setMaxAge(0);
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-        response.addCookie(cu);
-        response.addCookie(cp);
-        response.addCookie(cr);
-        
-        UserDao d = new UserDao();
-        
-        Users u = d.loginUser(email, pass);
-        
-        if(u == null){
-            request.setAttribute("mes", "You enter wrong! Enter again!!!");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", u);
-            //response.sendRedirect("home");
-            request.getRequestDispatcher("Home.jsp").forward(request, response);
-        }
-        
+        processRequest(request, response);
     }
 
     /** 

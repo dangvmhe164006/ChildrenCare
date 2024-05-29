@@ -5,21 +5,18 @@
 
 package vn.fpt.controller;
 
-import vn.fpt.edu.dao.UserDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.fpt.edu.model.Users;
+import vn.fpt.edu.dao.UserDao;
 
 /**
  *
  * @author ACER
  */
-@WebServlet(name="signup", urlPatterns={"/signup"})
 public class SignupController extends HttpServlet {
    
     /** 
@@ -37,10 +34,10 @@ public class SignupController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet signup</title>");  
+            out.println("<title>Servlet SignupController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet signup at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet SignupController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -80,8 +77,7 @@ public class SignupController extends HttpServlet {
         
         UserDao d = new UserDao();
         d.registerUsers(userName, password, email, fullName, phone, address, gender);
-        request.getRequestDispatcher("../User/Login.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
 
     /** 

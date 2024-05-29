@@ -20,34 +20,20 @@
         <meta name="Version" content="v1.2.0" />
 
         <!-- favicon -->
-        <link rel="shortcut icon" href="../assets/images/favicon.ico.png">
+        <link rel="shortcut icon" href="assets/images/favicon.ico.png">
 
         <!-- Bootstrap -->
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Icons -->
-        <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/css/remixicon.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
         <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"  rel="stylesheet">
 
         <!-- Css -->
-        <link href="../assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     </head>
     <body>
-        <!-- Loader -->
-        <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div>
-        <!-- Loader -->
-
-        <div class="back-to-home rounded d-none d-sm-block">
-            <a href="index.html" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
-        </div>
 
         <!-- Hero Start -->
         <section class="bg-home d-flex bg-light align-items-center" style="background: url('assets/images/bg/bg-lines-one.png') center;">
@@ -70,7 +56,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your Email <span class="text-danger">*</span></label>
-                                                <input type="email" value="${cookie.cu.value}" class="form-control" placeholder="Email" name="email" required="">
+                                                <input type="email" value="${cookie.cu.value}" name="email" class="form-control" placeholder="Email" required="">
                                             </div>
                                         </div>
 
@@ -89,7 +75,7 @@
                                                         <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                                     </div>
                                                 </div>
-                                                <a href="forgot.jsp" class="text-dark h6 mb-0">Forgot password ?</a>
+                                                <a href="Forgot.jsp" class="text-dark h6 mb-0">Forgot password ?</a>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mb-0">
@@ -109,7 +95,7 @@
                                         </div><!--end col-->
 
                                         <div class="col-12 text-center">
-                                            <p class="mb-0 mt-3"><small class="text-dark me-2">Don't have an account ?</small> <a href="signup.jsp" class="text-dark fw-bold">Sign Up</a></p>
+                                            <p class="mb-0 mt-3"><small class="text-dark me-2">Don't have an account ?</small> <a href="Signup.jsp" class="text-dark fw-bold">Sign Up</a></p>
                                         </div>
                                     </div>
                                 </form>
@@ -123,11 +109,11 @@
         <!-- Hero End -->
 
         <!-- javascript -->
-        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- Icons -->
-        <script src="../assets/js/feather.min.js"></script>
+        <script src="assets/js/feather.min.js"></script>
         <!-- Main Js -->
-        <script src="../assets/js/app.js"></script>
+        <script src="assets/js/app.js"></script>
 
     </body>
 </html>
