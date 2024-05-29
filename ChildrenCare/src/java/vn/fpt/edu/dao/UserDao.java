@@ -122,6 +122,21 @@ public class UserDao extends DBConnect {
         }
     }
 
+    public void changeImg(String id, String img) {
+        String spl = "UPDATE [dbo].[User]\n"
+                + "   SET [image_url] = ?\n"
+                + " WHERE user_id =  ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, img);
+            st.setString(2, id);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     public void chagePasswordById(String id, String newpass) {
         String spl = "UPDATE [dbo].[User]\n"
                 + "   SET [password] = ?\n"
@@ -143,6 +158,28 @@ public class UserDao extends DBConnect {
         try {
             PreparedStatement st = connection.prepareStatement(spl);
             st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Users u = new Users(rs.getInt("user_id"), rs.getString("user_name"),
+                        rs.getString("password"), rs.getString("email"),
+                        rs.getString("full_name"), rs.getString("phone_number"),
+                        rs.getString("address"), rs.getBoolean("gender"),
+                        rs.getString("image_url"), rs.getString("role"),
+                        rs.getString("created_at"));
+                return u;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public Users getUsersByIdString(String id) {
+        String spl = " select * from [dbo].[User]\n"
+                + "  where user_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Users u = new Users(rs.getInt("user_id"), rs.getString("user_name"),
