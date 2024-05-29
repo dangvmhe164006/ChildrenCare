@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="vn.fpt.model.Blog" %>
+<%@ page import="vn.fpt.edu.model.Blog" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -18,7 +18,9 @@
         <script src="js/jquery-2.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body
+                <jsp:include page="Header.jsp"></jsp:include>
+
         <section id="blog"> 
             <div class="container">
                 <div class="row">
