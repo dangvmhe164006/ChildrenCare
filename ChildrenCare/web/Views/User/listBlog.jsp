@@ -24,6 +24,10 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
+     <div style="padding-bottom:40px">
+    <%@ include file="/Header.jsp" %>
+</div>
+
         <section id="blog"> 
             <div class="container">
                 <div class="row">
@@ -65,10 +69,7 @@
                                         <li><a href="blog_detail.html"><i class="fa fa-chevron-left"></i></a></li>
                                         <li class="act"><a href="blog_detail.html">1</a></li>
                                         <li><a href="blog_detail.html">2</a></li>
-                                        <li><a href="blog_detail.html">3</a></li>
-                                        <li><a href="blog_detail.html">4</a></li>
-                                        <li><a href="blog_detail.html">5</a></li>
-                                        <li><a href="blog_detail.html">6</a></li>
+                                       
                                         <li><a href="blog_detail.html"><i class="fa fa-chevron-right"></i></a></li>
                                     </ul>
                                 </div>
@@ -88,7 +89,7 @@
                                     <h6 class="normal border_none pdb"><a href="blog_detail.html">November 2017 <span class="pull-right">(2)</span></a></h6>
                                 </div>
                                 <div class="blog_1r2 clearfix">
-                                    <h4 class="mgt">CATEGORIES</h4><br><br>
+                                    <h4 class="mgt">SomeThing</h4><br><br>
                                     <ul class="nav_m mgt">
                                         <li class="dropdown">
                                             <a class="tag_m" href="blog_detail.html" data-toggle="dropdown" role="button" aria-expanded="false">Select Category <i class="fa fa-chevron-down pull-right"></i></a>
@@ -102,11 +103,9 @@
                                     </ul>
                                 </div>
                                 <div class="blog_1r3 clearfix">
-                                    <h4 class="mgt">TAGS</h4><br><br>
+                                    <h4 class="mgt">SomeThing</h4><br><br>
                                     <ul class="mgt">
                                         <li><a href="blog_detail.html">AUDIO</a></li>
-                                        <li><a href="blog_detail.html">CONSECTETUER</a></li>
-
                                     </ul>
                                 </div>
                             </div>

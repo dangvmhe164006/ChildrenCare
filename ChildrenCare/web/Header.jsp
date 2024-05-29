@@ -100,7 +100,7 @@
                         </li>
 
                         <li class="has-submenu parent-menu-item">
-                            <a href="javascript:void(0)">Blog</a><span></span>
+                            <a href="BlogController">Blog</a><span></span>
                         </li>
 
                         <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)">Make appointment</a><span></span>
