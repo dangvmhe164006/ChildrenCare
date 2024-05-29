@@ -209,4 +209,17 @@ public class UserDao extends DBConnect {
         return false;
     }
 
+    public void removeImg(int id) {
+        String spl = "UPDATE [dbo].[User]\n"
+                + "   SET [image_url] = 'assets/images/macdinh.jpg'\n"
+                + " WHERE user_id =  ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
 }

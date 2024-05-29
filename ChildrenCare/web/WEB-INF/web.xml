@@ -48,6 +48,10 @@
         <servlet-name>SignupController</servlet-name>
         <servlet-class>vn.fpt.controller.SignupController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveJmg</servlet-name>
+        <servlet-class>vn.fpt.controller.RemoveJmg</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -95,5 +99,9 @@
     <servlet-mapping>
         <servlet-name>SignupController</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveJmg</servlet-name>
+        <url-pattern>/removeimg</url-pattern>
     </servlet-mapping>
 </web-app>
