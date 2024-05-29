@@ -19,7 +19,7 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body
-                <jsp:include page="Header.jsp"></jsp:include>
+    <%@ include file="/Header.jsp" %>
 
         <section id="blog"> 
             <div class="container">
