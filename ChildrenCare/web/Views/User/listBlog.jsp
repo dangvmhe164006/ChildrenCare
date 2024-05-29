@@ -24,8 +24,9 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-<jsp:include page="../Header.jsp"></jsp:include>
-
+     <div style="padding-bottom:40px">
+    <%@ include file="/Header.jsp" %>
+</div>
 
         <section id="blog"> 
             <div class="container">

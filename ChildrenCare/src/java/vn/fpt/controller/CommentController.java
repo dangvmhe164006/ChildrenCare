@@ -61,10 +61,7 @@ public class CommentController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         processRequest(request, response);
-    
-    
     }
 
     /**
@@ -81,11 +78,9 @@ public class CommentController extends HttpServlet {
 
         HttpSession session = request.getSession();
         CommentDAO commentDAO = new CommentDAO();
-//        int userID =(int) session.getAttribute("acc");
-
         String commentContent = request.getParameter("commentContent");
         int blogId = Integer.parseInt(request.getParameter("blogId"));
-
+        Users u = (Users) session.getAttribute("acc");
         Comment comment = new Comment();
         comment.setBlog_id(blogId);
         comment.setContent(commentContent);
@@ -93,14 +88,12 @@ public class CommentController extends HttpServlet {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String createdAt = formatter.format(currentDate);
         comment.setCreate_at(createdAt);
-        comment.setCreate_by(1);
+        comment.setCreate_by(u.getUser_id());
 
         int n = commentDAO.insertComment(comment);
-        if (n > 0){
-            
-            
+        if (n > 0) {
+
         } else {
-            
 
         }
 

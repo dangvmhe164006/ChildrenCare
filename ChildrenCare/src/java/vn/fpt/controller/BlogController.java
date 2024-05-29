@@ -19,6 +19,7 @@ import vn.fpt.edu.dao.CommentDAO;
 import vn.fpt.edu.model.Blog;
 import vn.fpt.edu.model.Comment;
 import vn.fpt.edu.model.CommentDTO;
+import vn.fpt.edu.model.Users;
 
 /**
  *
@@ -68,8 +69,7 @@ public class BlogController extends HttpServlet {
         BlogDAO blogDAO = new BlogDAO();
         ArrayList<Blog> recentBlog = blogDAO.getLatestBlogs(5);
         request.setAttribute("recent", recentBlog);
-//        HttpSession session = request.getSession();
-//        int userID =(int) session.getAttribute("acc");
+
         CommentDAO cDAO = new CommentDAO();
         if (id != null && !id.equals("")) {
             int blogId = Integer.parseInt(id);
@@ -99,7 +99,8 @@ public class BlogController extends HttpServlet {
             throws ServletException, IOException {
         BlogDAO blogDAO = new BlogDAO();
         String service = request.getParameter("service");
-
+        HttpSession session = request.getSession();
+        Users u = (Users) session.getAttribute("acc");
         if (service.equals("createBlog")) {
             String title = request.getParameter("title");
             String content = request.getParameter("content");
@@ -113,7 +114,7 @@ public class BlogController extends HttpServlet {
             blog.setContent(content);
             blog.setImage_url(image);
             blog.setCreate_at(now.format(formatter));
-            blog.setCreate_by(2);
+            blog.setCreate_by(u.getUser_id());
 
             int result = blogDAO.createBlog(blog);
 
