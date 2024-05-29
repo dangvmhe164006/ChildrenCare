@@ -245,7 +245,7 @@
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover,.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:focus{
     background-color:#f1f1f1;
-    color:#333;
+    color: #0000FF;
     outline:none
 }
 .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice{

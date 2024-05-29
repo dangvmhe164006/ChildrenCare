@@ -11,19 +11,19 @@ font-family: 'Alata', sans-serif;
 h1,h2,h3,h4,h5,h6{
 padding:0;
 margin:0;
-color:#333;
+color: #0000FF;
 font-weight:bold;
 }
 a{
- color:#333;
+ color: #0000FF;
  }
 a:hover{
 text-decoration:none;
-color:#333;
+color: #0000FF;
 }
 a:focus{
 text-decoration:none;
-color:#333;
+color: #0000FF;
 }
 ul{
 padding:0;
@@ -314,7 +314,7 @@ margin-top:60px;
  font-weight:normal;
  }
 .footer_m_2l h6 a:hover{
- color:#333;
+ color: #0000FF;
  }
 .footer_m_2m ul li{
 display:inline-block;
@@ -325,7 +325,7 @@ padding-right:5px;
 color:#fff;
  }
 .footer_m_2m ul li a:hover{
-color:#333;
+color: #0000FF;
  }
 .footer_m_2ri {
 margin-top:20px; 
@@ -344,7 +344,7 @@ font-size:14px;
 color:#fff;
  }
 .footer_last_r ul li a:hover{
-color:#333;
+color: #0000FF;
  }
 .footer_last_l p{
 font-size:14px;
