@@ -112,8 +112,8 @@
 
                         <div class="col-sm-6 mt-4 mt-sm-0">
                             <ul class="list-unstyled footer-list text-sm-end text-center mb-0">
-                                <li class="list-inline-item"><a href="terms.html" class="text-foot me-2">Terms</a></li>
-                                <li class="list-inline-item"><a href="privacy.html" class="text-foot me-2">Privacy</a></li>
+                                <li class="list-inline-item"><a href="terms.html" class="text-foot me-2">Doctor</a></li>
+                                <li class="list-inline-item"><a href="privacy.html" class="text-foot me-2">Blog</a></li>
                                 <li class="list-inline-item"><a href="aboutus.html" class="text-foot me-2">About</a></li>
                                 <li class="list-inline-item"><a href="contact.html" class="text-foot me-2">Contact</a></li>
                             </ul>
@@ -188,11 +188,7 @@
                 <ul class="list-unstyled social-icon mb-0">
                     <li class="list-inline-item mb-0"><a href="https://1.envato.market/doctris-template" target="_blank" class="rounded"><i class="uil uil-shopping-cart align-middle" title="Buy Now"></i></a></li>
                     <li class="list-inline-item mb-0"><a href="https://dribbble.com/shreethemes" target="_blank" class="rounded"><i class="uil uil-dribbble align-middle" title="dribbble"></i></a></li>
-                    <li class="list-inline-item mb-0"><a href="https://www.facebook.com/shreethemes" target="_blank" class="rounded"><i class="uil uil-facebook-f align-middle" title="facebook"></i></a></li>
-                    <li class="list-inline-item mb-0"><a href="https://www.instagram.com/shreethemes/" target="_blank" class="rounded"><i class="uil uil-instagram align-middle" title="instagram"></i></a></li>
-                    <li class="list-inline-item mb-0"><a href="https://twitter.com/shreethemes" target="_blank" class="rounded"><i class="uil uil-twitter align-middle" title="twitter"></i></a></li>
-                    <li class="list-inline-item mb-0"><a href="mailto:support@shreethemes.in" class="rounded"><i class="uil uil-envelope align-middle" title="email"></i></a></li>
-                    <li class="list-inline-item mb-0"><a href="index.html" target="_blank" class="rounded"><i class="uil uil-globe align-middle" title="website"></i></a></li>
+
                 </ul><!--end icon-->
             </div>
         </div>
@@ -202,25 +198,13 @@
         <div class="modal fade" id="watchvideomodal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content video-modal rounded overflow-hidden">
-                    <!-- <video class="w-100" controls autoplay muted loop>
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    </video> -->
-                    <!--Browser does not support <video> tag -->
-                    <!--If you want to use your own video please set your files path-->
-
-                    <!-- <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/jNTZpfXYJa4?rel=0" title="YouTube video" allowfullscreen></iframe>
-                        </div> -->
-                    <!--If you want to use the youtube link please try the above code-->
-
+                   
                     <div class="ratio ratio-16x9">
                         <iframe src="https://player.vimeo.com/video/99025203" title="Vimeo video" allowfullscreen></iframe>
                     </div>
-                    <!--If you want to use the Vimeo link please try the above code-->
                 </div>
             </div>
         </div>
-        <!-- MOdal End -->
 
 
 
