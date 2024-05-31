@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import vn.fpt.edu.model.Blog;
 import java.sql.ResultSet;
+import java.util.List;
 
         
 
@@ -168,6 +169,19 @@ public class BlogDAO extends DBConnect {
         }
 
         return success;
+    }
+    
+    public List<Blog> getListByPage(ArrayList<Blog> list,int start,int end){
+    
+        ArrayList<Blog> a = new ArrayList<>();
+        
+        for (int i = start; i < end; i++) {
+            a.add(list.get(i));
+            
+        }
+        
+        return a;
+        
     }
      
        public static void main(String[] args) {

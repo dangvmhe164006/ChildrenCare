@@ -19,9 +19,11 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body
+ 
     <%@ include file="/Header.jsp" %>
-
-        <section id="blog"> 
+  
+        <section id="blog" style="padding-top:150px"> 
+        
             <div class="container">
                 <div class="row">
                     <div class="blog_1 clearfix">
@@ -82,11 +84,10 @@
                                 </div>
                                 <div class="blog_1r2 clearfix">
                                     <h4 class="mgt">BLOG ARCHIVE</h4><br><br>
-                                    <h6 class="normal"><a href="#">December 2017 <span class="pull-right">(2)</span></a></h6>
-                                    <h6 class="normal border_none pdb"><a href="#">November 2017 <span class="pull-right">(2)</span></a></h6>
+                                  
                                 </div>
                                 <div class="blog_1r2 clearfix">
-                                    <h4 class="mgt">Service</h4><br><br>
+                                    <h4 class="mgt">SomeThing</h4><br><br>
                                     <ul class="nav_m mgt">
                                         <li class="dropdown">
                                             <a class="tag_m" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Select Category <i class="fa fa-chevron-down pull-right"></i></a>
@@ -98,7 +99,7 @@
                                     </ul>
                                 </div>
                                 <div class="blog_1r3 clearfix">
-                                    <h4 class="mgt">TAGS</h4><br><br>
+                                    <h4 class="mgt">SomeThing</h4><br><br>
                                     <ul class="mgt">
                                         <li><a href="#">VIDEO</a></li>
                                     </ul>

@@ -66,11 +66,17 @@
                             <div class="product_1_last text-center clearfix">
                                 <div class="col-sm-12">
                                     <ul>
-                                        <li><a href="blog_detail.html"><i class="fa fa-chevron-left"></i></a></li>
-                                        <li class="act"><a href="blog_detail.html">1</a></li>
-                                        <li><a href="blog_detail.html">2</a></li>
+                                        <c:set var="page" value="${requestScope.page}"/> 
+                                        
+                                        <div class="pagination-"> 
+                                            <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                                        <li class="act"><a href="/ChildrenCare/BlogController?page=${i}">${i}</a></li>
+
+                                                
+                                            </c:forEach>
+                                        </div>
                                        
-                                        <li><a href="blog_detail.html"><i class="fa fa-chevron-right"></i></a></li>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -83,10 +89,7 @@
                                 
                                 <div class="blog_1r2 clearfix">
                                     <h4 class="mgt">BLOG ARCHIVE</h4><br><br>
-                                    <h6 class="normal mgt"><a href="/BlogController">February 2018 <span class="pull-right">(2)</span></a></h6>
-                                    <h6 class="normal"><a href="blog_detail.html">January 2018 <span class="pull-right">(4)</span></a></h6>
-                                    <h6 class="normal"><a href="blog_detail.html">December 2017 <span class="pull-right">(2)</span></a></h6>
-                                    <h6 class="normal border_none pdb"><a href="blog_detail.html">November 2017 <span class="pull-right">(2)</span></a></h6>
+                                  
                                 </div>
                                 <div class="blog_1r2 clearfix">
                                     <h4 class="mgt">SomeThing</h4><br><br>
