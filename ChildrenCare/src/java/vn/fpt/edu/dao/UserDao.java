@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import vn.fpt.edu.dao.DBConnect;
+import vn.fpt.edu.model.GoogleAccount;
 import vn.fpt.edu.model.Users;
 
 /**
@@ -55,6 +56,32 @@ public class UserDao extends DBConnect {
             st.setString(7, gender);
             st.setString(8, image_url);
             st.setString(9, role);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void insertCustomerByGoogleAccount(GoogleAccount acc, String pass) {
+        String image_url = "assets/images/macdinh.jpg";
+        String role = "customer";
+        String spl = "INSERT INTO [dbo].[User]\n"
+                + "           ([user_name]\n"
+                + "           ,[password]\n"
+                + "           ,[email]\n"
+                + "           ,[image_url]\n"
+                + "           ,[role]\n"
+                + "           ,[created_at])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,GETDATE())";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, acc.getName());
+            st.setString(2, pass);
+            st.setString(3, acc.getEmail());
+            st.setString(4, image_url);
+            st.setString(5, role);
 
             st.executeUpdate();
         } catch (SQLException e) {
@@ -173,7 +200,7 @@ public class UserDao extends DBConnect {
         }
         return null;
     }
-    
+
     public Users getUsersByIdString(String id) {
         String spl = " select * from [dbo].[User]\n"
                 + "  where user_id = ?";

@@ -12,6 +12,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import vn.fpt.edu.dao.UserDao;
 import vn.fpt.edu.model.Users;
 
@@ -56,16 +57,7 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String cid = request.getParameter("cid");
-        try {
-            int id = Integer.parseInt(cid);
-            UserDao d = new UserDao();
-            Users u = d.getUsersById(id);
-            request.setAttribute("users", u);
-            request.getRequestDispatcher("EditProfile.jsp").forward(request, response);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
-        }
+        response.sendRedirect("EditProfile.jsp");
     } 
 
     /** 
@@ -89,17 +81,11 @@ public class EditProfile extends HttpServlet {
         UserDao d = new UserDao();
         d.editProfile(userName, email, fullName, phone, address, gender, id);
 
-        Cookie cu = new Cookie("cu", "");
-        Cookie cp = new Cookie("cp", "");
-        Cookie cr = new Cookie("cr", "");
-        cu.setMaxAge(0);
-        cp.setMaxAge(0);
-        cr.setMaxAge(0);
-        response.addCookie(cu);
-        response.addCookie(cp);
-        response.addCookie(cr);
+        HttpSession session = request.getSession();
+        session.removeAttribute("acc");
+        session.setAttribute("acc", d.getCustomerByEmail(email));
 
-        response.sendRedirect("login");
+        response.sendRedirect("profile");
     }
 
     /** 

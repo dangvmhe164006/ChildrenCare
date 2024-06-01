@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +44,14 @@
                         <img src="assets/images/logo-dark.png" height="24" class="mx-auto d-block" alt="">
                         <div class="card login-page bg-white shadow mt-4 rounded border-0">
                             <div class="card-body">
-                                <h4 class="text-center">Sign Up</h4>  
+                                <h4 class="text-center">Sign Up</h4> 
+
+                                <c:if test="${requestScope.error != null}">
+                                    <div class="alert alert-danger" role="alert">
+                                        ${requestScope.error}
+                                    </div>
+                                </c:if>
+
                                 <form action="signup" method="post" class="login-form mt-4">
 
                                     <div class="row">
@@ -112,7 +120,7 @@
 
                                         <div>
                                             <div class="d-grid">
-                                                <a href="javascript:void(0)" class="btn btn-soft-primary"><i class="uil uil-google"></i> Google</a>
+                                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email profile openid&redirect_uri=http://localhost:9999/ChildrenCare/registerGoogle&response_type=code&client_id=299145473936-p6nl1gv5o2np61q2cjfo59t1ujuflm54.apps.googleusercontent.com&approval_prompt=force" class="btn btn-soft-primary"><i class="uil uil-google"></i> Google</a>
                                             </div>
                                         </div><!--end col-->
 

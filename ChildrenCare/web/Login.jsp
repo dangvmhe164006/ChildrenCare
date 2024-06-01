@@ -90,7 +90,7 @@
 
                                         <div>
                                             <div class="d-grid">
-                                                <a href="#" class="btn btn-soft-primary"><i class="uil uil-google"></i> Google</a>
+                                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email profile openid&redirect_uri=http://localhost:9999/ChildrenCare/loginGoogle&response_type=code&client_id=299145473936-p6nl1gv5o2np61q2cjfo59t1ujuflm54.apps.googleusercontent.com&approval_prompt=force" class="btn btn-soft-primary"><i class="uil uil-google"></i> Google</a>
                                             </div>
                                         </div><!--end col-->
 
