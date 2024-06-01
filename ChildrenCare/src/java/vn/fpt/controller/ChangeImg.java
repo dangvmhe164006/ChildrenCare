@@ -101,6 +101,7 @@ public class ChangeImg extends HttpServlet {
             response.sendRedirect("profile");
         } catch (Exception e) {
             System.out.println(e);
+            response.sendRedirect("profile");
         }
     }
 

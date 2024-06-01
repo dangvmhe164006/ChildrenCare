@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import vn.fpt.edu.dao.BlogDAO;
 import vn.fpt.edu.dao.CommentDAO;
 import vn.fpt.edu.model.Blog;
@@ -66,6 +67,12 @@ public class BlogController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
+        String create = request.getParameter("views");
+        if (create != null) {
+            request.getRequestDispatcher("Views/User/CreateBlog.jsp").forward(request, response);
+
+        }
+
         BlogDAO blogDAO = new BlogDAO();
         ArrayList<Blog> recentBlog = blogDAO.getLatestBlogs(5);
         request.setAttribute("recent", recentBlog);
@@ -80,7 +87,26 @@ public class BlogController extends HttpServlet {
             request.getRequestDispatcher("Views/User/BlogDetail.jsp").forward(request, response);
         } else {
             ArrayList<Blog> listBlog = blogDAO.getAllBlogs();
-            request.setAttribute("listBlog", listBlog);
+            int size = listBlog.size();
+            int num = (size % 5 == 0 ? (size / 6) : (size / 6) + 1);
+            int page, numberPage = 5;
+            String xpage = request.getParameter("page");
+            if (xpage == null) {
+                page = 1;
+            } else {
+                page = Integer.parseInt(xpage);
+
+            }
+            int start, end;
+            start = (page - 1) * numberPage;
+            end = Math.min(page * numberPage, size);
+
+            List<Blog> listB = blogDAO.getListByPage(listBlog, start, end);
+
+            request.setAttribute("listBlog", listB);
+            request.setAttribute("page", page);
+            request.setAttribute("num", num);
+
             request.getRequestDispatcher("Views/User/listBlog.jsp").forward(request, response);
         }
 
@@ -119,7 +145,10 @@ public class BlogController extends HttpServlet {
             int result = blogDAO.createBlog(blog);
 
             if (result > 0) {
-                response.getWriter().write("Blog created successfully!");
+                ArrayList<Blog> listBlog = blogDAO.getAllBlogs();
+
+                request.getRequestDispatcher("Views/User/listBlog.jsp").forward(request, response);
+
             } else {
                 response.getWriter().write("Failed to create blog.");
             }

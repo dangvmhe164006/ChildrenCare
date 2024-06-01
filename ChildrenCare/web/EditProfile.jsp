@@ -46,60 +46,62 @@
                             <div class="card-body">
                                 <h4 class="text-center">Edit Profile</h4>  
                                 <form action="editprofile" method="post" class="login-form mt-4">
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">ID<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${requestScope.users.user_id}" name="id" readonly="">
+                                                <input type="text" class="form-control" value="${sessionScope.acc.user_id}" name="id" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">User Name <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${requestScope.users.user_name}" name="userName" required="">
+                                                <input type="text" class="form-control" value="${sessionScope.acc.user_name}" name="userName" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your Email <span class="text-danger">*</span></label>
-                                                <input type="email" class="form-control" value="${requestScope.users.email}" name="email" readonly="">
+                                                <input type="email" class="form-control" value="${sessionScope.acc.email}" name="email" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${requestScope.users.full_name}" name="fullName" required="">
+                                                <input type="text" class="form-control" value="${sessionScope.acc.full_name}" name="fullName" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your Phone Number <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" value="${requestScope.users.phone}" name="phone" required="">
+                                                <input type="number" class="form-control" value="${sessionScope.acc.phone}" name="phone" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your address <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${requestScope.users.address}" name="address" required="">
+                                                <input type="text" class="form-control" value="${sessionScope.acc.address}" name="address" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your Gender<span class="text-danger">*</span></label>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <input type="radio" name="gender" value="1" required ${(requestScope.users.gender) ? "checked" : ""}> Male
-                                                <input type="radio" name="gender" value="0" required ${(requestScope.users.gender) ? "" : "checked"}> Female
+                                                <input type="radio" name="gender" value="1" required ${(sessionScope.acc.gender) ? "checked" : ""}> Male
+                                                <input type="radio" name="gender" value="0" required ${(sessionScope.acc.gender) ? "" : "checked"}> Female
 
                                             </div>
                                         </div>
-
-                                        <div class="col-md-12">
-                                            <div class="d-grid">
+                                        <div class="col-md-6">
+                                            <div class="d-grid" style="width: 200px">
                                                 <button class="btn btn-primary">SUBMIT</button>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-6">
+                                            <div class="d-grid" style="width: 200px">
+                                                <a href="profile" class="btn btn-primary">CANCEL</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
 

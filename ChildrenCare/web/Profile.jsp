@@ -142,7 +142,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <a class="btn btn-primary" href="editprofile?cid=${requestScope.users.user_id}">Edit</a>
+                                        <a class="btn btn-primary" href="editprofile">Edit</a>
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </div>
