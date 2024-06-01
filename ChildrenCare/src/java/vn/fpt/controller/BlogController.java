@@ -95,7 +95,6 @@ public class BlogController extends HttpServlet {
                 page = 1;
             } else {
                 page = Integer.parseInt(xpage);
-
             }
             int start, end;
             start = (page - 1) * numberPage;
