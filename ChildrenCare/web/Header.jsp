@@ -109,7 +109,7 @@
 
                         <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)">Make appointment</a><span></span>
                         </li>
-                        <li class="has-submenu parent-parent-menu-item"><a href="Admin/HomeAdmin.jsp">Admin</a>
+                        <li class="has-submenu parent-parent-menu-item"><a href="Admin.jsp">Admin</a>
                         </li>
                         <c:if test="${sessionScope.acc == null}">
                             <li class="has-submenu parent-menu-item">
