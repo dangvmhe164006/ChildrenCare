@@ -60,6 +60,10 @@
         <servlet-name>UserLoginGoogleController</servlet-name>
         <servlet-class>vn.fpt.controller.UserLoginGoogleController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageAcc</servlet-name>
+        <servlet-class>vn.fpt.controller.ManageAcc</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -119,5 +123,9 @@
     <servlet-mapping>
         <servlet-name>UserLoginGoogleController</servlet-name>
         <url-pattern>/loginGoogle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageAcc</servlet-name>
+        <url-pattern>/manageacc</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -18,6 +18,27 @@ import vn.fpt.edu.model.Users;
  * @author ACER
  */
 public class UserDao extends DBConnect {
+    
+    public List<Users> getAllAcc() {
+        List<Users> list = new ArrayList<>();
+        String spl = "select * from [dbo].[User]";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Users u = new Users(rs.getInt("user_id"), rs.getString("user_name"),
+                        rs.getString("password"), rs.getString("email"),
+                        rs.getString("full_name"), rs.getString("phone_number"),
+                        rs.getString("address"), rs.getBoolean("gender"),
+                        rs.getString("image_url"), rs.getString("role"),
+                        rs.getString("created_at"));
+                list.add(u);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 
     public void registerUsers(String user_name, String password, String email, String full_name, String phone_number,
             String address, String gender) {
