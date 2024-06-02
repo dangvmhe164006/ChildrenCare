@@ -86,7 +86,7 @@ public class ChangePassWors extends HttpServlet {
                     Users u = d.getUsersById(id);
                     request.setAttribute("users", u);
                     request.setAttribute("err", "Successful ...");
-                    request.getRequestDispatcher("Profile.jsp").forward(request, response);
+                    request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
                 } catch (NumberFormatException e) {
                     System.out.println(e);
                 }
@@ -96,7 +96,7 @@ public class ChangePassWors extends HttpServlet {
                     Users u = d.getUsersById(id);
                     request.setAttribute("users", u);
                     request.setAttribute("err", "New passwords are not the same!!!");
-                    request.getRequestDispatcher("Profile.jsp").forward(request, response);
+                    request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
                 } catch (NumberFormatException e) {
                     System.out.println(e);
                 }
@@ -107,7 +107,7 @@ public class ChangePassWors extends HttpServlet {
                 Users u = d.getUsersById(id);
                 request.setAttribute("users", u);
                 request.setAttribute("err", "You enter wrong password!!!");
-                request.getRequestDispatcher("Profile.jsp").forward(request, response);
+                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
             } catch (NumberFormatException e) {
                 System.out.println(e);
             }
