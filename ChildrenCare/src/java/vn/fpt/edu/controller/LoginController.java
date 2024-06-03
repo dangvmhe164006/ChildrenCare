@@ -2,14 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package vn.fpt.controller;
+
+package vn.fpt.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import vn.fpt.edu.dao.UserDao;
 import vn.fpt.edu.model.Users;
 
@@ -17,38 +20,35 @@ import vn.fpt.edu.model.Users;
  *
  * @author ACER
  */
-public class SignupController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+public class LoginController extends HttpServlet {
+   
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignupController</title>");
+            out.println("<title>Servlet LoginController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SignupController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LoginController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -56,13 +56,12 @@ public class SignupController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+    throws ServletException, IOException {
+         response.sendRedirect("Login.jsp");
+    } 
 
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -70,30 +69,45 @@ public class SignupController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
+    throws ServletException, IOException {
         String email = request.getParameter("email");
-        String fullName = request.getParameter("fullName");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        String gender = request.getParameter("gender");
-
+        String pass = request.getParameter("pass");
+        String remember = request.getParameter("remember");
+        
+        Cookie cu = new Cookie("cu", email);
+        Cookie cp = new Cookie("cp", pass);
+        Cookie cr = new Cookie("cr", remember);
+        if (remember != null) {
+            cu.setMaxAge(60 * 60 * 24 * 7);
+            cp.setMaxAge(60 * 60 * 24 * 7);
+            cr.setMaxAge(60 * 60 * 24 * 7);
+        } else {
+            cu.setMaxAge(0);
+            cp.setMaxAge(0);
+            cr.setMaxAge(0);
+        }
+        response.addCookie(cu);
+        response.addCookie(cp);
+        response.addCookie(cr);
+        
         UserDao d = new UserDao();
-
-        Users u = d.getCustomerByEmail(email);
-        if (u == null) {
-            d.registerUsers(userName, password, email, fullName, phone, address, gender);
+        
+        Users u = d.loginUser(email, pass);
+        
+        if(u == null){
+            request.setAttribute("mes", "You enter wrong! Enter again!!!");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
         }else{
-            request.setAttribute("error", "Email was registered, Enter again!!!");
-            request.getRequestDispatcher("Signup.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", u);
+            //response.sendRedirect("home");
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
         }
+        
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override

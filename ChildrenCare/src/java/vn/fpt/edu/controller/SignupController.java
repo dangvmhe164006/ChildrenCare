@@ -2,8 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,35 +17,38 @@ import vn.fpt.edu.model.Users;
  *
  * @author ACER
  */
-public class LoadAccount extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+public class SignupController extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoadAccount</title>");  
+            out.println("<title>Servlet SignupController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoadAccount at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet SignupController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -54,18 +56,13 @@ public class LoadAccount extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        String id = request.getParameter("aid");
-        UserDao d = new UserDao();
-        
-        Users u = d.getUsersByIdString(id);
-        request.setAttribute("acc1", u);
-        request.getRequestDispatcher("EditAcountAdmin.jsp").forward(request, response);
-        
-    } 
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -73,12 +70,30 @@ public class LoadAccount extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String fullName = request.getParameter("fullName");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String gender = request.getParameter("gender");
+
+        UserDao d = new UserDao();
+
+        Users u = d.getCustomerByEmail(email);
+        if (u == null) {
+            d.registerUsers(userName, password, email, fullName, phone, address, gender);
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }else{
+            request.setAttribute("error", "Email was registered, Enter again!!!");
+            request.getRequestDispatcher("Signup.jsp").forward(request, response);
+        }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

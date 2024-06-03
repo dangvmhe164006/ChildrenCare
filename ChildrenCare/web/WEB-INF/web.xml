@@ -2,15 +2,15 @@
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>UserController</servlet-name>
-        <servlet-class>vn.fpt.controller.UserController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.UserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BlogController</servlet-name>
-        <servlet-class>vn.fpt.controller.BlogController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.BlogController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CommentController</servlet-name>
-        <servlet-class>vn.fpt.controller.CommentController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.CommentController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DoctorController</servlet-name>
@@ -18,71 +18,71 @@
     </servlet>
     <servlet>
         <servlet-name>ChangePassWors</servlet-name>
-        <servlet-class>vn.fpt.controller.ChangePassWors</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.ChangePassWors</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditProfile</servlet-name>
-        <servlet-class>vn.fpt.controller.EditProfile</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.EditProfile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ForgotPasssWordController</servlet-name>
-        <servlet-class>vn.fpt.controller.ForgotPasssWordController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.ForgotPasssWordController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomeController</servlet-name>
-        <servlet-class>vn.fpt.controller.HomeController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.HomeController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginController</servlet-name>
-        <servlet-class>vn.fpt.controller.LoginController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.LoginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutController</servlet-name>
-        <servlet-class>vn.fpt.controller.LogoutController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.LogoutController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfileController</servlet-name>
-        <servlet-class>vn.fpt.controller.ProfileController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.ProfileController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SignupController</servlet-name>
-        <servlet-class>vn.fpt.controller.SignupController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.SignupController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RemoveJmg</servlet-name>
-        <servlet-class>vn.fpt.controller.RemoveJmg</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.RemoveJmg</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeImg</servlet-name>
-        <servlet-class>vn.fpt.controller.ChangeImg</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.ChangeImg</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserLoginGoogleController</servlet-name>
-        <servlet-class>vn.fpt.controller.UserLoginGoogleController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.UserLoginGoogleController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManageAcc</servlet-name>
-        <servlet-class>vn.fpt.controller.ManageAcc</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.ManageAcc</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteAccAdminController</servlet-name>
-        <servlet-class>vn.fpt.controller.DeleteAccAdminController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.DeleteAccAdminController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoadAccount</servlet-name>
-        <servlet-class>vn.fpt.controller.LoadAccount</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.LoadAccount</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditAccount</servlet-name>
-        <servlet-class>vn.fpt.controller.EditAccount</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.EditAccount</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminController</servlet-name>
-        <servlet-class>vn.fpt.controller.AdminController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.AdminController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewServiceController</servlet-name>
-        <servlet-class>vn.fpt.controller.ViewServiceController</servlet-class>
+        <servlet-class>vn.fpt.edu.controller.ViewServiceController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>

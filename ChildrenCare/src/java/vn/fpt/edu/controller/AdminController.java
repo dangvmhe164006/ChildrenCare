@@ -3,24 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import vn.fpt.edu.dao.UserDao;
-import vn.fpt.edu.model.Users;
 
 /**
  *
  * @author ACER
  */
-public class EditProfile extends HttpServlet {
+public class AdminController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +33,10 @@ public class EditProfile extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditProfile</title>");  
+            out.println("<title>Servlet AdminController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EditProfile at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AdminController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +53,7 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.sendRedirect("EditProfile.jsp");
+        response.sendRedirect("Admin.jsp");
     } 
 
     /** 
@@ -70,22 +66,7 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String id = request.getParameter("id");
-        String userName = request.getParameter("userName");
-        String email = request.getParameter("email");
-        String fullName = request.getParameter("fullName");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        String gender = request.getParameter("gender");
-
-        UserDao d = new UserDao();
-        d.editProfile(userName, email, fullName, phone, address, gender, id);
-
-        HttpSession session = request.getSession();
-        session.removeAttribute("acc");
-        session.setAttribute("acc", d.getCustomerByEmail(email));
-
-        response.sendRedirect("profile");
+        processRequest(request, response);
     }
 
     /** 
