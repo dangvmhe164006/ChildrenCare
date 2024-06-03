@@ -102,15 +102,19 @@
                         <li class="has-submenu parent-menu-item">
                             <a href="BlogController">Blog</a><span></span>
                         </li>
-                        
+
                         <li class="has-submenu parent-menu-item">
                             <a href="BlogController?views=create"> Create Blog</a><span></span>
                         </li>
 
-                        <li class="has-submenu parent-parent-menu-item"><a href="javascript:void(0)">Make appointment</a><span></span>
+                        <li class="has-submenu parent-parent-menu-item">
+                            <a href="javascript:void(0)">Make appointment</a><span></span>
                         </li>
-                        <li class="has-submenu parent-parent-menu-item"><a href="Admin.jsp">Admin</a>
-                        </li>
+                        <c:if test="${sessionScope.acc != null && sessionScope.acc.role == 'Admin'}">
+                            <li class="has-submenu parent-parent-menu-item">
+                                <a href="admin">Admin</a>
+                            </li>
+                        </c:if>
                         <c:if test="${sessionScope.acc == null}">
                             <li class="has-submenu parent-menu-item">
                                 <a href="Login.jsp">Login</a><span></span>
