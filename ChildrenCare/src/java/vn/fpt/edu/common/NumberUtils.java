@@ -21,4 +21,16 @@ public class NumberUtils {
             }
             return true;
         }
+        
+        public static boolean isValidDouble(String str) {
+            if (str == null) {
+                return false;
+            }
+            try {
+                Double.parseDouble(str);
+            } catch (NumberFormatException e) {
+                return false;
+            }
+            return true;
+    }
 }
