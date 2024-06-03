@@ -71,3 +71,11 @@ public void updateService(Service service) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, service.getName());
             ps.setString(2, service.getDescription());
+            ps.setDouble(3, service.getPrice());
+            ps.setInt(4, service.getServiceID());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
