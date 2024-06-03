@@ -43,8 +43,9 @@
                     <div class="col-lg-5 col-md-8">
                         <div class="card login-page bg-white shadow mt-4 rounded border-0">
                             <div class="card-body">
-                                <h4 class="text-center">Edit Account By Admin</h4>  
-                                <form action="editprofile" method="post" class="login-form mt-4">
+                                <h3 class="text-center">Edit Account By Admin</h3>  
+                                <h5 class="text-center">You can only change role</h5>  
+                                <form action="editaccount" method="post" class="login-form mt-4">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="mb-3">
@@ -73,28 +74,51 @@
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${sessionScope.acc.full_name}" name="fullName" required="">
+                                                <input type="text" class="form-control" value="${requestScope.acc1.full_name}" name="fullName" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your Phone Number <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" value="${sessionScope.acc.phone}" name="phone" required="">
+                                                <input type="number" class="form-control" value="${requestScope.acc1.phone}" name="phone" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your address <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${sessionScope.acc.address}" name="address" required="">
+                                                <input type="text" class="form-control" value="${requestScope.acc1.address}" name="address" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Your Gender<span class="text-danger">*</span></label>
                                                 &nbsp;&nbsp;&nbsp;
-                                                <input type="radio" name="gender" value="1" required ${(sessionScope.acc.gender) ? "checked" : ""}> Male
-                                                <input type="radio" name="gender" value="0" required ${(sessionScope.acc.gender) ? "" : "checked"}> Female
+                                                <input type="radio" name="gender" value="1" disabled ${(requestScope.acc1.gender) ? "checked" : ""}> Male
+                                                <input type="radio" name="gender" value="0" disabled ${(requestScope.acc1.gender) ? "" : "checked"}> Female
 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Image <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="${requestScope.acc1.image_url}" name="img" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Role <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="role" required>
+                                                    <option value="Admin" ${requestScope.acc1.role == 'Admin' ? 'selected' : ''}>Admin</option>
+                                                    <option value="Customer" ${requestScope.acc1.role == 'Customer' ? 'selected' : ''}>Customer</option>
+                                                    <option value="Doctor" ${requestScope.acc1.role == 'Doctor' ? 'selected' : ''}>Doctor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Date Create <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" value="${requestScope.acc1.date_created}" name="date" readonly="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -104,25 +128,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="d-grid" style="width: 200px">
-                                                <a href="profile" class="btn btn-primary">CANCEL</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Image <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${sessionScope.acc.address}" name="address" required="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Role <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${sessionScope.acc.address}" name="address" required="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Date Create <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" value="${sessionScope.acc.address}" name="address" required="">
+                                                <a href="manageacc" class="btn btn-primary">CANCEL</a>
                                             </div>
                                         </div>
                                     </div>

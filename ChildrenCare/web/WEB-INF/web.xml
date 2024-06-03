@@ -72,6 +72,10 @@
         <servlet-name>LoadAccount</servlet-name>
         <servlet-class>vn.fpt.controller.LoadAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditAccount</servlet-name>
+        <servlet-class>vn.fpt.controller.EditAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -143,5 +147,9 @@
     <servlet-mapping>
         <servlet-name>LoadAccount</servlet-name>
         <url-pattern>/loadacc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAccount</servlet-name>
+        <url-pattern>/editaccount</url-pattern>
     </servlet-mapping>
 </web-app>

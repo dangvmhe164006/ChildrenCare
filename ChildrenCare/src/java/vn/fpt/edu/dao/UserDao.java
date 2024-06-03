@@ -267,6 +267,20 @@ public class UserDao extends DBConnect {
             System.out.println(e);
         }
     }
+    
+    public void changeRole(String role, String id) {
+        String spl = "UPDATE [dbo].[User]\n"
+                + "   SET [role] = ?\n"
+                + " WHERE user_id =  ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, role);
+            st.setString(2, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
     public boolean checkPassWord(String id, String pass) {
         String spl = "select * from [dbo].[User]\n"
