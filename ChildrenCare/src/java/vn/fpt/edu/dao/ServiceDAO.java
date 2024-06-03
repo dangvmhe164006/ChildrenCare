@@ -50,3 +50,17 @@ public Service getServiceById(int id) {
         }
         return service;
     }
+
+public void addService(Service service) {
+        String query = "INSERT INTO Services (Name, Description, Price, DateCreated) VALUES (?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, service.getName());
+            ps.setString(2, service.getDescription());
+            ps.setDouble(3, service.getPrice());
+            ps.setDate(4, new java.sql.Date(service.getDateCreated().getTime()));
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
