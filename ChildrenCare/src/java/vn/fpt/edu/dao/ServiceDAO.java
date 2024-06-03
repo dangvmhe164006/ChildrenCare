@@ -28,3 +28,25 @@ public class ServiceDAO extends DBContext {
         }
         return services;
     }
+    
+public Service getServiceById(int id) {
+        Service service = null;
+        String query = "SELECT * FROM Services WHERE ServiceID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                service = new Service(
+                    rs.getInt("ServiceID"),
+                    rs.getString("Name"),
+                    rs.getString("Description"),
+                    rs.getDouble("Price"),
+                    rs.getDate("DateCreated")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return service;
+    }
