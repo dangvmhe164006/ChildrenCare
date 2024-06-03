@@ -84,6 +84,18 @@
         <servlet-name>ViewServiceController</servlet-name>
         <servlet-class>vn.fpt.edu.controller.ViewServiceController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddServiceController</servlet-name>
+        <servlet-class>vn.fpt.edu.controller.AddServiceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteServiceController</servlet-name>
+        <servlet-class>vn.fpt.edu.controller.DeleteServiceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateServiceController</servlet-name>
+        <servlet-class>vn.fpt.edu.controller.UpdateServiceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -167,5 +179,17 @@
     <servlet-mapping>
         <servlet-name>ViewServiceController</servlet-name>
         <url-pattern>/ViewServiceController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddServiceController</servlet-name>
+        <url-pattern>/AddServiceController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServiceController</servlet-name>
+        <url-pattern>/DeleteServiceController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateServiceController</servlet-name>
+        <url-pattern>/UpdateServiceController</url-pattern>
     </servlet-mapping>
 </web-app>
