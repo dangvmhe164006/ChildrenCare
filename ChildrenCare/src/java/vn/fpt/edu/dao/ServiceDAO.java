@@ -79,3 +79,14 @@ public void updateService(Service service) {
         }
     }
 
+public void deleteService(int id) {
+        String query = "DELETE FROM Services WHERE ServiceID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
