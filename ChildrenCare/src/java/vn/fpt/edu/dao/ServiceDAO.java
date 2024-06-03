@@ -64,3 +64,10 @@ public void addService(Service service) {
             e.printStackTrace();
         }
     }
+
+public void updateService(Service service) {
+        String query = "UPDATE Services SET Name = ?, Description = ?, Price = ? WHERE ServiceID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, service.getName());
+            ps.setString(2, service.getDescription());
