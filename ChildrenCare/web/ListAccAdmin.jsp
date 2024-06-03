@@ -13,6 +13,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="assets/images/favicon.ico.png">
         <title>Manager Account</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -23,13 +24,19 @@
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
         <style>
             img{
-                width: 200px;
-                height: 120px;
+                width: 100px;
             }
         </style>
+        <script>
+            function confirmDelete(aid) {
+                if (confirm('Are you sure you want to delete this account?')) {
+                    window.location.href = 'deleteacc?aid=' + aid;
+                }
+            }
+        </script>
     </head>
-    <body>
-        <div class="container">
+    <body style="margin: auto">
+        <div>
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
@@ -73,7 +80,10 @@
                                 </td>
                                 <td>${o.role}</td>
                                 <td>${o.date_created}</td>
-
+                                <td>
+                                    <a href="loadacc?aid=${o.user_id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="javascript:void(0);" onclick="confirmDelete(${o.user_id})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

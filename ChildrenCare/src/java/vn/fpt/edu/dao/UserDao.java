@@ -306,5 +306,42 @@ public class UserDao extends DBConnect {
             System.out.println(e);
         }
     }
+    
+    public void deleteAcount(String id) {
+        String spl = "delete from [dbo].[User]\n"
+                + "where user_id = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(spl);
+            st.setString(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
