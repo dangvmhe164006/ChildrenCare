@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceDAO extends DBContext {
+public class ServiceDAO extends DBConnect {
 
     public List<Service> getAllServices() {
         List<Service> services = new ArrayList<>();
