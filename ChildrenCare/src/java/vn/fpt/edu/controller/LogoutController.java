@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,13 +11,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import vn.fpt.edu.dao.UserDao;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author ACER
  */
-public class DeleteAccAdminController extends HttpServlet {
+public class LogoutController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -34,10 +34,10 @@ public class DeleteAccAdminController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteAccAdminController</title>");  
+            out.println("<title>Servlet LogoutController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteAccAdminController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet LogoutController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -54,10 +54,9 @@ public class DeleteAccAdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String id = request.getParameter("aid");
-        UserDao d = new UserDao();
-        d.deleteAcount(id);
-        response.sendRedirect("manageacc");
+        HttpSession session = request.getSession();
+        session.removeAttribute("acc");
+        response.sendRedirect("home");
     } 
 
     /** 

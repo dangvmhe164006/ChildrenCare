@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package vn.fpt.controller;
+package vn.fpt.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,8 +12,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 import vn.fpt.edu.dao.UserDao;
 import vn.fpt.edu.model.Users;
 
@@ -21,7 +19,7 @@ import vn.fpt.edu.model.Users;
  *
  * @author ACER
  */
-public class ManageAcc extends HttpServlet {
+public class RemoveJmg extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +36,10 @@ public class ManageAcc extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ManageAcc</title>");  
+            out.println("<title>Servlet RemoveJmg</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ManageAcc at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet RemoveJmg at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,12 +56,16 @@ public class ManageAcc extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        UserDao d = new UserDao();
-        List<Users> list = d.getAllAcc();
+        HttpSession sesion = request.getSession();
+        Users u = (Users) sesion.getAttribute("acc");
         
-         HttpSession session = request.getSession();
-         session.setAttribute("allacc", list);
-         request.getRequestDispatcher("ListAccAdmin.jsp").forward(request, response);
+        UserDao d = new UserDao();
+        
+        d.removeImg(u.getUser_id());
+        
+        sesion.setAttribute("acc", d.getUsersById(u.getUser_id()));
+        
+        response.sendRedirect("profile");
     } 
 
     /** 
