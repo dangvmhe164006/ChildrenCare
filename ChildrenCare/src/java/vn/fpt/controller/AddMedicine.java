@@ -37,3 +37,23 @@ public class AddMedicine extends AccountAuthentication {
         }
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String id = request.getParameter("id").trim();
+        String name = request.getParameter("name").trim();
+        String producer = request.getParameter("producer").trim();
+        String element = request.getParameter("element").trim();
+        String quantityy = request.getParameter("quantity").trim();
+        String pricee = request.getParameter("price").trim();
+        String inUse = request.getParameter("inUse").trim();
+        String unit = request.getParameter("unit").trim();
+
