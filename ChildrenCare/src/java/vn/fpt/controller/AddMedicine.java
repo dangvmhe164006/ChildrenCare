@@ -56,4 +56,32 @@ public class AddMedicine extends AccountAuthentication {
         String pricee = request.getParameter("price").trim();
         String inUse = request.getParameter("inUse").trim();
         String unit = request.getParameter("unit").trim();
+        
+        int quantity = Integer.parseInt(quantityy);
+        double price = Double.parseDouble(pricee);
+        boolean inuse = inUse.equals("true");
+        Medicine m = new Medicine();
+        m.setId(id);
+        m.setName(name);
+        m.setProducer(producer);
+        m.setElement(element);
+        m.setPrice(price);
+        m.setQuantity(quantity);
+        m.setInUse(inuse);
+        m.setUnit(unit);
+        MedicineDAO mdao = new MedicineDAO();
+        mdao.add(m);
+        response.sendRedirect("list");
+    }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
