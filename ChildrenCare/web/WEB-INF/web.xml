@@ -80,6 +80,10 @@
         <servlet-name>AdminController</servlet-name>
         <servlet-class>vn.fpt.controller.AdminController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddMedicine</servlet-name>
+        <servlet-class>vn.fpt.controller.AddMedicine</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -159,5 +163,9 @@
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMedicine</servlet-name>
+        <url-pattern>/AddMedicine</url-pattern>
     </servlet-mapping>
 </web-app>
