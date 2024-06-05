@@ -88,6 +88,29 @@
                         </c:forEach>
                     </tbody>
                 </table>
+                <div class="row text-center">
+                    <!-- PAGINATION START -->
+                    <div class="col-12" >
+                        <div class="d-md-flex align-items-center text-center justify-content-between">
+                            <ul class="pagination justify-content-center" style="float: none">
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
+                                
+
+                                <c:forEach begin="1" end="${requestScope.total}" var="a">
+                                    <c:set var="isActivePage" value="${a == page}" />
+                                    <li class="page-item ${isActivePage ? 'active' : ''}">
+                                        <a class="page-link" href="home?page=${a}" style="${isActivePage ? 'background-color: blue;' : ''}">
+                                            ${a}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                                    
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">Next</a></li>    
+                            </ul>
+                        </div>
+                    </div><!--end col-->
+                    <!-- PAGINATION END -->
+                </div><!--end row-->
                 <div class="clearfix">
                     <div class="hint-text"><h3><a href="#">Back to top</a></h3></div>
                     <ul class="pagination">
