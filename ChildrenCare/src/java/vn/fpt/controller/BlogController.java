@@ -101,6 +101,7 @@ public class BlogController extends HttpServlet {
             end = Math.min(page * numberPage, size);
 
             List<Blog> listB = blogDAO.getListByPage(listBlog, start, end);
+            //request.setAttribute("listBlog", listB);
 
             request.setAttribute("listBlog", listB);
             request.setAttribute("page", page);
