@@ -65,7 +65,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${allacc}" var="o">
+                        <c:forEach items="${list}" var="o">
                             <tr>
                                 <td>${o.user_id}</td>
                                 <td>${o.user_name}</td>
@@ -93,19 +93,30 @@
                     <div class="col-12" >
                         <div class="d-md-flex align-items-center text-center justify-content-between">
                             <ul class="pagination justify-content-center" style="float: none">
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Previous">Prev</a></li>
-                                
+                                <c:if test="${page != 1}">
+                                    <li class="page-item"><a class="page-link" href="manageacc?page=${page - 1}">Prev</a></li>
+                                    </c:if>
+                                    <c:if test="${page == 1}">
+                                    <li class="page-item"><a class="page-link" href="manageacc?page=${numpage}">Prev</a></li>
+                                    </c:if>
 
-                                <c:forEach begin="1" end="${requestScope.total}" var="a">
+
+                                <c:forEach begin="1" end="${requestScope.numpage}" var="a">
                                     <c:set var="isActivePage" value="${a == page}" />
                                     <li class="page-item ${isActivePage ? 'active' : ''}">
-                                        <a class="page-link" href="home?page=${a}" style="${isActivePage ? 'background-color: blue;' : ''}">
+                                        <a class="page-link" href="manageacc?page=${a}" style="${isActivePage ? 'background-color: blue;' : ''}">
                                             ${a}
                                         </a>
                                     </li>
                                 </c:forEach>
-                                    
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">Next</a></li>    
+
+
+                                <c:if test="${page != numpage}">
+                                    <li class="page-item"><a class="page-link" href="manageacc?page=${page+1}">Next</a></li>
+                                    </c:if>
+                                    <c:if test="${page == numpage}">
+                                    <li class="page-item"><a class="page-link" href="manageacc?page=${1}">Next</a></li>
+                                    </c:if>
                             </ul>
                         </div>
                     </div><!--end col-->

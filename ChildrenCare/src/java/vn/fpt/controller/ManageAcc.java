@@ -61,12 +61,21 @@ public class ManageAcc extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDao d = new UserDao();
-        List<Users> list = d.getAllAcc();
+        int page;
+        int numpage = d.totalPageOfListAccount(1, 8);
+        String xpage = request.getParameter("page");
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
 
-        int avg = d.totalPageOfListAccount(1, 3);
-        request.setAttribute("total", avg);
-        HttpSession session = request.getSession();
-        session.setAttribute("allacc", list);
+        List<Users> list2 = d.listAcountSQL(page, 8);
+
+        request.setAttribute("page", page);
+        request.setAttribute("numpage", numpage);
+        //phan trang
+        request.setAttribute("list", list2);
         request.getRequestDispatcher("ListAccAdmin.jsp").forward(request, response);
     }
 

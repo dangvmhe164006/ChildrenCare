@@ -336,7 +336,7 @@ public class UserDao extends DBConnect {
     public int totalPageOfListAccount(int pageIndex, int pageNumber) {
         int avg = 0;
         String sql = "DECLARE @NumberOfPages INT\n"
-                + "EXEC TotalPageingAccount @PageIndex = 1, @PageNumber = 4,\n"
+                + "EXEC TotalPageingAccount @PageIndex = ?, @PageNumber = ?,\n"
                 + "@NumberOfPages = @NumberOfPages OUTPUT;";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -355,7 +355,7 @@ public class UserDao extends DBConnect {
 
     public List<Users> listAcountSQL(int pageIndex, int pageNumber) {
         List<Users> list = new ArrayList<>();
-        String sql = "exec PagingOfFeedBack ?, ?";
+        String sql = "exec PagingAccount ?, ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, pageIndex);
