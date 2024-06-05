@@ -1,6 +1,4 @@
 
-package Control.medical;
-
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
