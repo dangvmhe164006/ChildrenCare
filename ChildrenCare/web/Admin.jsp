@@ -101,9 +101,6 @@
 
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0)"><i class="uil uil-file me-2 d-inline-block"></i>Pages</a>
-                            <div class="sidebar-submenu">
-                                
-                            </div>
                         </li>
 
 
