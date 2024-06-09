@@ -82,7 +82,6 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="product-detail.html">Shop Detail</a></li>
                             </div>
                         </li>
 
