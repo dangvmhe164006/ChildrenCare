@@ -84,7 +84,6 @@
                                     <li><a href="shop.html">Shop</a></li>
                                     <li><a href="product-detail.html">Shop Detail</a></li>
                                     <li><a href="shopcart.html">Shopcart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
                                 </ul>
                             </div>
                         </li>
