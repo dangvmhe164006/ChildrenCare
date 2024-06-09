@@ -128,7 +128,6 @@
                             </div>
                         </li>
 
-                        <li><a href="components.html"><i class="uil uil-cube me-2 d-inline-block"></i>Components</a></li>
                     </ul>
                     <!-- sidebar-menu  -->
                 </div>
