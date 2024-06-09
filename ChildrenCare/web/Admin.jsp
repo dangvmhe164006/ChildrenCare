@@ -120,8 +120,7 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li><a href="login.html">Login</a></li>
-                                    <li><a href="signup.html">Signup</a></li>
-                                    <li><a href="forgot-password.html">Forgot Password</a></li>
+                                    
                                 </ul>
                             </div>
                         </li>
