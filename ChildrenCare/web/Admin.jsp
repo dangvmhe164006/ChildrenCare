@@ -129,8 +129,6 @@
                         </li>
 
                         <li><a href="components.html"><i class="uil uil-cube me-2 d-inline-block"></i>Components</a></li>
-
-                        <li><a href="landing/index-two.html" target="_blank"><i class="uil uil-window me-2 d-inline-block"></i>Landing page</a></li>
                     </ul>
                     <!-- sidebar-menu  -->
                 </div>
