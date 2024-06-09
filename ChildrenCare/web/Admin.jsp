@@ -105,8 +105,6 @@
                                 <ul>
                                     <li><a href="faqs.html">FAQs</a></li>
                                     <li><a href="review.html">Reviews</a></li>
-                                    <li><a href="invoice-list.html">Invoice List</a></li>
-                                    <li><a href="invoice.html">Invoice</a></li>
                                 </ul>
                             </div>
                         </li>
