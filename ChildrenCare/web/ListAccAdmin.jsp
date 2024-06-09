@@ -44,7 +44,7 @@
                             <h2>Manage <b>Account</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="home"  class="btn btn-success"> <span>Home</span></a>
+                            <a href="admin"  class="btn btn-success"> <span>Home</span></a>
                         </div>
                     </div>
                 </div>
