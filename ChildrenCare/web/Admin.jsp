@@ -107,8 +107,6 @@
                                     <li><a href="review.html">Reviews</a></li>
                                     <li><a href="invoice-list.html">Invoice List</a></li>
                                     <li><a href="invoice.html">Invoice</a></li>
-                                    <li><a href="terms.html">Terms & Policy</a></li>
-                                    <li><a href="privacy.html">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </li>
