@@ -122,8 +122,6 @@
                                     <li><a href="login.html">Login</a></li>
                                     <li><a href="signup.html">Signup</a></li>
                                     <li><a href="forgot-password.html">Forgot Password</a></li>
-                                    <li><a href="lock-screen.html">Lock Screen</a></li>
-                                    <li><a href="thankyou.html">Thank you...!</a></li>
                                 </ul>
                             </div>
                         </li>
