@@ -115,12 +115,6 @@
                             </div>
                         </li>
 
-                        <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="uil uil-sign-in-alt me-2 d-inline-block"></i>Authentication</a>
-                            <div class="sidebar-submenu">
-                                
-                            </div>
-                        </li>
 
                     </ul>
                     <!-- sidebar-menu  -->
