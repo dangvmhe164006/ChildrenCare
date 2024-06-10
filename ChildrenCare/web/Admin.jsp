@@ -57,11 +57,6 @@
 
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0)"><i class="uil uil-wheelchair me-2 d-inline-block"></i>Patients</a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li><a href="patients.html">All Patients</a></li>
-                                </ul>
-                            </div>
                         </li>
 
                         <li class="sidebar-dropdown">
