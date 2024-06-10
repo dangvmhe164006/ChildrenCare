@@ -61,7 +61,6 @@
                                 <ul>
                                     <li><a href="patients.html">All Patients</a></li>
                                     <li><a href="add-patient.html">Add Patients</a></li>
-                                    <li><a href="patient-profile.html">Profile</a></li>
                                 </ul>
                             </div>
                         </li>
