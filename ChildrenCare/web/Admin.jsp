@@ -57,8 +57,6 @@
 
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0)"><i class="uil uil-apps me-2 d-inline-block"></i>Apps</a>
-                            <div class="sidebar-submenu">
-                            </div>
                         </li>
 
                         <li class="sidebar-dropdown">
