@@ -56,10 +56,6 @@
                         <li><a href="index.html"><i class="uil uil-dashboard me-2 d-inline-block"></i>List Doctor</a></li>
 
                         <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="uil uil-wheelchair me-2 d-inline-block"></i>Patients</a>
-                        </li>
-
-                        <li class="sidebar-dropdown">
                             <a href="javascript:void(0)"><i class="uil uil-apps me-2 d-inline-block"></i>Apps</a>
                             <div class="sidebar-submenu">
                                 <ul>
