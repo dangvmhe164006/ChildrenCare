@@ -72,7 +72,6 @@
                                 <ul>
                                     <li><a href="chat.html">Chat</a></li>
                                     <li><a href="email.html">Email</a></li>
-                                    <li><a href="calendar.html">Calendar</a></li>
                                 </ul>
                             </div>
                         </li>
