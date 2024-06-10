@@ -60,7 +60,6 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li><a href="chat.html">Chat</a></li>
-                                    <li><a href="email.html">Email</a></li>
                                 </ul>
                             </div>
                         </li>
