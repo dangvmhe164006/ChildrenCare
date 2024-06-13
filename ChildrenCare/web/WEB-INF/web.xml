@@ -92,6 +92,10 @@
         <servlet-name>Medical</servlet-name>
         <servlet-class>vn.fpt.controller.Medical</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddInfor</servlet-name>
+        <servlet-class>vn.fpt.controller.AddInfor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -183,5 +187,9 @@
     <servlet-mapping>
         <servlet-name>Medical</servlet-name>
         <url-pattern>/Medical</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddInfor</servlet-name>
+        <url-pattern>/AddInfor</url-pattern>
     </servlet-mapping>
 </web-app>
