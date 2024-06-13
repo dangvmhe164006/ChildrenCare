@@ -251,7 +251,7 @@
 
             <div class="container">
                 <div style="text-align: center">
-                    <h1 style="margin-top: 20px">Địa chỉ cửa hàng</h1>
+                    <h1 style="margin-top: 20px">Adress</h1>
                     <div style="    width: 100%;">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.251794359684!2d105.80141587510502!3d21.022608780625195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5d386831e7%3A0x70cc363354938495!2zTmdoLiAxMCBOZy4gMTIxIENow7lhIEzDoW5nLCBMw6FuZyBUaMaw4bujbmcsIMSQ4buRbmcgxJBhLCBIw6AgTuG7mWksIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1710737064605!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
