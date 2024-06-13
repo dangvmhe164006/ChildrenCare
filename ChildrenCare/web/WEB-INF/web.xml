@@ -96,6 +96,10 @@
         <servlet-name>AddInfor</servlet-name>
         <servlet-class>vn.fpt.controller.AddInfor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Commom</servlet-name>
+        <servlet-class>vn.fpt.controller.Commom</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -191,5 +195,9 @@
     <servlet-mapping>
         <servlet-name>AddInfor</servlet-name>
         <url-pattern>/AddInfor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Commom</servlet-name>
+        <url-pattern>/Commom</url-pattern>
     </servlet-mapping>
 </web-app>
