@@ -289,3 +289,28 @@ public List<Staff> getStaffListPage(int offSetPage, int numberOfPage, String key
         }
         return staffList;
     }
+
+public int getNumOfStaffList(String keyword, String ServiceID) {
+        xSql = " select COUNT(distinct s.StaffID) from staff as s join ServiceStaff as ss on s.StaffID= ss.StaffID"
+                + " where s.StaffRole='doctor' and s.FullName like ? ";
+        int numOfPage = 0;
+        if (!ServiceID.isEmpty()) {
+            xSql += " and ss.ServiceID = ? ";
+        }
+        try {
+            ps = con.prepareStatement(xSql);
+            ps.setString(1, "%" + keyword + "%");
+            if (!ServiceID.isEmpty()) {
+                ps.setString(2, ServiceID);
+            }
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                numOfPage = rs.getInt(1);
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return numOfPage;
+    }
