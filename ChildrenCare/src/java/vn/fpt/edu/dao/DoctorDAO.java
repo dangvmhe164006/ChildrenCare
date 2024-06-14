@@ -202,3 +202,43 @@ public Staff getStaffByStaffId(int staffID) {
         }
         return staff;
     }
+ 
+public List<Staff> getStaffsBySlot(String reservationDate, String slot) {
+        List<Staff> staffList = new ArrayList<>();
+        xSql = "SELECT DISTINCT *\n"
+                + "FROM Staff S\n"
+                + "WHERE S.StaffRole = 'Doctor'\n"
+                + "AND S.StaffID NOT IN (\n"
+                + "    SELECT R.StaffID\n"
+                + "    FROM Reservations R\n"
+                + "    WHERE R.ReservationDate = ?  \n"
+                + "    AND R.ReservationSlot = ?  \n"
+                + ")";
+        try {
+            ps = con.prepareStatement(xSql);
+            ps.setString(1, reservationDate);
+            ps.setString(2, slot);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int staffID = rs.getInt(1);
+                String staffName = rs.getString(2);
+                String password = rs.getString(3);
+                String email = rs.getString(4);
+                String fullName = rs.getString(5);
+                String gender = rs.getString(6);
+                String phoneNumber = rs.getString(7);
+                String profileImage = rs.getString(8);
+                String role = rs.getString(9);
+                String rank = rs.getString(10);
+                String specialty = rs.getString(11);
+                String introduction = rs.getString(12);
+                Staff staff = new Staff(staffID, staffName, password, email, fullName, gender, phoneNumber, profileImage, role, rank, specialty, introduction);
+                staffList.add(staff);
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return staffList;
+    }
