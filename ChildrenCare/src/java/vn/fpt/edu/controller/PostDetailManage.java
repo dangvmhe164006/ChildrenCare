@@ -45,7 +45,7 @@ public class PostDetailManage extends HttpServlet {
             out.println("<title>Servlet postDetailManage</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet postDetailManage at cai dcm " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet postDetailManage " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

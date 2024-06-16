@@ -1,19 +1,12 @@
 package vn.fpt.edu.model;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 import java.security.MessageDigest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.codec.binary.Base64;
 
 
-/**
- *
- * @author pc
- */
 public class MaHoa {
     // md5
     // sha-1 => thường được sử dụng
