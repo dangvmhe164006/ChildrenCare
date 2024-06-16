@@ -17,7 +17,6 @@ import vn.fpt.edu.model.Reservation;
  * @author hbich
  */
 public class ReservationDAO extends MyDAO {
-
     //update status
     public void updateDoctor(String staffId, String reservationID) {
         xSql = "UPDATE Reservations\n"
@@ -1335,10 +1334,10 @@ public class ReservationDAO extends MyDAO {
 
     public static void main(String args[]) {
         ReservationDAO rd = new ReservationDAO();
-//        List<Reservation> listreservation = rd.getReservationAllBySearch(1, "v");
+      // List<Reservation> listreservation = rd.getReservationByUserID(2);
 //        System.out.println(rd.getTotalReservationBySearch("v"));
 //        for(Reservation reservation : listreservation){
-//            System.out.println(reservation.getUserID());
+//            System.out.println(reservation.getServiceID());
 //        }
     }
 }

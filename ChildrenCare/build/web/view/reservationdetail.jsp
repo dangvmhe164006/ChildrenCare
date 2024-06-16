@@ -11,7 +11,7 @@
     <body>
         <jsp:include page="layout/Header.jsp"/>
         <%@ page import="java.sql.Date"%>
-        <%@ page import="java.util.List,java.util.ArrayList,model.Service,model.Staff,model.Children" %>
+        <%@ page import="java.util.List,java.util.ArrayList,vn.fpt.edu.model.Service,vn.fpt.edu.model.Staff,vn.fpt.edu.model.Children" %>
         <% List<Integer> Workday = (List<Integer>) request.getAttribute("Workday");
            List<Integer> fullDay = (List<Integer>) request.getAttribute("fullDay");
            

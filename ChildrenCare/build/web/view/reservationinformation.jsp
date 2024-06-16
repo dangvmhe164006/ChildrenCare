@@ -18,7 +18,7 @@
     </head>
     <body>  
         <%@ page import="java.text.SimpleDateFormat"%>
-        <%@ page import="model.Reservation,model.Service,model.Children,model.User"%>
+        <%@ page import="vn.fpt.edu.model.Reservation,vn.fpt.edu.model.Service,vn.fpt.edu.model.Children,model.User"%>
         <header>
             <jsp:include page="layout/Header.jsp"/>
         </header>
