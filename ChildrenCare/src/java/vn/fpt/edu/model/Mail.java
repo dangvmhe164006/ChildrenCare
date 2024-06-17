@@ -13,8 +13,8 @@ import jakarta.mail.internet.MimeMessage;
 
 public class Mail {
   
-    static final String from = "kiennhhe163054@fpt.edu.vn";
-    static final String password = "zhjg cnji tmhx cwrk";
+    static final String from = "trangpche170234@fpt.edu.vn";
+    static final String password = "igee euex jtlf fzcm";
 
     public static boolean sendEmail(String to, String tieuDe, String noiDung) {
         // Properties : khai báo các thuộc tính

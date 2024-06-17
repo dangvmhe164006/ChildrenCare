@@ -1,8 +1,3 @@
-<%-- 
-    Document   : SendMail
-    Created on : 18-Sep-2023, 20:49:24
-    Author     : pc
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

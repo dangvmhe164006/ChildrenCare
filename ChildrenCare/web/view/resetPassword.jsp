@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="vm.fpt.edu.model.User"%>
+<%@page import="vn.fpt.edu.model.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,7 +39,6 @@
                 box-shadow: 0px 0px 10px 0px gray;
             }
         </style>
-        <title>JSP Page</title>
     </head>
     <body style="background-color: rgba(0,0,0,0.3)">
 
