@@ -43,7 +43,7 @@
         <main>  
 
             <section>
-        
+
                 <table class="table table-striped table-hover" style="margin-top: 50px";>
                     <thead class="bg-light ">
                         <tr class="text-center">
@@ -60,22 +60,18 @@
                     <tbody id="reservationTable">
 
                     </tbody>
-                </table>
-                <%-- pagination --%>
-           
+                </table>           
             </section>
-
             <aside>
                 <!-- Sidebar content goes here -->
             </aside>
         </main>
-                
-                <div style="margin-top:300px">
-                     <footer>
-            <jsp:include page="layout/footer.jsp"/>
-        </footer>
-                </div>
-       
+        <div style="margin-top:300px">
+            <footer>
+                <jsp:include page="layout/footer.jsp"/>
+            </footer>
+        </div>
+
         <script>
             let totalPagePagination = <%=reservationDAO.getTotalPagination(userID,5)%>;
             const reservationPerPage = 5;
@@ -181,7 +177,7 @@
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const reservationsData = xhr.responseText;
                         const table = document.getElementById("reservationTable");
-                        
+
                         // Get the table element
                         const temp = document.querySelector(".table");
 
