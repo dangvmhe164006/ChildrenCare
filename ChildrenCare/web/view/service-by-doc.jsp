@@ -21,7 +21,7 @@
             />
 
         <link rel="stylesheet" href="./resources/css/services-style.css">
-        <title>Medilab</title>
+        <title>ChildrenCare</title>
     </head>
     <body>
         <jsp:include page="./layout/Header.jsp" />

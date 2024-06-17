@@ -1,7 +1,7 @@
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,8 +17,8 @@
     </head>
     <body>
         <%@ page import="java.util.List,java.util.ArrayList,java.text.SimpleDateFormat,jakarta.servlet.http.HttpSession" %>
-        <%@ page import="model.Reservation,model.Service,model.Staff,model.User"%>
-        <%@ page import="Database.ReservationDAO,Database.ServiceDAO,Database.StaffDAO,Database.UserDAO"%>
+        <%@ page import="vn.fpt.edu.model.Reservation,vn.fpt.edu.model.Service,vn.fpt.edu.model.Staff,vn.fpt.edu.model.User"%>
+        <%@ page import="vn.fpt.edu.Database.ReservationDAO,vn.fpt.edu.Database.ServiceDAO,vn.fpt.edu.Database.StaffDAO,vn.fpt.edu.Database.UserDAO"%>
         <header style="margin-bottom:30px">
             <jsp:include page="layout/Header.jsp"/>
         </header>
