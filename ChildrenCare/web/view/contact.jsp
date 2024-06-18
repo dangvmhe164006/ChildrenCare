@@ -29,7 +29,7 @@
                 <div class="col-md-3 bg-light border-1 p-3 d-flex flex-column align-items-center justify-content-center">
                     <img src="resources/img/icon/phone-call.png" style="width: 3rem;" class="object-contain rounded-0 mb-2" alt="alt"/>
                     <b class="mb-2">Phone Us 24/7:</b>
-                    <p class="text-black-50">0834398269</p>
+                    <p class="text-black-50">0834398264</p>
                 </div>
                 <div class="col-md-3 ms-4 bg-light border-1 p-3 d-flex flex-column align-items-center justify-content-center">
                     <img src="resources/img/icon/mail.png" style="width: 3rem;" class="object-contain rounded-0 mb-2" alt="alt"/>
