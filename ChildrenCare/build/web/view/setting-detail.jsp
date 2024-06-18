@@ -109,8 +109,8 @@
     </head>
     <body>
         <%@ page import="jakarta.servlet.http.HttpSession" %>
-        <%@page import = "model.*" %>
-        <%@page import = "Database.*" %>
+        <%@page import = "vn.fpt.edu.model.*" %>
+        <%@page import = "vn.fpt.edu.Database.*" %>
         <%@page import = "java.util.*" %>
         <%
         SettingDAO settingDAO = new SettingDAO();
