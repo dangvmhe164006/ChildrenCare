@@ -130,7 +130,7 @@ if (message != null) {
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Addres</label>
+                                            <label class="form-label">Address</label>
                                             <input name="address" value="<%=curUser.getAddress()%>" id="address" type="text" class="form-control">
                                         </div>
                                     </div>
