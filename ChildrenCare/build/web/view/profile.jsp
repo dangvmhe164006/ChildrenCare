@@ -68,7 +68,7 @@ if (message != null) {
                                 <div class="row">
 
                                     <div class="row mb-3">
-                                        <h5 class="mb-0">Avatar Imag</h5>
+                                        <h5 class="mb-0">Avatar Image</h5>
                                         <div class="text-center">
 
                                             <input type="file" name="images" id="file" class="inputfile" onchange="readURL(this)" accept="image/*"/>
