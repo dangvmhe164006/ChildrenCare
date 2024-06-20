@@ -67,7 +67,7 @@
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -116,41 +116,13 @@
                     <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
                         <i class="fa fa-bars"></i>
                     </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
+
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -171,7 +143,6 @@
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -180,10 +151,9 @@
                         <%}%>
                     </div>
                 </nav>
+
                 <div class="container-fluid pt-4 px-4">
-                    <div
-                        class="row bg-light rounded align-items-center justify-content-center mx-0"
-                        >
+                    <div class="row bg-light rounded align-items-center justify-content-center mx-0">
                         <div class="mb-4 px-4 py-3 border-bottom d-flex justify-content-between align-items-center">
                             <% if (action.equals("add")) { %>
                             <h4>Add new schedule</h4>
@@ -202,12 +172,35 @@
                                     <div class="input-group">
                                         <input type="date" class="form-control" name="workDay" value="<%=(action.equals("add")) ? "" : staffSchedule.getWorkday() %>" placeholder="Enter Working Date" required="">
                                     </div>
-                                    <label style="color:orange;">The entered date cannot be a date in the past and staff must select a date 1 week in advance</label>
+                                    <label style="color:orange;">The entered date cannot be a date in the past and must be at least 1 day in advance.</label>
                                 </div>
                                 <div class="col-md-6 mb-3 px-3">
-                                    <label for="validationCustom008">Working slot</label>
-                                    <div class="input-group">
-                                        <input type="number" min="1" max="6" class="form-control" name="workSlot" value="<%= (action.equals("add")) ? "" : staffSchedule.getSlot() %>" placeholder="Enter Working Slot" required="">
+                                    <label for="validationCustom008">Working slots</label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="workSlot" value="1" <% if (action.equals("edit") && staffSchedule.getSlot() == 1) out.print("checked"); %> >
+                                            <label class="form-check-label">Slot 1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="workSlot" value="2" <% if (action.equals("edit") && staffSchedule.getSlot() == 2) out.print("checked"); %> >
+                                            <label class="form-check-label">Slot 2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="workSlot" value="3" <% if (action.equals("edit") && staffSchedule.getSlot() == 3) out.print("checked"); %> >
+                                            <label class="form-check-label">Slot 3</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="workSlot" value="4" <% if (action.equals("edit") && staffSchedule.getSlot() == 4) out.print("checked"); %> >
+                                            <label class="form-check-label">Slot 4</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="workSlot" value="5" <% if (action.equals("edit") && staffSchedule.getSlot() == 5) out.print("checked"); %> >
+                                            <label class="form-check-label">Slot 5</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="workSlot" value="6" <% if (action.equals("edit") && staffSchedule.getSlot() == 6) out.print("checked"); %> >
+                                            <label class="form-check-label">Slot 6</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -215,13 +208,14 @@
                             <button class="btn btn-primary mt-4 d-inline w-20" type="submit">Save</button>
                             <% if (errorMessage != null) { %>
                             <h5 style="color: red;"><%=errorMessage%></h5>
-                            <%   } %>
+                            <% } %>
                         </form>
                     </div>
                 </div>
-                <div class="mt-4">
-                    <jsp:include page="layout/footer.jsp" />
-                </div>
+
+
+
+
             </div>
 
         </div>
@@ -240,15 +234,15 @@
         ></script>
 
         <script>
-                            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
-                                var sidebar = document.querySelector('.sidebar');
-                                var content = document.querySelector('.content');
+            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
+                var sidebar = document.querySelector('.sidebar');
+                var content = document.querySelector('.content');
 
-                                sidebar.classList.toggle('open');
-                                content.classList.toggle('open');
+                sidebar.classList.toggle('open');
+                content.classList.toggle('open');
 
-                                return false;
-                            });
+                return false;
+            });
         </script>
     </body>
 </html>
