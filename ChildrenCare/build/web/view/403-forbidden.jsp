@@ -189,7 +189,7 @@
                             <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
                             <h2 class="display-2 fw-bold text-danger">ACCESS DENIED</h2>
                             <h3 class="mb-4 text-info">Oops, You don't have permission to access this page.</h3>
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="staff?event=sent-to-home">Go Back To Home</a>
+                            <a class="btn btn-primary rounded-pill py-3 px-5" href="http://localhost:9999/ChildrenCare/">Go Back To Home</a>
                         </div>
                     </div>
                 </div>
