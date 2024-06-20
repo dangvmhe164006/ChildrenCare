@@ -9,10 +9,13 @@ import vn.fpt.edu.Database.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,6 +26,11 @@ import vn.fpt.edu.model.Staff;
  *
  * @author quanh
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1 MB
+        maxFileSize = 1024 * 1024 * 2, // 2 MB
+        maxRequestSize = 1024 * 1024 * 2 // 1 MB 
+)
+
 public class PostDetailManage extends HttpServlet {
 
     /**
@@ -37,7 +45,7 @@ public class PostDetailManage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -88,10 +96,13 @@ public class PostDetailManage extends HttpServlet {
                     ID = Integer.parseInt(request.getParameter("postID"));
                     post = postDAO.getPostByID(ID);
                     break;
+
                 case "add":
                     ID = postDAO.getLastPostID() + 1;
                     post = new Post(ID, "", "", "", "", 0, /*curStaff.getStaffID() */ 1, 1, Date.valueOf(LocalDate.now()), "", true);
                     break;
+
+               
                 default:
                     throw new AssertionError();
             }
@@ -130,6 +141,8 @@ public class PostDetailManage extends HttpServlet {
                 loadPostDetail(request, response, post, event);
                 request.getRequestDispatcher("/view/post-detail-manage.jsp").forward(request, response);
                 break;
+         
+
             default:
                 throw new AssertionError();
         }
@@ -149,17 +162,18 @@ public class PostDetailManage extends HttpServlet {
         request.setAttribute("event", event);
     }
 
-    protected Post newPost(HttpServletRequest request, HttpServletResponse response, Post post, String event) {
+    protected Post newPost(HttpServletRequest request, HttpServletResponse response, Post post, String event) throws ServletException, IOException {
 
         PostDAO postDAO = new PostDAO();
 
         String title = request.getParameter("Title");
         String content = request.getParameter("Content");
         String briefInfo = request.getParameter("Brief");
-        String thumbnail = request.getParameter("Thumbnail");
+        Part filePart = request.getPart("images");
         Date createdDate = Date.valueOf(LocalDate.now());
         String categoryPost = request.getParameter("postCategory");
         String status = request.getParameter("status");
+        String contentType = filePart.getContentType();
 
         boolean validate = true;
         if (content.isEmpty()) {
@@ -184,7 +198,15 @@ public class PostDetailManage extends HttpServlet {
             post.setTitle(title);
             post.setContent(content);
             post.setBriefInfo(briefInfo);
-            post.setThumbnail(thumbnail);
+
+            if (contentType != null && contentType.startsWith("image")) {
+                String realPath = request.getServletContext().getRealPath("/resources/img");
+                String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+                filePart.write(realPath + "/" + fileName);
+                String newImg = "resources/img/" + fileName;
+                post.setThumbnail(newImg);
+            }
+
             post.setCreatedDate(createdDate);
             post.setCategoryPost(categoryPost);
             if (status.equals("true")) {
@@ -200,6 +222,7 @@ public class PostDetailManage extends HttpServlet {
                 case "update":
                     postDAO.update(post.getPostID(), post);
                     break;
+
                 default:
                     throw new AssertionError();
             }

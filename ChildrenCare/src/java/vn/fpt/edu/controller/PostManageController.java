@@ -39,7 +39,7 @@ public class PostManageController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -70,6 +70,8 @@ public class PostManageController extends HttpServlet {
         String email = (String) session.getAttribute("email");
         StaffDAO staffDAO = new StaffDAO();
         Staff curStaff = staffDAO.getStaffByStaffEmail(email);
+        PostDAO postDAO = new PostDAO();
+
         boolean isManager = false;
         if (curStaff != null) {
             if (curStaff.getRole().equals("manager")) {
@@ -94,6 +96,15 @@ public class PostManageController extends HttpServlet {
                         showPost(request, response);
                         loadPageWithChoice(request, response);
                         request.getRequestDispatcher("./view/post-list-manage.jsp").forward(request, response);
+                        break;
+
+                    case "delete":
+                        int ID = Integer.parseInt(request.getParameter("postID"));
+                        postDAO.deleteByID(ID);
+                        loadPageWithChoice(request, response);
+
+                        request.getRequestDispatcher("./view/post-list-manage.jsp").forward(request, response);
+
                         break;
                     default:
                         break;
