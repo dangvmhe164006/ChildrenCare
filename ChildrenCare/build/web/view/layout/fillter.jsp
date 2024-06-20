@@ -1,8 +1,4 @@
-<%-- 
-    Document   : fillter
-    Created on : 02-Oct-2023, 23:26:18
-    Author     : pc
---%>
+
 
 <%@page import = "vn.fpt.edu.model.*" %>
 <%@page import = "vn.fpt.edu.Database.*" %>

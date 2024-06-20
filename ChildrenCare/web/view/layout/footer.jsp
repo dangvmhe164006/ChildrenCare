@@ -1,8 +1,4 @@
-<%-- 
-    Document   : footer
-    Created on : 18-Sep-2023, 16:23:04
-    Author     : Admin
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 

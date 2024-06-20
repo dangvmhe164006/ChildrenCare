@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Header
-    Created on : 13-Sep-2023, 08:44:54
-    Author     : Admin
---%>
+
 <%@page import = "vn.fpt.edu.model.*" %>
 <%@page import = "vn.fpt.edu.Database.*" %>
 <%@page import = "java.util.*" %>
