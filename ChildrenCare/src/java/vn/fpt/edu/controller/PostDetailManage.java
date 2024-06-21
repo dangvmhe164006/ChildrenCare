@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.PostDAO;
@@ -22,10 +19,6 @@ import java.util.List;
 import vn.fpt.edu.model.Post;
 import vn.fpt.edu.model.Staff;
 
-/**
- *
- * @author quanh
- */
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 2, // 2 MB
         maxRequestSize = 1024 * 1024 * 2 // 1 MB 

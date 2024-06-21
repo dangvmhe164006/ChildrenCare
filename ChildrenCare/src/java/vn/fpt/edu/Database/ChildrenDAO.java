@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package vn.fpt.edu.Database;
 
 import java.sql.Date;
@@ -11,10 +8,6 @@ import vn.fpt.edu.model.Children;
 import vn.fpt.edu.model.Relationship;
 import vn.fpt.edu.model.User;
 
-/**
- *
- * @author Admin
- */
 public class ChildrenDAO extends MyDAO {
 
     public List<Children> getListChildrenByUserId(String id) {

@@ -41,10 +41,6 @@ import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Staff;
 import vn.fpt.edu.model.User;
 
-/**
- *
- * @author Admin
- */
 public class PaymentController extends HttpServlet {
 
     /**

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.ReservationDAO;
@@ -26,10 +23,7 @@ import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.User;
 
-/**
- *
- * @author hbich
- */
+
 public class ReservationDetailController extends HttpServlet {
 
     @Override

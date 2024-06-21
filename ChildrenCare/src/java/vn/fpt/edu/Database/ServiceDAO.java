@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package vn.fpt.edu.Database;
 
 import java.sql.Date;
@@ -10,10 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import vn.fpt.edu.model.Service;
 
-/**
- *
- * @author Admin
- */
+
 public class ServiceDAO extends MyDAO {
     
     public List<Service> getAllServices() {

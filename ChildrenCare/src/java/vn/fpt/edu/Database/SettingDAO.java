@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package vn.fpt.edu.Database;
 
 import java.util.ArrayList;
@@ -9,10 +6,7 @@ import java.util.List;
 import vn.fpt.edu.model.Setting;
 import vn.fpt.edu.model.Slider;
 
-/**
- *
- * @author pc
- */
+
 public class SettingDAO extends MyDAO {
 
     public static String getLastSegment(String inputString) {

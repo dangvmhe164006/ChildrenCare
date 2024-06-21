@@ -2,10 +2,7 @@
 package vn.fpt.edu.model;
 
 import java.sql.Date;
-/**
- *
- * @author dangv
- */
+
 public class Comment {
 
     private int userID;

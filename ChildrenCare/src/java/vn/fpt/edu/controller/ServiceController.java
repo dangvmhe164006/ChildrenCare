@@ -1,9 +1,5 @@
 package vn.fpt.edu.controller;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 import vn.fpt.edu.Database.CategoryServiceDAO;
 import vn.fpt.edu.Database.ServiceDAO;
 import vn.fpt.edu.Database.StaffDAO;
@@ -23,10 +19,7 @@ import java.util.List;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Staff;
 
-/**
- *
- * @author Admin
- */
+
 @MultipartConfig(
         fileSizeThreshold = 1024 * 10, // 10 KB
         maxFileSize = 1024 * 300, // 300 KB

@@ -1,9 +1,6 @@
 package vn.fpt.edu.controller;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 import vn.fpt.edu.Database.CategoryServiceDAO;
 import vn.fpt.edu.Database.PostDAO;
 import vn.fpt.edu.Database.ServiceDAO;
@@ -21,10 +18,6 @@ import vn.fpt.edu.model.Post;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Slider;
 
-/**
- *
- * @author Admin
- */
 public class BlogController extends HttpServlet {
 
     /**

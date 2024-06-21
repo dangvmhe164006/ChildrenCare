@@ -1,11 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
- /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.UserDAO;
@@ -22,12 +15,7 @@ import vn.fpt.edu.model.Mail;
 import vn.fpt.edu.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
-/**
- *
- * Servlet to handle password reset functionality.
- *
- * @author pc
- */
+
 public class ResetPassController extends HttpServlet {
 
     private int counter = 0;

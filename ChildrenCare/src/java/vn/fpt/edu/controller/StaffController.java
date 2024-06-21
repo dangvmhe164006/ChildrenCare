@@ -18,10 +18,7 @@ import java.util.logging.Logger;
 import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Staff;
 
-/**
- *
- * @author Admin
- */
+
 public class StaffController extends HttpServlet {
 
     /**

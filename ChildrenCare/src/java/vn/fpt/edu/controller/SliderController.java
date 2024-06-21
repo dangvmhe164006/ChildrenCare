@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.SliderDAO;
@@ -23,14 +20,7 @@ import java.util.List;
 import vn.fpt.edu.model.Slider;
 import vn.fpt.edu.model.Staff;
 
-/**
- *
- * @author Admin
- */
-@MultipartConfig( //        fileSizeThreshold = 1024 * 10, // 10 KB
-        //        maxFileSize = 1024 * 300, // 300 KB
-        //        maxRequestSize = 1024 * 1024 // 1 MB 
-        )
+
 public class SliderController extends HttpServlet {
 
     /**
