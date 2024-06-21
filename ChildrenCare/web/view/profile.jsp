@@ -111,7 +111,7 @@ if (message != null) {
 
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Gende</label>
+                                            <label class="form-label">Gender</label>
                                             <div class="my-3">
                                                 <div class="form-check">
                                                     <input id="credit" name="gender" value="Male" type="radio" class="form-check-input" 
