@@ -52,7 +52,7 @@
                             <button id="nextMonth" type="button" class="nextmonth-button"></button>
                         </div>
                     </div>
-
+ 
                     <div id="schedule-table"> 
 
                     </div>
@@ -60,7 +60,7 @@
                     <div id="time-slot-div">
 
                     </div>
-                    <button id="btnCheckOut" disabled onclick="checkout()">Check out</button>
+                    <button id="btnCheckOut" disabled onclick="checkout()" style="background-color: buttonface"> Check out</button>
                 </div>
             </div>  
         </div>
@@ -362,7 +362,8 @@
             }
 
             // Function to handle when the user clicks the "Check out" button
-            function checkout() {
+            function 
+            checkout() {
                 if (selectedDate && selectedSlot) {
                     // Get the selected date and time slot
                     const selectedDateValue = selectedDate.textContent;
