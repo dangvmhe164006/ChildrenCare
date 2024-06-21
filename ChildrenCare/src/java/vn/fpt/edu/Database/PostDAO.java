@@ -199,7 +199,6 @@ public class PostDAO extends MyDAO {
             ps = con.prepareStatement(xSql);
             ps.setInt(1, ID);
             ps.executeUpdate();
-            //con.commit();
             ps.close();
         } catch (Exception e) {
             e.printStackTrace();

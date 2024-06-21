@@ -62,7 +62,7 @@ boolean isManager = false;
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -122,44 +122,13 @@ boolean isManager = false;
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
+
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -180,7 +149,6 @@ boolean isManager = false;
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -193,70 +161,63 @@ boolean isManager = false;
 
                 <!-- Blog Start -->
                 <div class="container py-5" id="blog-list">
-                    <div class="row g-5" >
+                    <div class="row g-5">
                         <div class="col-lg-8">
                             <!-- Blog Detail Start -->
-                            <form action="postDetailManage" method="Post">
-
+                            <form action="postDetailManage" method="post" enctype="multipart/form-data" onsubmit="return handleFormSubmit(this);">
                                 <div class="mb-5">
                                     <div class="form-group mt-3">
-                                        <label for="Thumbnail">Post Thumbnail:</label>
-                                        <input type="text" class="form-control" id="Thumbnail" name="Thumbnail" value="${post.getThumbnail()}">
+                                        <label for="Thumbnail">Post Image:</label>
+                                        <input type="file" name="images" id="file" class="inputfile form-control" onchange="readURL(this)" accept="image/*"/>
+                                        <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width: 200px; margin-top: 10px;"/>
+                                        <button type="button" onclick="clearImage()" class="btn btn-secondary mt-2">Clear Image</button>
                                     </div>
-                                    <img class="img-fluid w-100 rounded mb-5" src="${post.getThumbnail()}" alt="thumbnail">
-
+                                    <br>
                                     <div>
                                         <div class="d-flex align-items-baseline">
-                                            <p class="text-muted me-2">ID: </p>
-                                            <input class="form-control text-muted" type="text" name="postID" value="${post.getPostID()}" readonly  />
-                                        </div>
-                                        <div class="d-flex align-items-baseline">
-                                            <p class="text-muted me-2">Title: </p>
-                                            <input class="form-control" type="text" name="Title" value="${post.getTitle()}"  />
-
+                                            <p class="text-muted me-2">Title:</p>
+                                            <input class="form-control" type="text" name="Title" value="${post.getTitle()}" />
                                         </div>
                                         <c:if test="${! empty errorMessage1}">
-                                            <h5  class="text-danger text-start fw-bold">${errorMessage1}</h5>
+                                            <h5 class="text-danger text-start fw-bold">${errorMessage1}</h5>
                                         </c:if>
                                         <div>
-                                            <p class="text-muted">Brief: </p>
-                                            <textarea class="form-control text-muted" rows="4" cols="50" name="Brief" value="${post.getBriefInfo()}">${post.getBriefInfo()}</textarea>
+                                            <p class="text-muted">Brief:</p>
+                                            <textarea class="form-control text-muted" rows="4" cols="50" name="Brief">${post.getBriefInfo()}</textarea>
                                         </div>
                                         <c:if test="${! empty errorMessage2}">
-                                            <h5  class="text-danger text-start fw-bold">${errorMessage2}</h5>
+                                            <h5 class="text-danger text-start fw-bold">${errorMessage2}</h5>
                                         </c:if>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <c:if test="${post.isStatusPost()}">
-
-                                                <select class="form-select text-primary mt-3 mb-4 w-75" name="status" >
+                                            <p>Status</p>
+                                            <select class="form-select text-primary mt-3 mb-4 w-75" name="status">
+                                                <c:if test="${post.isStatusPost()}">
                                                     <option value="true" selected>Active</option>
                                                     <option value="false">Inactive</option>
-                                                </select>
-                                            </c:if>
-                                            <c:if test="${!post.isStatusPost()}">
-
-                                                <select class="form-select text-primary mt-3 mb-4 w-75" name="status" >
+                                                </c:if>
+                                                <c:if test="${!post.isStatusPost()}">
                                                     <option value="false">Inactive</option>
                                                     <option value="true" selected>Active</option>
-                                                </select>
-                                            </c:if>
+                                                </c:if>
+                                            </select>
                                         </div>
                                         <div class="col-md-4">
-                                            <select class="form-select text-primary mt-3 mb-4 w-75" name="postCategory"  class="form-select">
+                                            <p>Category</p>
+                                            <select class="form-select text-primary mt-3 mb-4 w-75" name="postCategory">
                                                 <c:forEach var="c" items="${categoryList}">
                                                     <option value="${c}">${c}</option>
                                                 </c:forEach>
                                             </select>
-                                        </div>   
+                                        </div>
                                     </div>
                                     <div>
-                                        <p class="text-muted">Content: </p>
-                                        <textarea class="form-control text-muted" rows="6" cols="50" value="${post.getContent()}" name="Content">${post.getContent()}</textarea>
+                                        <p class="text-muted">Content:</p>
+                                        <textarea class="form-control text-muted" rows="6" cols="50" name="Content">${post.getContent()}</textarea>
                                     </div>
-                                    <c:if test="${! empty errorMessage2}">
-                                        <h5  class="text-danger text-start fw-bold">${errorMessage3}</h5>
+                                    <c:if test="${! empty errorMessage3}">
+                                        <h5 class="text-danger text-start fw-bold">${errorMessage3}</h5>
                                     </c:if>
 
                                     <div class="d-flex justify-content-center">
@@ -264,12 +225,6 @@ boolean isManager = false;
                                         <input class="btn btn-primary mt-3 w-25" type="submit" value="${event}" name="event" />
                                     </div>
 
-                                    <div class="d-flex justify-content-between bg-light rounded p-4 mt-4 mb-4">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-2 avatar" src="${avatar}" alt="">
-                                            <span>${author}</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </form>
                             <!-- Blog Detail End -->
@@ -277,41 +232,65 @@ boolean isManager = false;
                     </div>
                 </div>
 
-                <!-- Footer Start -->
-                <div class="mt-4">
-                    <jsp:include page="layout/footer.jsp" />
-                </div>
-                <!-- Footer End -->
+                <!-- Content End -->
+
             </div>
-            <!-- Content End -->
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        </div>
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+                integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+                crossorigin="anonymous"
+            ></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+                integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+                crossorigin="anonymous"
+            ></script>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-            crossorigin="anonymous"
-        ></script>
+            <!-- Template Javascript -->
+            <script>
+                                            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
+                                                var sidebar = document.querySelector('.sidebar');
+                                                var content = document.querySelector('.content');
 
-        <!-- Template Javascript -->
-        <script>
-            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
-                var sidebar = document.querySelector('.sidebar');
-                var content = document.querySelector('.content');
+                                                sidebar.classList.toggle('open');
+                                                content.classList.toggle('open');
 
-                sidebar.classList.toggle('open');
-                content.classList.toggle('open');
+                                                return false;
+                                            });
+            </script>
 
-                return false;
-            });
-        </script>
+            <script>
+
+
+
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            document.getElementById('imagePreview').src = e.target.result;
+                            document.getElementById('imagePreview').style.display = 'block';
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                function clearImage() {
+                    var fileInput = document.getElementById('file');
+                    var imagePreview = document.getElementById('imagePreview');
+                    fileInput.value = '';
+                    imagePreview.src = '#';
+                    imagePreview.style.display = 'none';
+                }
+
+          
+
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
     </body>
 </html>

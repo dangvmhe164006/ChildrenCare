@@ -63,7 +63,7 @@
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -148,32 +148,10 @@
                     </form>
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                           
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                        
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -194,7 +172,6 @@
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -210,20 +187,13 @@
                     <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
                         <div class="container text-center p-4">
                             <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-                            <h2 class="display-2 fw-bold text-danger">403 - ACCESS DENIED</h2>
+                            <h2 class="display-2 fw-bold text-danger">ACCESS DENIED</h2>
                             <h3 class="mb-4 text-info">Oops, You don't have permission to access this page.</h3>
-                            <p class="mb-4">A web server may return a 403 Forbidden HTTP status code in response to a request from a client for a web page or resource to indicate that the server can be reached and understood the request, but refuses to take any further action. Status code 403 responses are the result of the web server being configured to deny access, for some reason, to the requested resource by the client</p>
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="staff?event=sent-to-home">Go Back To Home</a>
+                            <a class="btn btn-primary rounded-pill py-3 px-5" href="http://localhost:9999/ChildrenCare/">Go Back To Home</a>
                         </div>
                     </div>
                 </div>
                 <!-- 403 End -->
-
-                <!-- Footer Start -->
-                <div class="mt-4">
-                    <jsp:include page="layout/footer.jsp" />
-                </div>
-                <!-- Footer End -->
             </div>
             <!-- Content End -->
 

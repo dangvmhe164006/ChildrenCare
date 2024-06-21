@@ -46,10 +46,13 @@ public class StaffScheduleDAO extends MyDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 int ScheduleID = rs.getInt("ScheduleID");
+                int staffID= rs.getInt("StaffID");
+
                 Date Workday = rs.getDate("Workday");
                 int Slot = rs.getInt("Slot");
+
                 String status = rs.getString("Status");
-                StaffSchedule ss = new StaffSchedule(ScheduleID, Slot, Workday, Slot, status);
+                StaffSchedule ss = new StaffSchedule(ScheduleID,staffID, Workday,Slot, status);
                 staffScheduleList.add(ss);
             }
             rs.close();
@@ -436,7 +439,7 @@ public class StaffScheduleDAO extends MyDAO {
         List<StaffSchedule> staffSchedules = staffScheduleDAO.getStaffUnconfirmSchedules(1, 10);
         StaffDAO staffDAO = new StaffDAO();
         for (StaffSchedule staffSchedule : staffSchedules) {
-            System.out.println(staffDAO.getStaffByStaffId(staffSchedule.getStaffID()).getProfileImage());
+            System.out.println(staffSchedule.getStaffID());
         }
     }
 }

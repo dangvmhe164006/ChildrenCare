@@ -61,7 +61,7 @@ boolean isManager = false;
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -121,44 +121,13 @@ boolean isManager = false;
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
+
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -179,7 +148,6 @@ boolean isManager = false;
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -223,7 +191,7 @@ boolean isManager = false;
 
                                                     <tr id="${l.getPostID()}" class="service p-3 " ${l.isStatusPost()}>
                                                         <th scope="row">${l.getPostID()}</th>
-                                                        <td><img src="${l.getThumbnail()}" alt="ìmg" style="width: 12rem;height: 8rem;object-fit: cover;" /></td>
+                                                        <td><img src="${l.getThumbnail()}" alt="img" style="width: 12rem;height: 8rem;object-fit: cover;" /></td>
                                                         <td>${l.getTitle()}</td>
                                                         <td>${l.getCategoryPost()}</td>
                                                         <td>${l.getBriefInfo()} </td>
@@ -235,6 +203,9 @@ boolean isManager = false;
                                                                     <c:if test="${l.isStatusPost()}"> <a href="postManage?event=hide&postId=${l.getPostID()}"><button class="button-icon me-2 showhide hide-service-button"><img src="resources/img/icon/hide.png" alt="alt"/></button></a> </c:if>
                                                                     <c:if test="${!l.isStatusPost()}"> <a href="postManage?event=show&postId=${l.getPostID()}"><button class="button-icon me-2 showhide show-service-button"><img src="resources/img/icon/visual.png" alt="alt"/></button> </c:if>
                                                                         <button class="button-icon"><a href="postDetailManage?event=update&postID=${l.getPostID()}"><img src="resources/img/icon/pen.png" alt="alt"/></a></button>
+                                                                         <button class="button-icon"><a href="postManage?event=delete&postID=${l.getPostID()}"><img src="resources/img/icon/delete.png" alt="alt"/></a></button>
+
+
                                                                 </div></div>
                                                         </td>
                                                     </tr>
@@ -245,22 +216,8 @@ boolean isManager = false;
                                         <form action="postManage">
                                             <div class="container d-flex justify-content-between">
                                                 <input type="text" name="postTitle" placeholder="Search Title" class="form-control w-25 mx-3" value="${postTitle}" />
-                                                <select class="form-select text-primary w-25 me-3" name="postAuthor" >
-                                                    <c:forEach var="a" items="${authorList}">
-                                                        <option value="${a.getUserID()}">${a.getFirstName()} ${a.getLastName()} </option>
-                                                    </c:forEach>
-                                                </select>
-                                                <select class="form-select text-primary w-25 me-3" name="postCategory" >
-                                                    <c:forEach var="c" items="${categoryList}">
-                                                        <option value="${c}">${c} </option>
-                                                    </c:forEach>
-                                                </select>
-                                                <select class="form-select text-primary w-25 me-3" name="sortBy" >
-                                                    <c:forEach var="s" items="${sortList}">
-                                                        <option value="${s}">${s}</option>
-                                                    </c:forEach>
-                                                </select>
                                             </div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -274,13 +231,6 @@ boolean isManager = false;
                     </div>
                 </div>
 
-                <!-- Blank End -->
-
-                <!-- Footer Start -->
-                <div class="mt-4">
-                    <jsp:include page="layout/footer.jsp" />
-                </div>
-                <!-- Footer End -->
             </div>
             <!-- Content End -->
         </div>
