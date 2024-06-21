@@ -40,33 +40,16 @@
                                 <span>${author}</span>
                             </div>
                             <div class="d-flex align-items-center">
-                                <!--                            <span class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</span>
-                                                            <span class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</span>-->
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Sidebar Start -->
                 <div class="col-lg-4">
-                    <!-- Category Start -->
                     <div class="mb-5">
-                       <!--  <%PostDAO postDAO = new PostDAO();%>
-                        <form action="blogPage">
-                            <input id="post-title" type="text" name="postTitle" placeholder="Search" class="form-select text-primary mt-3 search"/>
-                            <select class="form-select text-primary mt-3" name="postCategory">
-                                <option selected value="">Blog Category</option>
-                                <%List<String> categoryPostList = postDAO.allCategoryPost();
-            for (String categoryPost : categoryPostList) {%>
-                                <option value="<%=categoryPost%>"><%=categoryPost%></option>
-                                <%}%>
-                            </select>
-                        </form>
-                        <br>-->
                         <jsp:include page="recentBlog.jsp"/>
-
                     </div>
-
-                    <!-- Category End -->
                 </div>
                 <!-- Sidebar End -->
             </div>

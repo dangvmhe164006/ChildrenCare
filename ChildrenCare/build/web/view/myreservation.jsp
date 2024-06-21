@@ -19,7 +19,7 @@
         <%@ page import="java.util.List,java.util.ArrayList,java.text.SimpleDateFormat,jakarta.servlet.http.HttpSession" %>
         <%@ page import="vn.fpt.edu.model.Reservation,vn.fpt.edu.model.Service,vn.fpt.edu.model.Staff,vn.fpt.edu.model.User"%>
         <%@ page import="vn.fpt.edu.Database.ReservationDAO,vn.fpt.edu.Database.ServiceDAO,vn.fpt.edu.Database.StaffDAO,vn.fpt.edu.Database.UserDAO"%>
-        <header style="margin-bottom:30px">
+        <header>
             <jsp:include page="layout/Header.jsp"/>
         </header>
 
@@ -43,9 +43,11 @@
         <main>  
 
             <section>
+                <h1 class="text-center" style="margin-bottom: 50px;margin-top: 50px">Medical Appoinment</h1>
+      
 
-                <table class="table table-striped table-hover" style="margin-top: 50px";>
-                    <thead class="bg-light ">
+                <table class="table align-middle mb-0 bg-white table-hover">
+                    <thead class="bg-light table-blue ">
                         <tr class="text-center">
                             <th>ID</th>
                             <th>Created Date</th>
@@ -60,17 +62,24 @@
                     <tbody id="reservationTable">
 
                     </tbody>
-                </table>           
+                </table>
+                <%-- pagination --%>
+                <nav aria-label="..." style="margin: 20px; text-align: center;">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-outline-secondary btn-sm border-0" type="button" id="previousPageButton">&lt;&lt;</button>
+
+                        <select class="pagination justify-content-center " name="pageOption" id="pageOption">
+                        </select>
+                        <button class="btn btn-outline-secondary btn-sm border-0" type="button" id="nextPageButton">&gt;&gt;</button>
+
+                    </div>
+                </nav>
             </section>
+
             <aside>
                 <!-- Sidebar content goes here -->
             </aside>
         </main>
-        <div style="margin-top:300px">
-            <footer>
-                <jsp:include page="layout/footer.jsp"/>
-            </footer>
-        </div>
 
         <script>
             let totalPagePagination = <%=reservationDAO.getTotalPagination(userID,5)%>;
@@ -177,7 +186,7 @@
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const reservationsData = xhr.responseText;
                         const table = document.getElementById("reservationTable");
-
+                        
                         // Get the table element
                         const temp = document.querySelector(".table");
 
