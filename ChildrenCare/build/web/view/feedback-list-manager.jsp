@@ -152,44 +152,13 @@
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
+                  
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                      
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                        
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -210,7 +179,6 @@
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -346,9 +314,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Blank End -->
-
-                <!-- Footer Start -->
+              
                 <div class="mt-4">
                 </div>
                 <!-- Footer End -->

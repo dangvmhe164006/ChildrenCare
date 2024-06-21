@@ -241,7 +241,6 @@
 
 
         <jsp:include page="layout/footer.jsp"/>
-        <!--<script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>-->
         <script>
             var reservationStatus = "${reservation.status}";
             var cancelButton = document.getElementById("cancelButton");

@@ -114,12 +114,22 @@
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
+                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <form class="d-none d-md-flex ms-4">
+                        <input
+                            class="form-control border-0"
+                            type="search"
+                            placeholder="Search"
+                            />
+                    </form>
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                        
+
                         </div>
                         <div class="nav-item dropdown">
-                           
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -224,10 +234,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-4">
+
+                    </div>
                 </div>
+
             </div>
+
             <!-- JavaScript Libraries -->
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
             <script
                 src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
                 integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -238,6 +255,7 @@
                 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
                 crossorigin="anonymous"
             ></script>
+
             <!-- Template Javascript -->
             <script>
                 document.querySelector('.sidebar-toggler').addEventListener('click', function () {
