@@ -19,6 +19,7 @@
                     <input maxlength="30" placeholder="Password" type="password" id="lpassword" name="lpassword" required><br><br>
                     <!-- Forgot password link -->
                     <a href="resetpassword?action=forgetpassword">Forgot password?</a><br><br>
+                    <a href="${pageContext.request.contextPath}/staff?event=sent-to-login">Login staff?</a><br><br>
                     <!-- Login button -->
                     <button id="Login-button" class="Login-button" onclick="attemptLogin()">Login</button>
                     <!-- Login result message -->

@@ -38,8 +38,7 @@
                             <input type="password" name="pass" id="pass" class="form-control py-2 mb-3" placeholder="Enter your password">
                             <input type="submit" value="Log In" class="btn btn-info text-light w-100 rounded-pill py-2 mt-5"style="background-color: rgb(70,130,169);"/>
                         </form>
-                        
-                        
+
                     </div>
                 </div>
             </div>
