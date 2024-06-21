@@ -64,11 +64,6 @@
                 margin-bottom: 5px;
             }
 
-            /*            .card:hover {
-                            border: 1px solid #3699ff;
-                            transform: translateZ(-3px);
-                            cursor: pointer;
-                        }*/
 
             .border-m {
                 border: none;
@@ -420,7 +415,7 @@
                             <button type="button" class="btn btn-block border-m btn-continue text-white" data-bs-toggle="modal"
                                     data-bs-target="#addPatientModal">
                                 <span class="d-flex align-items-center">
-                                   Add profile
+                                    Add profile
                                 </span>
                             </button>
                         </div>
@@ -521,19 +516,19 @@
                                         <input type="text" class="form-control" id="patientAddress" 
                                                name="address" placeholder="Enter address" value="${sessionScope.user.address}">
                                     </div>
-                                  
+
                                 </div>
                             </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger border-m" data-bs-dismiss="modal">
                                     <span class="d-flex align-items-center">
-                                         Close
+                                        Close
                                     </span> 
                                 </button>
                                 <button type="submit" class="btn btn-continue text-white">
                                     <span class="d-flex align-items-center">
-                                         Add
+                                        Add
                                     </span>
                                 </button>
                             </div>

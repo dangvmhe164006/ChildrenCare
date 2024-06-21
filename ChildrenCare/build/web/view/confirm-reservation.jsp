@@ -246,10 +246,7 @@
                                                 <input class="form-check-input" type="radio" Checked="True" name="payment" value="offline">
                                                 <label  for="" class="form-check-label detail-info">Pay at center</label><br>
                                             </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" id="bankCode" name="payment" value="vnpay">
-                                                <label  for="" class="form-check-label detail-info">Payment via VNPpay</label><br>
-                                            </div>
+                                         
                                         </c:otherwise>
                                     </c:choose>
 
