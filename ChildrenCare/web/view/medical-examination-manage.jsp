@@ -65,7 +65,7 @@
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
