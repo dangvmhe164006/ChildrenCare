@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import vn.fpt.edu.model.Staff;
 
-
 public class StaffDAO extends MyDAO {
 
     public List<Staff> getAllStaffs() {

@@ -4,8 +4,6 @@ package vn.fpt.edu.Database;
 import java.util.ArrayList;
 import java.util.List;
 import vn.fpt.edu.model.Setting;
-import vn.fpt.edu.model.Slider;
-
 
 public class SettingDAO extends MyDAO {
 
