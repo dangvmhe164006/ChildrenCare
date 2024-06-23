@@ -1,6 +1,5 @@
 package vn.fpt.edu.Database;
 
-import vn.fpt.edu.Database.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
