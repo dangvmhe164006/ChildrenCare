@@ -2,10 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.nio.charset.StandardCharsets"%>
-<%@page import="com.vnpay.common.Config"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.List"%>
@@ -241,7 +238,6 @@
 
 
         <jsp:include page="layout/footer.jsp"/>
-        <!--<script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>-->
         <script>
             var reservationStatus = "${reservation.status}";
             var cancelButton = document.getElementById("cancelButton");

@@ -64,7 +64,7 @@
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -152,44 +152,12 @@
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                          
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                           
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -210,7 +178,6 @@
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -224,11 +191,6 @@
                 <!-- Blank Start -->
                 <div class="container-fluid pt-4 px-4">
                     <div class="d-flex justify-content-around">
-                        <div class="" >
-                            <button style="border: 0px; border-radius: 5px; background-color: #6994eb; font-family: fantasy" id="sortButton" onclick="toggleSort()">
-                                Unsort
-                            </button>
-                        </div>
                         <div class="border-0">
                             <div class="">
                                 <% List<Staff> staffList= staffDAO.getStaffsByRole("doctor"); %>
@@ -316,9 +278,10 @@
                                                             <span class="badge bg-primary"  id="doctorBadge-${reservation.getReservationID()}"><%= staffa.getStaffName() %></span>
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                            <p>Doctor</p>
                                                             <c:forEach var="listdoctor" items="<%= staff %>">
                                                                 <li><a class="dropdown-item status-change" href="#" onclick="changeDoctor(this, ${listdoctor.getStaffID()},${reservation.getReservationID()})">${listdoctor.getStaffName()}</a></li>
-                                                                </c:forEach>
+                                                             </c:forEach>
                                                         </ul>
 
                                                     </div>
@@ -362,13 +325,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Blank End -->
-
-                <!-- Footer Start -->
-                <div class="mt-4">
-                    <jsp:include page="layout/footer.jsp" />
-                </div>
-                <!-- Footer End -->
+            
             </div>
             <!-- Content End -->
 
@@ -388,221 +345,102 @@
         ></script>
         <script>
                                                                 $(document).ready(function () {
-                                                                    // Sự kiện onmouseenter cho "Fillter"
                                                                     $('.nav-item.dropdown').on('mouseenter', function () {
                                                                         $(this).find('.dropdown-menu').first().stop(true, true).slideDown(200);
                                                                     });
 
-                                                                    // Sự kiện onmouseleave để ẩn dropdown menu
                                                                     $('.nav-item.dropdown').on('mouseleave', function () {
                                                                         $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
                                                                     });
                                                                 });
 
         </script>
-        <!-- Template Javascript -->
-        <script>
-            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
-                var sidebar = document.querySelector('.sidebar');
-                var content = document.querySelector('.content');
+        <script>           
+        function loadPageServicesBFill(page, action) {
+        var customerNameInput = document.getElementById('customerName');
+        var customerName = customerNameInput.value;
+        var staff = document.querySelector('select[name="staff"]').value;
 
-                sidebar.classList.toggle('open');
-                content.classList.toggle('open');
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
+                + "&staffId=" + staff + '&action=' + action + '&name=' + encodeURIComponent(customerName));
 
-                return false;
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                document.querySelector('#reservation-list').innerHTML = xhr.responseText;
+                document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
+            } else {
+                console.error('Error:', xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Error:', xhr.status);
+        };
+
+        xhr.send();
+    }
+
+    // Event listener for doctor selection dropdown
+    document.addEventListener("DOMContentLoaded", function () {
+        var searchInputs = document.querySelectorAll('select[name="staff"]');
+        searchInputs.forEach(function (input) {
+            input.addEventListener('change', function () {
+                var page = 1; 
+                var action = 'fillterdoctor';
+                loadPageServicesBFill(page, action);
             });
-            // Khởi tạo biến để theo dõi trạng thái của nút
-            var isSorted = false;
+        });
+
+        var customerNameInput = document.getElementById('customerName');
+        customerNameInput.addEventListener('input', function () {
+            var page = 1; 
+            var action = 'searchname'; 
+            loadPageServicesBFill(page, action);
+        });
+    });
+    
+ document.addEventListener('DOMContentLoaded', function () {
             var paginationButtons = document.querySelectorAll('.pagination-btn');
             paginationButtons.forEach(function (button) {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault(); // Ngăn chặn trình duyệt chuyển đến URL trong thẻ 'a'
-
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
                     if (!this.classList.contains('active')) {
                         document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
-                            if (paginationBtn.classList.contains('active')) {
-                                paginationBtn.classList.remove('active');
-                            }
+                            paginationBtn.classList.remove('active');
                         });
-                        this.classList.add('active');
-
                         var page = this.dataset.page;
-                        if (isSorted) {
-                            loadPageServices(page, "sort"); // Gọi hàm loadServices() để tải danh sách dịch vụ của trang được chọn
-                        } else {
-                            loadPageServices(page, "");
-                        }
-
+                        var action = 'reservation-list-paging';
+                        loadPageServicesBFill(page, action);
                     }
                 });
             });
-
-
-            // Hàm thực hiện việc thay đổi giá trị của nút và gọi loadPageServices
-            function toggleSort() {
-                // Lấy thẻ button bằng id
-                var sortButton = document.querySelector('#sortButton');
-
-                if (isSorted) {
-                    // Nếu đã được sắp xếp (sort), thay đổi giá trị và gọi loadPageServices với giá trị "unsort"
-                    sortButton.textContent = "Unsort";
-                    loadPageServices(1, "");
-                } else {
-                    // Nếu chưa được sắp xếp (unsort), thay đổi giá trị và gọi loadPageServices với giá trị "sort"
-                    sortButton.textContent = "Sort";
-                    loadPageServices(1, "sort");
-                }
-
-                // Đảo ngược trạng thái của biến
-                isSorted = !isSorted;
-            }
-            // Hàm tải dữ liệu của trang bằng Ajax
-            function loadPageServices(page, sortType) {
-                // Gửi yêu cầu Ajax đến Servlet với tham số trang
-
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'reservationcontactmanager?event=reservation-list-paging&page=' + page
-                        + '&sortstatus=' + sortType);
-
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        // Xử lý dữ liệu trả về từ máy chủ và cập nhật nội dung trang
-                        document.querySelector('#sort-list').innerHTML = xhr.responseText;
-                    } else {
-                        console.error('Error:', xhr.status);
-                    }
-                };
-
-                xhr.onerror = function () {
-                    console.error('Error:', xhr.status);
-                };
-
-                xhr.send();
-            }
+        });
+          
             function changestatus(a, uid) {
                 var text = a.textContent;
                 var textchange = document.getElementById("statusBadge-" + uid);
                 textchange.textContent = text;
-
-                // Gửi yêu cầu Ajax đến servlet
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "reservationcontactmanager?event=updatestatus&status=" + text + "&reservationID=" + uid, true);
-
                 xhr.onload = function () {
-
                 };
-
                 xhr.onerror = function () {
-
                 };
-
                 xhr.send();
             }
             function changeDoctor(a, doctorId, reservationID) {
                 var text = a.textContent;
                 var textchange = document.getElementById("doctorBadge-" + reservationID);
                 textchange.textContent = text;
-
-                // Gửi yêu cầu Ajax đến servlet
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "reservationcontactmanager?event=updatedoctor&doctorID=" + doctorId + "&reservationID=" + reservationID, true);
-
                 xhr.onload = function () {
-
                 };
-
                 xhr.onerror = function () {
-
                 };
-
                 xhr.send();
             }
-
-            document.addEventListener("DOMContentLoaded", function () {
-                var searchInputs = document.querySelectorAll('select[name="staff"]');
-                searchInputs.forEach(function (input) {
-                    input.addEventListener('change', function () {
-
-                        loadPageServicesBFill(1, 'fillterdoctor');
-
-
-                    });
-                });
-                var customerNameInput = document.getElementById('customerName');
-                customerNameInput.addEventListener('input', function(){loadPageServicesBFill(1, 'searchname'); });
-            });
-
-
-            // Hàm tải dữ liệu của trang bằng Ajax
-            function loadPageServicesBFill(page, action) {
-                 var customerNameInput = document.getElementById('customerName');
-                // Gửi yêu cầu Ajax đến Servlet với tham số trang
-                var customerName = customerNameInput.value;
-                var staff = document.querySelector('select[name="staff"]').value;
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
-                        + "&staffId=" + staff + '&action=' + action + '&name=' + customerName);
-
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        // Xử lý dữ liệu trả về từ máy chủ và cập nhật nội dung trang
-                        document.querySelector('#reservation-list').innerHTML = xhr.responseText;
-                        //console.log(xhr.getResponseHeader('pagination'));
-                        document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
-                    } else {
-                        console.error('Error:', xhr.status);
-                    }
-                };
-
-                xhr.onerror = function () {
-                    console.error('Error:', xhr.status);
-                };
-
-                xhr.send();
-            }
-            function paging(page, action) {
-                var customerNameInput = document.getElementById('customerName');
-                // Gửi yêu cầu Ajax đến Servlet với tham số trang
-                var customerName = customerNameInput.value;
-                var staff = document.querySelector('select[name="staff"]').value;
-                // Gửi yêu cầu Ajax đến máy chủ để lấy danh sách dịch vụ
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
-                        + "&staffId=" + staff + '&action=' + action + '&name=' + customerName);
-
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        // Xử lý dữ liệu trả về từ máy chủ và cập nhật nội dung trang
-                        document.querySelector('#reservation-list').innerHTML = xhr.responseText;
-                        document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
-                    } else {
-                        console.error('Error:', xhr.status);
-                    }
-                };
-
-                xhr.onerror = function () {
-                    console.error('Error:', xhr.status);
-                };
-
-                xhr.send();
-
-                var paginationButtons = document.querySelectorAll('.pagination-btn');
-                paginationButtons.forEach(function (button) {
-                    button.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        if (!this.classList.contains('active')) {
-                            document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
-                                if (paginationBtn.classList.contains('active')) {
-                                    paginationBtn.classList.remove('active');
-                                }
-                            });
-                            this.classList.remove('inactive');
-                            this.classList.add('active');
-                        }
-                    });
-                });
-            }
-            
         </script>
     </body>
 </html>

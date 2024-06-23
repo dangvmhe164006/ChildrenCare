@@ -154,16 +154,7 @@
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
+                  
                     <div class="navbar-nav align-items-center ms-auto">
                     
                         <%if(curStaff!=null){%>

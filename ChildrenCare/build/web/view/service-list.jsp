@@ -16,7 +16,7 @@
             crossorigin="anonymous"
             />
         <link rel="stylesheet" href="./resources/css/services-style.css">
-        <title>Medilab</title>
+        <title>ChildrenCare</title>
     </head>
     <body>
         <jsp:include page="./layout/Header.jsp" />
@@ -43,7 +43,6 @@
                             <option value="<%=staff.getStaffID()%>"><%=staff.getFullName()%></option>
                             <%}%>
                         </select>
-                        <a href="service?event=to-contact-link" class="mt-3 ms-2">Contact Us</a>
                     </div>
                 </div>
                 <div class="col-md-9" id="service-list">

@@ -93,10 +93,6 @@
         <servlet-class>vn.fpt.edu.controller.StaffListController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PaymentController</servlet-name>
-        <servlet-class>vn.fpt.edu.controller.PaymentController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DocDetailController</servlet-name>
         <servlet-class>vn.fpt.edu.controller.DocDetailController</servlet-class>
     </servlet>
@@ -123,6 +119,10 @@
     <servlet>
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>vn.fpt.edu.controller.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>vn.fpt.edu.controller.PaymentController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServiceController</servlet-name>
@@ -241,10 +241,6 @@
         <url-pattern>/staffList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PaymentController</servlet-name>
-        <url-pattern>/pay/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>DocDetailController</servlet-name>
         <url-pattern>/docDetail</url-pattern>
     </servlet-mapping>
@@ -274,6 +270,10 @@
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/pay/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

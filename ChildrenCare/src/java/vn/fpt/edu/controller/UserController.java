@@ -119,7 +119,9 @@ public class UserController extends HttpServlet {
             }
 
             if (action.equals("my-children")) {
-                int userID = users.getUserID();
+               if(users!=null){
+                    int userID = users.getUserID();
+                      
                 String serviceID = request.getParameter("serviceID");
                 ServiceDAO serviceDAO = new ServiceDAO();
                 Service service = serviceDAO.getServiceByID(serviceID);
@@ -141,6 +143,12 @@ public class UserController extends HttpServlet {
                 List<Relationship> reList = reDAO.getRelationshipList();
                 request.setAttribute("relationship", reList);
                 request.getRequestDispatcher("./view/choose-children.jsp").forward(request, response);
+
+               }else{
+                   response.sendRedirect("home");
+               }
+                
+            
             }
 
             if (action.equals("add-child")) {

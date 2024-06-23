@@ -116,10 +116,10 @@
 
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                        
+
                         </div>
                         <div class="nav-item dropdown">
-                           
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -224,10 +224,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-4">
+
+                    </div>
                 </div>
+
             </div>
+
             <!-- JavaScript Libraries -->
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
             <script
                 src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
                 integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -238,6 +245,7 @@
                 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
                 crossorigin="anonymous"
             ></script>
+
             <!-- Template Javascript -->
             <script>
                 document.querySelector('.sidebar-toggler').addEventListener('click', function () {
