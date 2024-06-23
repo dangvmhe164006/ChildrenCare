@@ -1,13 +1,9 @@
 
 package vn.fpt.edu.Database;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import vn.fpt.edu.model.Contact;
-import vn.fpt.edu.model.User;
-
 
 public class ContactDAO extends MyDAO {
 
