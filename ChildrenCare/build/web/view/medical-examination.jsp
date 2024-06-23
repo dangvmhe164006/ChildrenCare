@@ -65,7 +65,7 @@
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>Medilab
+                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -85,7 +85,7 @@
                             <span><%=curStaff.getRole()%></span>
                         </div>
                     </div>
-                     <%if(isStaff){%>    
+                    <%if(isStaff){%>    
                     <div class="navbar-nav w-100  text-light">
                         <a href="staff?event=send-to-reservations-list" class="nav-item nav-link"
                            ><i class="fas fa-list-alt"></i>Reservations List</a
@@ -98,7 +98,7 @@
                     </div>
                     <div class="navbar-nav w-100  text-light">
                         <a href="staff?event=send-to-schedules" class="nav-item nav-link">
-                          <i class="bi bi-calendar3"></i>Schedules
+                            <i class="bi bi-calendar3"></i>Schedules
                         </a>
                     </div>
                     <%}%>
@@ -153,22 +153,13 @@
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input
-                            class="form-control border-0"
-                            type="search"
-                            placeholder="Search"
-                            />
-                    </form>
+
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                           
+
                         </div>
                         <div class="nav-item dropdown">
-                           
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -213,8 +204,8 @@
                                 <div class="col-md-3">
                                     <input class="form-control" name="patientName" id="patientName" type="search" placeholder="Search Child Name" />
                                 </div>
-                            
-                            <div class="col-md-4 px-4 d-flex">
+
+                                <div class="col-md-4 px-4 d-flex">
                                     <div class="input-group text-black-50">
                                         <input type="date" class="form-control" name="from" id="from">
                                         <span class="input-group-text">to</span>
@@ -226,7 +217,7 @@
                                         <option selected value="">Service</option>
                                         <%List<Integer> list = medicalExaminationDAO.getListServiceIDsByStaffID(curStaff.getStaffID());
                                         for (Integer integer : list) {%>
-                                            <option value="<%=integer%>"><%=serviceDAO.getServiceByID(integer + "").getTitle()%></option>
+                                        <option value="<%=integer%>"><%=serviceDAO.getServiceByID(integer + "").getTitle()%></option>
                                         <%}%>
                                     </select>
                                 </div>
@@ -298,13 +289,9 @@
                         </div>
                     </div>
                     <!-- Blank End -->
-
-                    <!-- Footer End -->
                 </div>
                 <!-- Content End -->
-
             </div>
-
             <!-- JavaScript Libraries -->
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
             <script src="./resources/js/medical-examination-script.js"></script>

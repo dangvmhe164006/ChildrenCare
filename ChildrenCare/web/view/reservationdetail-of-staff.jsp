@@ -302,11 +302,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Blank End -->
-
-                <!-- Footer Start -->
-               
-                <!-- Footer End -->
+             
             </div>
             <!-- Content End -->
 

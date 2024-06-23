@@ -17,10 +17,6 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                         <h1 class="logo me-auto">Childrencare</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                        </p>
                     </div>
                     <!-- Grid column -->
 
@@ -28,15 +24,15 @@
 
                     <!-- Grid column -->
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Useful Links</h6>
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Link</h6>
                         <p>
-                            <a class="text-white">Finding a doctors</a>
+                            <a class="text-white">Doctor</a>
                         </p>
                         <p>
-                            <a class="text-white">Finding a packages</a>
+                            <a class="text-white">Service</a>
                         </p>
                         <p>
-                            <a class="text-white">BrandFlow</a>
+                            <a class="text-white">Blog</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -46,20 +42,9 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 font-weight-bold">
-                            About
+                           
                         </h6>
-                        <p>
-                            <a class="text-white">About us</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Contact</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Blog</a>
-                        </p>
-                        <p>
-                            <a class="text-white">Help</a>
-                        </p>
+                      
                     </div>
 
                     <!-- Grid column -->
@@ -69,8 +54,8 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                         <h6 class="text-uppercase mb-4 font-weight-bold">Adress:</h6>
                         <p><i class="fas fa-home mr-3"></i> Ha Noi, Vietnam</p>
-                        <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> 0000000</p>
+                        <p><i class="fas fa-envelope mr-3"></i> childrencare@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3"></i> 099997777</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -87,7 +72,7 @@
                     <div class="col-md-7 col-lg-8 text-center text-md-start">
                         <!-- Copyright -->
                         <div class="p-3">
-                            © 2020 Copyright: ChildrenCare
+                           
                         </div>
                         <!-- Copyright -->
                     </div>
