@@ -6,7 +6,6 @@ import vn.fpt.edu.Database.ChildrenDAO;
 import vn.fpt.edu.Database.ReservationDAO;
 import vn.fpt.edu.Database.ServiceDAO;
 import vn.fpt.edu.Database.StaffDAO;
-import com.vnpay.common.Config;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -94,77 +93,11 @@ public class CheckResultController extends HttpServlet {
                     fields.put(fieldName, fieldValue);
                 }
             }
-            String vnp_SecureHash = request.getParameter("vnp_SecureHash");
-            if (fields.containsKey("vnp_SecureHashType")) {
-                fields.remove("vnp_SecureHashType");
-            }
-            if (fields.containsKey("vnp_SecureHash")) {
-                fields.remove("vnp_SecureHash");
-            }
-            String signValue = Config.hashAllFields(fields);
-            if (signValue.equals(vnp_SecureHash)) {
-                boolean checkOrderId = false; // Giá trị của vnp_TxnRef tồn tại trong CSDL của merchant
-                String vnp_TxnRef = request.getParameter("vnp_TxnRef");
-                String reservationIDStr = vnp_TxnRef.substring(6);
-                int reservationID = Integer.parseInt(reservationIDStr);
-                ReservationDAO reservationDAO = new ReservationDAO();
-                reservationDAO.updateDatabase();
-                Reservation reservation = reservationDAO.getReservationByID(reservationID);
-                if (reservation != null) {
-                    checkOrderId = true;
-                }
-                boolean checkAmount = false; //Kiểm tra số tiền thanh toán do VNPAY phản hồi(vnp_Amount/100) với số tiền của đơn hàng merchant tạo thanh toán: giả sử số tiền kiểm tra là đúng.
-                String vnp_AmountStr = request.getParameter("vnp_Amount");
-                int vnp_Amount = Integer.parseInt(vnp_AmountStr);
-                if (vnp_Amount == (int) Math.round(reservation.getCost()) * 100 * 24000) {
-                    checkAmount = true;
-                }
-                ServiceDAO serviceDAO = new ServiceDAO();
-                Service service = serviceDAO.getServiceByID(String.valueOf(reservation.getServiceID()));
-                StaffDAO staffDAO = new StaffDAO();
-                Staff doctor = staffDAO.getStaffByStaffId(reservation.getStaffID());
-                ChildrenDAO childrenDAO = new ChildrenDAO();
-                Children children = childrenDAO.getChildrenByChildrenId(String.valueOf(reservation.getChildID()));
-                CategoryServiceDAO cateDAO = new CategoryServiceDAO();
-                CategoryService cate = cateDAO.getCategoryServiceByID(String.valueOf(service.getServiceID()));
-                request.setAttribute("reservation", reservation);
-                request.setAttribute("service", service);
-                request.setAttribute("doctor", doctor);
-                request.setAttribute("children", children);
-                request.setAttribute("cate", cate);
-                boolean checkOrderStatus = false;
-                if(reservation.getStatus().equals("pending")) {
-                    checkOrderStatus = true;
-                }
-                if (checkOrderId) {
-                    if (checkAmount) {
-                        if (checkOrderStatus) {
-                            if ("00".equals(request.getParameter("vnp_ResponseCode"))) {
-                                User users = (User) session.getAttribute("user");
-                                reservation.setStatus("waiting for examination");
-                                reservationDAO.update(reservation);
-                                request.getSession().setAttribute("message", "Payment successfully");
-                                Thread emailThread = new Thread(() -> {
-                                    Mail.sendEmail(users.getEmail(), "Information about your reservations in Medilab", Mail.setInfo(reservation,service,doctor,children,cate));
-                                });
-                                emailThread.start();
-                            } else {
-                                request.getSession().setAttribute("message", "Payment error");
-                            }
-                            out.print("{\"RspCode\":\"00\",\"Message\":\"Confirm Success\"}");
-                        } else {
-                            request.getSession().setAttribute("message", "Order already confirmed error");
-                        }
-                    } else {
-                        request.getSession().setAttribute("message", "Invalid Amount error");
-                    }
-                } else {
-                    request.getSession().setAttribute("message", "Order not Found error");
-                }
-
-            } else {
+         
+         
+        
                 request.getSession().setAttribute("message", "Invalid Checksum error");
-            }
+            
             request.getRequestDispatcher("./view/reservationstatus.jsp").forward(request, response);
         }
     }
