@@ -249,7 +249,6 @@
                                             </p>
                                             <p class="card-text">Slider Backlink: <input type="text" id="backlinkInput" name="backlink" value="<c:out value="${slider.backlink}" />" class="form-control" /></p>
                                         <input type="file" id="imageInput" name="image" accept="image/*" onchange="updateCarouselImage('imageInput');" class="form-control" />
-                                        <a href="<c:out value="${slider.backlink}" />" class="btn btn-primary mt-3">Go to Backlink</a>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3">Update</button>
