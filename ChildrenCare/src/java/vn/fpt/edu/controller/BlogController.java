@@ -1,9 +1,6 @@
 package vn.fpt.edu.controller;
 
-
-import vn.fpt.edu.Database.CategoryServiceDAO;
 import vn.fpt.edu.Database.PostDAO;
-import vn.fpt.edu.Database.ServiceDAO;
 import vn.fpt.edu.Database.SliderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,9 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
-import vn.fpt.edu.model.CategoryService;
 import vn.fpt.edu.model.Post;
-import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Slider;
 
 public class BlogController extends HttpServlet {
