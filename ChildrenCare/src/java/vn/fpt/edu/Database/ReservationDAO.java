@@ -3,9 +3,7 @@ package vn.fpt.edu.Database;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import vn.fpt.edu.model.Reservation;
 
