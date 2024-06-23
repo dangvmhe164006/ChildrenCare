@@ -7,13 +7,11 @@ import vn.fpt.edu.Database.ReservationDAO;
 import vn.fpt.edu.Database.ServiceDAO;
 import vn.fpt.edu.Database.StaffDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import static java.lang.System.out;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
@@ -26,8 +24,6 @@ import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Staff;
 import vn.fpt.edu.model.User;
-import org.apache.catalina.Session;
-
 
 public class CheckResultController extends HttpServlet {
 
