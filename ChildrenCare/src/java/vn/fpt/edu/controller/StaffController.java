@@ -13,8 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Staff;
 
