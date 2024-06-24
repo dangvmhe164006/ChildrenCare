@@ -1,8 +1,6 @@
 
 package vn.fpt.edu.model;
 
-import java.sql.Date;
-
 public class FeedBack {
 
     private int feedbackID;
