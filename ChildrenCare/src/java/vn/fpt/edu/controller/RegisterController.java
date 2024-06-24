@@ -8,8 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Date;
-import java.util.Base64;
-import vn.fpt.edu.model.Mail;
 import org.apache.commons.codec.digest.DigestUtils;
 import java.util.HashMap;
 import java.util.Map;
