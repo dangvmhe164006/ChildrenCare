@@ -1,11 +1,9 @@
-
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.ChildrenDAO;
 import vn.fpt.edu.Database.ContactDAO;
 import vn.fpt.edu.Database.MedicalExaminationDAO;
 import vn.fpt.edu.Database.RelationshipDAO;
-import vn.fpt.edu.Database.ReservationDAO;
 import vn.fpt.edu.Database.ServiceDAO;
 import vn.fpt.edu.Database.StaffDAO;
 import vn.fpt.edu.Database.UserDAO;
@@ -30,16 +28,11 @@ import vn.fpt.edu.model.Contact;
 import vn.fpt.edu.model.Mail;
 import vn.fpt.edu.model.MedicalExamination;
 import vn.fpt.edu.model.Relationship;
-import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Staff;
 import vn.fpt.edu.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
-/**
- *
- * @author Admin
- */
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1 MB
         maxFileSize = 1024 * 1024 * 2, // 2 MB
         maxRequestSize = 1024 * 1024 * 2 // 1 MB 
