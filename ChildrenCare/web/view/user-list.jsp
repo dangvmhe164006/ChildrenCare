@@ -193,23 +193,15 @@ boolean isStaff = false;
                                             <option <c:if test="${status == '0'}">selected</c:if> value="0">Disable</option>
                                             </select>
                                             <select name="sortBy" class="form-select" aria-label="Default select example">
-                                                <option value="UserID" ${sortBy == 'UserID' ? 'selected' : ''}>User ID</option>
                                             <option value="FirstName" ${sortBy == 'FirstName' ? 'selected' : ''}>First Name</option>
                                             <option value="LastName" ${sortBy == 'LastName' ? 'selected' : ''}>Last Name</option>
-                                            <option value="Email" ${sortBy == 'Email' ? 'selected' : ''}>Email</option>
-                                            <option value="PhoneNumber" ${sortBy == 'PhoneNumber' ? 'selected' : ''}>Phone Number</option>
                                             <option value="Status" ${sortBy == 'Status' ? 'selected' : ''}>Status</option>
                                         </select>
                                         <select name="sortOrder" class="form-select" aria-label="Default select example">
                                             <option value="asc" ${sortOrder == 'asc' ? 'selected' : ''}>Ascending</option>
                                             <option value="desc" ${sortOrder == 'desc' ? 'selected' : ''}>Descending</option>
                                         </select>
-                                        <select name="pageSize" class="form-select" aria-label="Default select example">
-                                            <option value="10" ${pageSize == 10 ? 'selected' : ''}>10</option>
-                                            <option value="20" ${pageSize == 20 ? 'selected' : ''}>20</option>
-                                            <option value="30" ${pageSize == 30 ? 'selected' : ''}>30</option>
-                                            <!-- Add more options for different page sizes as needed -->
-                                        </select>
+                         
                                         <button class="btn btn-block btn-primary mx-3" type="submit">Search</button>
                                     </div>
                                 </form>
@@ -356,28 +348,9 @@ boolean isStaff = false;
                
             </div>
             <!-- Content End -->
-
         </div>
-
         <!-- Include Bootstrap JavaScript and jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- Template Javascript -->
-        <script>
-            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
-                var sidebar = document.querySelector('.sidebar');
-                var content = document.querySelector('.content');
-
-                sidebar.classList.toggle('open');
-                content.classList.toggle('open');
-
-                return false;
-            });
-
-        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
     </body>
-
 </html>

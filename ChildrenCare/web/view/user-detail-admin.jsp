@@ -146,7 +146,6 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Messages</a></li>
                         <li><a class="dropdown-item" href="admin?action=logout">Sign out</a></li>
                     </ul>
                 </div>
@@ -345,18 +344,7 @@
 
 
                     <footer class="pt-5 d-flex justify-content-between">
-                        <span>Copyright © 2023-2024 <a href="https://github.com/BlinkWork">BlinkWork</a></span>
-                        <ul class="nav m-0">
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">Contact</a>
-                            </li>
-                        </ul>
+                        <span>Copyright © 2023-2024 <p>ChildrenCare</p></span>
                     </footer>
                 </main>
             </div>
