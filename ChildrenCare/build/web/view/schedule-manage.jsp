@@ -229,24 +229,14 @@
                                                 <%}%>
                                             <%}%>
                                         </div>
-
-
-
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <!-- Blank End -->
-
-                <!-- Footer Start -->
-                <!-- Footer End -->
             </div>
             <!-- Content End -->
-
         </div>
 
         <!-- JavaScript Libraries -->

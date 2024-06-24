@@ -289,7 +289,6 @@
                                             <%}%>
                                         <%}%>
                                     <%}else{%>
-                                        <!--<li class="pagination-btn inactive">><a href="#">&lt;</a></li>-->
                                         <li class="pagination-btn active"><span>1</span></li>
                                         <li class="pagination-btn inactive"><a href="#" data-page="2">2</a></li>
                                         <li class="pagination-btn inactive"><a href="#" data-page="3">3</a></li>
@@ -304,13 +303,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- Blank End -->
-
-             
                 <!-- Footer End -->
             </div>
             <!-- Content End -->
-
         </div>
 
         <!-- JavaScript Libraries -->
