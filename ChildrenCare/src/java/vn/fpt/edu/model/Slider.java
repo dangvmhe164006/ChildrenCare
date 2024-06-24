@@ -1,7 +1,6 @@
 
 package vn.fpt.edu.model;
 
-
 public class Slider {
 
     private int sliderID;

@@ -1,7 +1,6 @@
 
 package vn.fpt.edu.model;
 
-
 public class ServiceStaff {
     private int ServiceStaffID;
     private int ServiceID;

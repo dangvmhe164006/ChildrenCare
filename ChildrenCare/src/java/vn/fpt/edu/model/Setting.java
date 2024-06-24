@@ -1,7 +1,6 @@
 
 package vn.fpt.edu.model;
 
-
 public class Setting {
     private int settingID;
     private String type;

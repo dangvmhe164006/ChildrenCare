@@ -3,7 +3,6 @@ package vn.fpt.edu.model;
 
 import java.sql.Date;
 
-
 public class StaffSchedule {
 
     private int ScheduleID;
