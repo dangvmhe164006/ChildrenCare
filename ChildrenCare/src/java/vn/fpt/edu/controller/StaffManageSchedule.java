@@ -1,4 +1,3 @@
-
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.StaffScheduleDAO;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import vn.fpt.edu.model.StaffSchedule;
 
