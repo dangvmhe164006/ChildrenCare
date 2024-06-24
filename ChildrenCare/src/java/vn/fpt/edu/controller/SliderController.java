@@ -1,13 +1,10 @@
-
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.SliderDAO;
 import vn.fpt.edu.Database.StaffDAO;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,7 +12,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import vn.fpt.edu.model.Slider;
 import vn.fpt.edu.model.Staff;
