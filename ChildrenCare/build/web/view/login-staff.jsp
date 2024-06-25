@@ -32,7 +32,7 @@
                         <div class="p-3 mb-3" style="color: #a9001e;font-weight: 500; background-color: #ffe5ea;"><%=err%></div>
                         <%}%>
                         <form action="${pageContext.request.contextPath}/staff?event=login" method="post">
-                            <p style="font-weight: 600;">Emai</p>
+                            <p style="font-weight: 600;">Email</p>
                             <input type="email" name="email" id="email" class="form-control py-2 mb-4" placeholder="Enter your email">
                             <p style="font-weight: 600;" class="mt-3">Password</p>
                             <input type="password" name="pass" id="pass" class="form-control py-2 mb-3" placeholder="Enter your password">
