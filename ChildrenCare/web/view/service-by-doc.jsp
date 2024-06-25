@@ -49,7 +49,6 @@
                             <option value="<%=staff.getStaffID()%>"><%=staff.getFullName()%></option>
                             <%}%>
                         </select>
-                        <a href="service?event=to-contact-link" class="mt-3 ms-2">Contact Us</a>
                     </div>
                 </div>
                 <div class="col-md-9" id="service-list">
@@ -79,7 +78,6 @@
                                 <del class="price-old"> $<%=service.getOriginalPrice()%></del>
                                 <%}%>
                             </div>
-                            <!-- info-price-detail // -->
                             <br />
                             <p>
                             <form action="service?event=detail" method="POST">
@@ -102,7 +100,6 @@
             <button class="pagination-btn ms-2 inactive" data-page="<%=i%>"><%=i%></button>
             <%}%>
         </div>
-        <jsp:include page="layout/footer.jsp" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="./resources/js/service-list-script.js"></script>
         <script
