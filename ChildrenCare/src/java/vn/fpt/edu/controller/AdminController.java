@@ -2,7 +2,6 @@
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.CategoryServiceDAO;
-import vn.fpt.edu.Database.FeedBackDAO;
 import vn.fpt.edu.Database.ReservationDAO;
 import vn.fpt.edu.Database.ServiceDAO;
 import vn.fpt.edu.Database.StaffDAO;
@@ -99,7 +98,6 @@ public class AdminController extends HttpServlet {
         ReservationDAO reservationDAO = new ReservationDAO();
         CategoryServiceDAO categoryServiceDAO = new CategoryServiceDAO();
         UserDAO userDAO = new UserDAO();
-        FeedBackDAO feedBackDAO = new FeedBackDAO();
         ServiceDAO serviceDAO = new ServiceDAO();
         StaffDAO staffDAO = new StaffDAO();
 
@@ -130,12 +128,7 @@ public class AdminController extends HttpServlet {
         newlyUserReservedCount = reservationDAO.countNewlyReservedMember(startDate, endDate);
 
         // Total average star 
-        float totalAverageStar = feedBackDAO.getTotalAverageStarByDay(startDate, endDate);
-
-        // By service average star
-        for (Service service : serviceDAO.getAllServices()) {
-            averageStarByServiceID.put(service.getTitle(), feedBackDAO.getAverageStarByDayAndService(startDate, endDate, service.getServiceID()));
-        }
+   
 
         // Trending reservation
         if (startDate.getMonth() == endDate.getMonth()) {
@@ -189,7 +182,6 @@ public class AdminController extends HttpServlet {
 
             out.println("doneReservation=" + doneReservation.stream().map(Object::toString).collect(Collectors.joining(",")));
             out.println("allReservation=" + allReservation.stream().map(Object::toString).collect(Collectors.joining(",")));
-            out.println("totalAverageStar=" + totalAverageStar);
 
             out.close();
         } else {
@@ -200,7 +192,6 @@ public class AdminController extends HttpServlet {
             request.setAttribute("newlyUserReservedCount", newlyUserReservedCount);
             request.setAttribute("totalRevenues", totalRevenues);
             request.setAttribute("revenueCategory", revenueCategory);
-            request.setAttribute("totalAverageStar", totalAverageStar);
             request.setAttribute("averageStarByServiceID", averageStarByServiceID);
             request.setAttribute("doneReservation", doneReservation);
             request.setAttribute("allReservation", allReservation);

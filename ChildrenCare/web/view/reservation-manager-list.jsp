@@ -84,7 +84,7 @@
                             <span><%=curStaff.getRole()%></span>
                         </div>
                     </div>
-                     <%if(isStaff){%>    
+                    <%if(isStaff){%>    
                     <div class="navbar-nav w-100  text-light">
                         <a href="staff?event=send-to-reservations-list" class="nav-item nav-link"
                            ><i class="fas fa-list-alt"></i>Reservations List</a
@@ -97,7 +97,7 @@
                     </div>
                     <div class="navbar-nav w-100  text-light">
                         <a href="staff?event=send-to-schedules" class="nav-item nav-link">
-                          <i class="bi bi-calendar3"></i>Schedules
+                            <i class="bi bi-calendar3"></i>Schedules
                         </a>
                     </div>
                     <%}%>
@@ -122,11 +122,7 @@
                            ><i class="fas fa-list-alt"></i>Reservations Manager</a
                         >
                     </div>
-                    <div class="navbar-nav w-100 text-light">
-                        <a href="feedback" class="nav-item nav-link"
-                           ><i class="far fa-file-alt"></i>Feedback</a
-                        >
-                    </div>
+                   
                     <div class="navbar-nav w-100 text-light">
                         <a href="service?event=manage" class="nav-item nav-link"
                            ><i class="fas fa-stethoscope"></i>Services</a
@@ -154,10 +150,10 @@
 
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                          
+
                         </div>
                         <div class="nav-item dropdown">
-                           
+
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -281,7 +277,7 @@
                                                             <p>Doctor</p>
                                                             <c:forEach var="listdoctor" items="<%= staff %>">
                                                                 <li><a class="dropdown-item status-change" href="#" onclick="changeDoctor(this, ${listdoctor.getStaffID()},${reservation.getReservationID()})">${listdoctor.getStaffName()}</a></li>
-                                                             </c:forEach>
+                                                                </c:forEach>
                                                         </ul>
 
                                                     </div>
@@ -295,7 +291,7 @@
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Cancel</a></li>
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Pending</a></li>
-                                                            
+
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Waiting for examination</a></li>
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Done</a></li>
                                                         </ul>
@@ -311,21 +307,24 @@
                                     </tbody> 
 
                                 </table>
-                                <% ReservationDAO reservationdao = new ReservationDAO(); %>
-                                <div  class="d-flex justify-content-center mb-5" id="pagination-container">
+                                <% 
+ReservationDAO reservationdao = new ReservationDAO();
+int totalReservations = reservationdao.getTotalReservation();
+int totalPages = (totalReservations + 9) / 10; // Calculate the total number of pages
+                                %>
+                                <div class="d-flex justify-content-center mb-5" id="pagination-container">
                                     <span style="width: 25px;height: 25px" class="pagination-btn rounded-circle ms-2 inactive d-flex justify-content-center align-items-center" data-page="1">1</span>
-                                    <%for (int i = 2; i <=(reservationdao.getTotalReservation()+9)/10; i++) {%>
-                                    <button style="width: 25px;height: 25px" class="pagination-btn rounded-circle ms-2 inactive d-flex justify-content-center align-items-center"  data-page="<%=i%>"><%=i%></button>
-                                    <%}%>
-                                </div> 
-                                <%}%>
+                                    <% for (int i = 2; i <= totalPages; i++) { %>
+                                    <button style="width: 25px;height: 25px" class="pagination-btn rounded-circle ms-2 inactive d-flex justify-content-center align-items-center" data-page="<%=i%>"><%=i%></button>
+                                    <% } %>
+                                </div>
 
 
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
             </div>
             <!-- Content End -->
 
@@ -355,68 +354,68 @@
                                                                 });
 
         </script>
-        <script>           
-        function loadPageServicesBFill(page, action) {
-        var customerNameInput = document.getElementById('customerName');
-        var customerName = customerNameInput.value;
-        var staff = document.querySelector('select[name="staff"]').value;
+        <script>
+            function loadPageServicesBFill(page, action) {
+                var customerNameInput = document.getElementById('customerName');
+                var customerName = customerNameInput.value;
+                var staff = document.querySelector('select[name="staff"]').value;
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
-                + "&staffId=" + staff + '&action=' + action + '&name=' + encodeURIComponent(customerName));
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
+                        + "&staffId=" + staff + '&action=' + action + '&name=' + encodeURIComponent(customerName));
 
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                document.querySelector('#reservation-list').innerHTML = xhr.responseText;
-                document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
-            } else {
-                console.error('Error:', xhr.status);
-            }
-        };
-
-        xhr.onerror = function () {
-            console.error('Error:', xhr.status);
-        };
-
-        xhr.send();
-    }
-
-    // Event listener for doctor selection dropdown
-    document.addEventListener("DOMContentLoaded", function () {
-        var searchInputs = document.querySelectorAll('select[name="staff"]');
-        searchInputs.forEach(function (input) {
-            input.addEventListener('change', function () {
-                var page = 1; 
-                var action = 'fillterdoctor';
-                loadPageServicesBFill(page, action);
-            });
-        });
-
-        var customerNameInput = document.getElementById('customerName');
-        customerNameInput.addEventListener('input', function () {
-            var page = 1; 
-            var action = 'searchname'; 
-            loadPageServicesBFill(page, action);
-        });
-    });
-    
- document.addEventListener('DOMContentLoaded', function () {
-            var paginationButtons = document.querySelectorAll('.pagination-btn');
-            paginationButtons.forEach(function (button) {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (!this.classList.contains('active')) {
-                        document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
-                          paginationBtn.classList.remove('active');
-                        });
-                        var page = this.dataset.page;
-                        var action = 'reservation-list-paging';
-                        loadPageServicesBFill(page, action);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        document.querySelector('#reservation-list').innerHTML = xhr.responseText;
+                        document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
+                    } else {
+                        console.error('Error:', xhr.status);
                     }
+                };
+
+                xhr.onerror = function () {
+                    console.error('Error:', xhr.status);
+                };
+
+                xhr.send();
+            }
+
+            // Event listener for doctor selection dropdown
+            document.addEventListener("DOMContentLoaded", function () {
+                var searchInputs = document.querySelectorAll('select[name="staff"]');
+                searchInputs.forEach(function (input) {
+                    input.addEventListener('change', function () {
+                        var page = 1;
+                        var action = 'fillterdoctor';
+                        loadPageServicesBFill(page, action);
+                    });
+                });
+
+                var customerNameInput = document.getElementById('customerName');
+                customerNameInput.addEventListener('input', function () {
+                    var page = 1;
+                    var action = 'searchname';
+                    loadPageServicesBFill(page, action);
                 });
             });
-        });
-          
+            document.addEventListener('DOMContentLoaded', function () {
+                var paginationButtons = document.querySelectorAll('.pagination-btn');
+                paginationButtons.forEach(function (button) {
+                    button.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        if (!this.classList.contains('active')) {
+                            document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
+                                paginationBtn.classList.remove('active');
+                            });
+                            this.classList.add('active');
+                            var page = this.dataset.page;
+                            var action = 'reservation-list-paging';
+                            loadPageServicesBFill(page, action);
+                        }
+                    });
+                });
+            });
+
             function changestatus(a, uid) {
                 var text = a.textContent;
                 var textchange = document.getElementById("statusBadge-" + uid);

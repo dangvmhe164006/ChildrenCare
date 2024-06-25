@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin dashboard</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-        <!--<script rel="stylesheet" href="./resources/css/admin-dashboard.css"></script>-->
         <style>
             /* Custom CSS for larger circular avatar and dropdown spacing */
             .admin-avatar {
@@ -132,14 +131,11 @@
         <nav class="navbar navbar-light bg-light p-3">
             <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
                 <a class="navbar-brand" href="#">
-                    Simple Dashboard
+                  ChildrenCare
                 </a>
-                <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+             
             </div>
             <div class="col-12 col-md-4 col-lg-2">
-                <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
                 <div class="dropdown">
@@ -149,8 +145,7 @@
                         <img src="<%=admin.getProfileImage()%>" alt="Admin Avatar" class="admin-avatar">
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Messages</a></li>
+                      
                         <li><a class="dropdown-item" href="admin?action=logout">Sign out</a></li>
                     </ul>
                 </div>
@@ -173,16 +168,7 @@
                                     <span class="ml-2">Users</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="admin?action=send-to-setting-list">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-
-                                    <span class="ml-2">Settings</span>
-                                </a>
-                            </li>
+                         
                         </ul>
                     </div>
                 </nav>
@@ -194,17 +180,6 @@
 
                     <div class="container">
                         <div class="main-body">
-
-                            <!-- Breadcrumb -->
-                            <nav aria-label="breadcrumb" class="main-breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">User Detail</li>
-                                </ol>
-                            </nav>
-                            <!-- /Breadcrumb -->
-
                             <div class="row gutters-sm">
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
@@ -327,28 +302,12 @@
                         </div>
                     </div>
 
-
-                    <footer class="pt-5 d-flex justify-content-between">
-                        <span>Copyright © 2023-2024 <a href="https://github.com/BlinkWork">BlinkWork</a></span>
-                        <ul class="nav m-0">
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" aria-current="page" href="#">Privacy Policy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">Terms and conditions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </footer>
                 </main>
             </div>
         </div>
         <script src="./resources/js/user-list-admin.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script>
                                                             function  toggleStatusUser(userID) {

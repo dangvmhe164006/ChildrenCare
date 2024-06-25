@@ -453,14 +453,6 @@ boolean isStaff = false;
                 }
             });
         }
-        document.querySelector('.sidebar-toggler').addEventListener('click', function () {
-            var sidebar = document.querySelector('.sidebar');
-            var content = document.querySelector('.content');
-
-            sidebar.classList.toggle('open');
-            content.classList.toggle('open');
-
-            return false;
-        });
+  
     </script>
 </html>
