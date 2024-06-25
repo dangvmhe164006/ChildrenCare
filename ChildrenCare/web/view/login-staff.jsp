@@ -26,7 +26,7 @@
                     <div class="col-md-8">
                         <img src="resources/img/icon/pill.png" alt="alt" class="mb-4"/>
                         <h2>Login</h2>
-                        <p class="text-black-50 mb-3">Login to your account</p>
+                        <p class="text-black-50 mb-3">Login to your accoun</p>
                         <%String err = (request.getAttribute("err")+"").equals("null")?"":(request.getAttribute("err")+"");
                         if(!err.equals("")){%>
                         <div class="p-3 mb-3" style="color: #a9001e;font-weight: 500; background-color: #ffe5ea;"><%=err%></div>
