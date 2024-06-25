@@ -659,50 +659,49 @@ public class FeedBackController extends HttpServlet {
                             int rate = Integer.parseInt(ratestar);
                             // Insert the feedback into the database
                             dao.InsertFeedBack(user.getUserID(), medicalId, content, rate);
-                            out.println("<!DOCTYPE html>\n"
-                                    + "<html>\n"
-                                    + "<head>\n"
-                                    + "    <meta charset=\"UTF-8\">\n"
-                                    + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                                    + "    <style>\n"
-                                    + "        body {\n"
-                                    + "            background-color: #f2f2f2;\n"
-                                    + "            font-family: Arial, sans-serif;\n"
-                                    + "            display: flex;\n"
-                                    + "            justify-content: center;\n"
-                                    + "            align-items: center;\n"
-                                    + "            height: 100vh;\n"
-                                    + "            margin: 0;\n"
-                                    + "        }\n"
-                                    + "        \n"
-                                    + "        .container {\n"
-                                    + "            text-align: center;\n"
-                                    + "            background-color: #ffffff;\n"
-                                    + "            border-radius: 10px;\n"
-                                    + "            padding: 20px;\n"
-                                    + "            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n"
-                                    + "        }\n"
-                                    + "        \n"
-                                    + "        h1 {\n"
-                                    + "            font-size: 36px;\n"
-                                    + "            color: #333;\n"
-                                    + "        }\n"
-                                    + "        \n"
-                                    + "        p {\n"
-                                    + "            font-size: 18px;\n"
-                                    + "            color: #666;\n"
-                                    + "        }\n"
-                                    + "    </style>\n"
-                                    + "</head>\n"
-                                    + "<body>\n"
-                                    + "    <div class=\"container\">\n"
-                                    + "        <h1>Thank you</h1>\n"
-                                    + "        <p>FeedBack have been sent.</p>\n"
-                                    + " <button style=\" background-color: blue; border: 0px; border-radius: 5px;padding: 10px;\"> "
-                                    + " <a style=\"color: white; padding: 10px;text-decoration: none;\" href=\"http://localhost:9999/ChildrenCare/\">HOME</a> </button>"
-                                    + "    </div>\n"
-                                    + "</body>\n"
-                                    + "</html>");
+                            out.println("""
+                                        <!DOCTYPE html>
+                                        <html>
+                                        <head>
+                                            <meta charset="UTF-8">
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <style>
+                                                body {
+                                                    background-color: #f2f2f2;
+                                                    font-family: Arial, sans-serif;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    height: 100vh;
+                                                    margin: 0;
+                                                }
+                                                
+                                                .container {
+                                                    text-align: center;
+                                                    background-color: #ffffff;
+                                                    border-radius: 10px;
+                                                    padding: 20px;
+                                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                                }
+                                                
+                                                h1 {
+                                                    font-size: 36px;
+                                                    color: #333;
+                                                }
+                                                
+                                                p {
+                                                    font-size: 18px;
+                                                    color: #666;
+                                                }
+                                            </style>
+                                        </head>
+                                        <body>
+                                            <div class="container">
+                                                <h1>Thank you</h1>
+                                                <p>FeedBack have been sent.</p>
+                                         <button style=" background-color: blue; border: 0px; border-radius: 5px;padding: 10px;">  <a style="color: white; padding: 10px;text-decoration: none;" href="http://localhost:9999/ChildrenCare/">HOME</a> </button>    </div>
+                                        </body>
+                                        </html>""");
                         } else {
                             // notification
                             String notify = "";
@@ -719,8 +718,9 @@ public class FeedBackController extends HttpServlet {
 
                     String email = (String) session.getAttribute("email");
                     // Send an email with a feedback request
-                    Mail.sendEmail(email, "THANK TO USE SERVICE", "Thank you for using our service\n"
-                            + "Please give us feedback about the service by clicking on feedback in the header on the homepage on the website");
+                    Mail.sendEmail(email, "THANK TO USE SERVICE", """
+                                                                  Thank you for using our service
+                                                                  Please give us feedback about the service by clicking on feedback in the header on the homepage on the website""");
                     request.getRequestDispatcher("/view/FeedBack.jsp").forward(request, response);
 
                 }
