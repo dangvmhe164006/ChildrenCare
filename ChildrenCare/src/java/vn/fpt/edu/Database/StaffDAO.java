@@ -360,28 +360,4 @@ public class StaffDAO extends MyDAO {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        StaffDAO staffDAO = new StaffDAO();
-//        List<Staff> staffList = staffDAO.getAllStaffs();
-//        for (Staff staff : staffList) {
-//            System.out.println(staff.getFullName());
-//        }
-
-        //System.out.println(staffDAO.getStaffByStaffEmail("lethanglrf@gmail.com").getFullName());
-//        System.out.println(staffDAO.getStaffByStaffEmail("lethanglrf@gmail.com").getFullName());
-        List<Staff> list = staffDAO.getStaffListPage(0, 1, "", "");
-        for (Staff staff : list) {
-            System.out.println(staff.getFullName());
-        }
-//        Staff staff = staffDAO.getStaffByStaffId(4);
-//        System.out.println(staff.getRole());
-//        staff.setRole("doctor");
-//        staffDAO.updateStaff(staff);
-//        System.out.println(staff.getRole());
-        ServiceDAO serviceDAO = new ServiceDAO();
-        System.out.println(serviceDAO.getActiveServiceCount());
-//        Staff staff = staffDAO.getStaffByStaffId(3);
-//        System.out.println(staff.getFullName());
-    }
 }
