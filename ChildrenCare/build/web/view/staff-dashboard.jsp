@@ -124,11 +124,7 @@
                            ><i class="fas fa-list-alt"></i>Reservations Manager</a
                         >
                     </div>
-                    <div class="navbar-nav w-100 text-light">
-                        <a href="feedback" class="nav-item nav-link"
-                           ><i class="far fa-file-alt"></i>Feedback</a
-                        >
-                    </div>
+                   
                     <div class="navbar-nav w-100 text-light">
                         <a href="service?event=manage" class="nav-item nav-link"
                            ><i class="fas fa-stethoscope"></i>Services</a
@@ -232,7 +228,7 @@
                             </div>
                         </div>
 
-                        <h3 class="px-4 mt-3">Patient Appoinment Today</h3>
+                        <h3 class="px-4 mt-3"> Patient Appoinment Today </h3>
 
                         <div class="table-responsive p-4 bg-light border-2 border-light">
                             <%if(curStaff!=null){%>

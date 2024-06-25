@@ -307,18 +307,14 @@
                                     </tbody> 
 
                                 </table>
-                                <% 
-ReservationDAO reservationdao = new ReservationDAO();
-int totalReservations = reservationdao.getTotalReservation();
-int totalPages = (totalReservations + 9) / 10; // Calculate the total number of pages
-                                %>
-                                <div class="d-flex justify-content-center mb-5" id="pagination-container">
+                               <% ReservationDAO reservationdao = new ReservationDAO(); %>
+                                <div  class="d-flex justify-content-center mb-5" id="pagination-container">
                                     <span style="width: 25px;height: 25px" class="pagination-btn rounded-circle ms-2 inactive d-flex justify-content-center align-items-center" data-page="1">1</span>
-                                    <% for (int i = 2; i <= totalPages; i++) { %>
-                                    <button style="width: 25px;height: 25px" class="pagination-btn rounded-circle ms-2 inactive d-flex justify-content-center align-items-center" data-page="<%=i%>"><%=i%></button>
-                                    <% } %>
-                                </div>
-
+                                    <%for (int i = 2; i <=(reservationdao.getTotalReservation()+9)/10; i++) {%>
+                                    <button style="width: 25px;height: 25px" class="pagination-btn rounded-circle ms-2 inactive d-flex justify-content-center align-items-center"  data-page="<%=i%>"><%=i%></button>
+                                    <%}%>
+                                </div> 
+                                <%}%>
 
                             </div>
                         </div>
@@ -398,23 +394,23 @@ int totalPages = (totalReservations + 9) / 10; // Calculate the total number of 
                     loadPageServicesBFill(page, action);
                 });
             });
-            document.addEventListener('DOMContentLoaded', function () {
-                var paginationButtons = document.querySelectorAll('.pagination-btn');
-                paginationButtons.forEach(function (button) {
-                    button.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        if (!this.classList.contains('active')) {
-                            document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
-                                paginationBtn.classList.remove('active');
-                            });
-                            this.classList.add('active');
-                            var page = this.dataset.page;
-                            var action = 'reservation-list-paging';
-                            loadPageServicesBFill(page, action);
-                        }
-                    });
+       document.addEventListener('DOMContentLoaded', function () {
+    var paginationButtons = document.querySelectorAll('.pagination-btn');
+    paginationButtons.forEach(function (button) {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!this.classList.contains('active')) {
+                document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
+                    paginationBtn.classList.remove('active');
                 });
-            });
+                this.classList.add('active');
+                var page = this.dataset.page;
+                var action = 'reservation-list-paging';
+                loadPageServicesBFill(page, action);
+            }
+        });
+    });
+});
 
             function changestatus(a, uid) {
                 var text = a.textContent;

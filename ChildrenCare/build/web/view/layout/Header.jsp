@@ -31,9 +31,6 @@
                     <li><a class="nav-link scrollto" href="/ChildrenCare/staffList">Doctors</a></li>
                     <li class="dropdown"><a href="/ChildrenCare/blogPage"><span>Blog</span></a>
                     </li>
-                    <li class="dropdown"><a href="/ChildrenCare/feedback?action=accessfeedback"><span>Feedback</span></a>
-
-                    </li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
