@@ -13,7 +13,6 @@
         String email = (String) session.getAttribute("email");
         UserDAO dao = new UserDAO();
         User curUser = dao.getUser(email);
-        
     %>
     <!--Start Header-->
     <header id="header" class="fixed-top">

@@ -278,16 +278,7 @@
 
                     </div>
                 </div>
-                <!-- Blank End -->
-
-                <!-- Footer Start -->
-                <div class="mt-4">
-                    <jsp:include page="layout/footer.jsp" />
-                </div>
-                <!-- Footer End -->
             </div>
-            <!-- Content End -->
-
         </div>
     </div>
 

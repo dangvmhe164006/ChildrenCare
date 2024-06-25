@@ -52,7 +52,7 @@
                 for (Service service : list) {%>
                     <div class="service row p-3">
                         <div class="col-md-3">
-                            <img src="<%=service.getThumbnail()%>" alt="ìmg" class="w-100 h-100 object-contain" />
+                            <img src="<%=service.getThumbnail()%>" alt="img" class="w-100 h-100 object-contain" />
                         </div>
                         <div class="col-md-6">
                             <h3><%=service.getTitle()%></h3>
@@ -71,7 +71,6 @@
                                 <del class="price-old"> $<%=service.getOriginalPrice()%></del>
                                 <%}%>
                             </div>
-                            <!-- info-price-detail // -->
                             <br />
                             <p>
                             <form action="service?event=detail" method="POST">
