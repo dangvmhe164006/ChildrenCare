@@ -615,22 +615,4 @@ public class UserDAO extends MyDAO {
         }
         return 0;
     }
-
-    public static void main(String[] args) throws ParseException {
-        UserDAO userDAO = new UserDAO();
-//        List<User> users = userDAO.getAllUsersByAdmin(1, 10, "Email", "", "", "", "", "", 2);
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-//        java.util.Date utilDate = dateFormat.parse("10-26-2023");
-//        Date startDate = new Date(utilDate.getTime());
-//        utilDate = dateFormat.parse("01-01-2023");
-//        Date endDate = new Date(utilDate.getTime());
-//        System.out.println(userDAO.getUserCountByCreatedDate(startDate, endDate));
-
-//        List<User> users = userDAO.search("", "", "UserID", "asc", 1);
-//        for (User user : users) {
-//            System.out.println(user.getEmail());
-//        }
-//        System.out.println(userDAO.countTotalUserByAdmin("", "", "", "", "", 3));
-//        
-    }
 }
