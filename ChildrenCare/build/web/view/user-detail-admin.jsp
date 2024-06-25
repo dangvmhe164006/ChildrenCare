@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin dashboard</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-        <!--<script rel="stylesheet" href="./resources/css/admin-dashboard.css"></script>-->
         <style>
             /* Custom CSS for larger circular avatar and dropdown spacing */
             .admin-avatar {
@@ -114,8 +113,8 @@
     </head>
     <body>
         <%@ page import="jakarta.servlet.http.HttpSession" %>
-        <%@page import = "model.*" %>
-        <%@page import = "Database.*" %>
+        <%@page import = "vn.fpt.edu.model.*" %>
+        <%@page import = "vn.fpt.edu.Database.*" %>
         <%@page import = "java.util.*" %>
         <%
         UserDAO userDAO = new UserDAO();
@@ -128,7 +127,7 @@
         <nav class="navbar navbar-light bg-light p-3">
             <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
                 <a class="navbar-brand" href="#">
-                    Simple Dashboard
+                   ChildrenCare
                 </a>
                 <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -145,7 +144,6 @@
                         <img src="<%=admin.getProfileImage()%>" alt="Admin Avatar" class="admin-avatar">
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="admin?action=logout">Sign out</a></li>
                     </ul>
                 </div>
@@ -155,30 +153,7 @@
             <div class="row">
                 <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div class="position-sticky">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="admin">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                                    <span class="ml-2">Home</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                                    <span class="ml-2">Users</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="admin?action=send-to-setting-list">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
-
-                                    <span class="ml-2">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
+                      
                     </div>
                 </nav>
                 <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
@@ -190,15 +165,6 @@
                     <div class="container">
                         <div class="main-body">
 
-                            <!-- Breadcrumb -->
-                            <nav aria-label="breadcrumb" class="main-breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">User Detail</li>
-                                </ol>
-                            </nav>
-                            <!-- /Breadcrumb -->
 
                             <div class="row gutters-sm">
                                 <div class="col-md-4 mb-3">
@@ -343,9 +309,7 @@
                     </div>
 
 
-                    <footer class="pt-5 d-flex justify-content-between">
-                        <span>Copyright © 2023-2024 <p>ChildrenCare</p></span>
-                    </footer>
+                  
                 </main>
             </div>
         </div>

@@ -370,16 +370,6 @@ boolean isStaff = false;
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <!-- Template Javascript -->
-        <script>
-            document.querySelector('.sidebar-toggler').addEventListener('click', function () {
-                var sidebar = document.querySelector('.sidebar');
-                var content = document.querySelector('.content');
-
-                sidebar.classList.toggle('open');
-                content.classList.toggle('open');
-
-                return false;
-            });
-        </script>
+    
     </body>
 </html>

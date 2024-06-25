@@ -93,7 +93,7 @@
             }
 
             .btn-submit:hover {
-                background-color: #2980b9; /* Màu khi di chuột qua nút */
+                background-color: #2980b9; 
             }
             .rate {
                 float: left;

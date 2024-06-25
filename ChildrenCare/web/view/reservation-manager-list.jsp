@@ -293,11 +293,11 @@
                                                             <span class="badge bg-primary"  id="statusBadge-${reservation.getReservationID()}">${reservation.getStatus()}</span>
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">cancel</a></li>
-                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">pending</a></li>
+                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Cancel</a></li>
+                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Pending</a></li>
                                                             
-                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">waiting for examination</a></li>
-                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">done</a></li>
+                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Waiting for examination</a></li>
+                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Done</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -407,7 +407,7 @@
                     e.preventDefault();
                     if (!this.classList.contains('active')) {
                         document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
-                            paginationBtn.classList.remove('active');
+                          paginationBtn.classList.remove('active');
                         });
                         var page = this.dataset.page;
                         var action = 'reservation-list-paging';

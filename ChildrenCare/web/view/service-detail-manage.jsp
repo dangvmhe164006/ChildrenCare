@@ -274,16 +274,7 @@
                                                 >Doctor</a
                                             >
                                         </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a
-                                                class="nav-link other"
-                                                id="ex1-tab-3"
-                                                data-mdb-toggle="tab"
-                                                href="#ex1-tabs-3"
-                                                role="tab"
-                                                >Number of Person</a
-                                            >
-                                        </li>
+                                       
                                     </ul>
                                     <!-- Tabs navs -->
                                     <!-- Tabs content -->
