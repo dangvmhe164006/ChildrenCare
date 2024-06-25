@@ -136,7 +136,7 @@
                                     <input type="date" id="endDate" class="form-control">
                                 </div>
                                 <div class="col-sm-4 d-flex align-items-end">
-                                    <button type="button" class="btn btn-primary btn-block" onclick="sendDatesToServlet()">Change date</button>
+                                    <button type="button" class="btn btn-primary btn-block" onclick="sendDatesToServlet()">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -184,22 +184,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-                            <div class="card">
-                                <h5 class="card-header">Feedback</h5>
-                                <div class="card-body">
-                                    <h5 id="totalRating" class="card-title">Total rating : <%=totalAverageStar%>  <span class="star">&#9733;</span></h5>
-                                    <%for (Map.Entry<String, Float> entry : averageStarByServiceID.entrySet()) {
-                                        String key = entry.getKey();
-                                        Float value = entry.getValue(); %>
-                                    <p class="card-text">
-                                        <span id="serviceRating_<%=key%>" ><%=key%> : <%=value%> </span>
-                                        <span class="star">&#9733;</span>
-                                    </p>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
+                     
                     </div>
                 </main>
             </div>
