@@ -197,7 +197,7 @@
                             </div>
                             <div class="row justify-content-between align-items-start mb-4 px-4 py-3 border-bottom d-flex">
                                 <div class="col-md-3 px-4 d-flex flex-column">
-                                    <input type="number" name="reservationId" id="reservationId" placeholder="Search Reservation Id" class="form-control">
+                                    <input type="hidden" name="reservationId" id="reservationId" placeholder="Search Reservation Id" class="form-control">
                                     <input type="text" name="customerName" id="customerName" class="mt-2 form-control" placeholder="Search Customer Name">
                                 </div>
                                 <div class="col-md-4 px-4 d-flex">
@@ -220,7 +220,6 @@
                                     <select class="form-select mt-2" id="status">
                                         <option selected value="">Status</option>
                                         <option value="pending">Pending</option>
-                                        <option value="awaiting confirmation">Awaiting Confirmation</option>
                                         <option value="waiting for examination">Waiting For Examination</option> 
                                         <option value="done">Done</option>
                                         <option value="cancel">Cancel</option>

@@ -68,14 +68,9 @@
         int newlyUserReservedCount = (int) request.getAttribute("newlyUserReservedCount");
         float totalRevenues = (float) request.getAttribute("totalRevenues");
         Map<String, Float> revenueCategory = (Map<String, Float>) request.getAttribute("revenueCategory");
-        float totalAverageStar = (float) request.getAttribute("totalAverageStar");
-        Map<String, Float> averageStarByServiceID = (Map<String, Float>) request.getAttribute("averageStarByServiceID");
-        
         List<Integer> doneReservation = (List<Integer>) request.getAttribute("doneReservation");
         List<Integer> allReservation = (List<Integer>) request.getAttribute("allReservation");
-        
         Staff admin = (Staff) request.getAttribute("admin");
-        
         int maximumDayDiff = 7;
         %>
         <nav class="navbar navbar-light bg-light p-3">

@@ -291,7 +291,6 @@
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Cancel</a></li>
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Pending</a></li>
-
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Waiting for examination</a></li>
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Done</a></li>
                                                         </ul>

@@ -129,7 +129,7 @@
                     </div>
                     <div class="navbar-nav w-100 text-light">
                         <a href="postManage" class="nav-item nav-link"
-                           ><i class="bi bi-file-earmark-post"></i>Post</a
+                           ><i class="bi bi-file-earmark-post"></i>Blog</a
                         >
                     </div>
                     <div class="navbar-nav w-100 text-light">
