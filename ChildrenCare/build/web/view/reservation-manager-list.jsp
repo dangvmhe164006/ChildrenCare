@@ -350,18 +350,143 @@
 
         </script>
         <script>
-            function loadPageServicesBFill(page, action) {
-                var customerNameInput = document.getElementById('customerName');
-                var customerName = customerNameInput.value;
-                var staff = document.querySelector('select[name="staff"]').value;
+            // Khởi tạo biến để theo dõi trạng thái của nút
+            var isSorted = false;
+            var paginationButtons = document.querySelectorAll('.pagination-btn');
+            paginationButtons.forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault(); // Ngăn chặn trình duyệt chuyển đến URL trong thẻ 'a'
+
+                    if (!this.classList.contains('active')) {
+                        document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
+                            if (paginationBtn.classList.contains('active')) {
+                                paginationBtn.classList.remove('active');
+                            }
+                        });
+                        this.classList.add('active');
+
+                        var page = this.dataset.page;
+                        if (isSorted) {
+                            loadPageServices(page, "sort"); // Gọi hàm loadServices() để tải danh sách dịch vụ của trang được chọn
+                        } else {
+                            loadPageServices(page, "");
+                        }
+
+                    }
+                });
+            });
+
+
+            // Hàm thực hiện việc thay đổi giá trị của nút và gọi loadPageServices
+            function toggleSort() {
+                // Lấy thẻ button bằng id
+                var sortButton = document.querySelector('#sortButton');
+
+                if (isSorted) {
+                    // Nếu đã được sắp xếp (sort), thay đổi giá trị và gọi loadPageServices với giá trị "unsort"
+                    sortButton.textContent = "Unsort";
+                    loadPageServices(1, "");
+                } else {
+                    // Nếu chưa được sắp xếp (unsort), thay đổi giá trị và gọi loadPageServices với giá trị "sort"
+                    sortButton.textContent = "Sort";
+                    loadPageServices(1, "sort");
+                }
+
+                // Đảo ngược trạng thái của biến
+                isSorted = !isSorted;
+            }
+            // Hàm tải dữ liệu của trang bằng Ajax
+            function loadPageServices(page, sortType) {
+                // Gửi yêu cầu Ajax đến Servlet với tham số trang
 
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
-                        + "&staffId=" + staff + '&action=' + action + '&name=' + encodeURIComponent(customerName));
+                xhr.open('POST', 'reservationcontactmanager?event=reservation-list-paging&page=' + page
+                        + '&sortstatus=' + sortType);
 
                 xhr.onload = function () {
                     if (xhr.status === 200) {
+                        // Xử lý dữ liệu trả về từ máy chủ và cập nhật nội dung trang
+                        document.querySelector('#sort-list').innerHTML = xhr.responseText;
+                    } else {
+                        console.error('Error:', xhr.status);
+                    }
+                };
+
+                xhr.onerror = function () {
+                    console.error('Error:', xhr.status);
+                };
+
+                xhr.send();
+            }
+            function changestatus(a, uid) {
+                var text = a.textContent;
+                var textchange = document.getElementById("statusBadge-" + uid);
+                textchange.textContent = text;
+
+                // Gửi yêu cầu Ajax đến servlet
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "reservationcontactmanager?event=updatestatus&status=" + text + "&reservationID=" + uid, true);
+
+                xhr.onload = function () {
+
+                };
+
+                xhr.onerror = function () {
+
+                };
+
+                xhr.send();
+            }
+            function changeDoctor(a, doctorId, reservationID) {
+                var text = a.textContent;
+                var textchange = document.getElementById("doctorBadge-" + reservationID);
+                textchange.textContent = text;
+
+                // Gửi yêu cầu Ajax đến servlet
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "reservationcontactmanager?event=updatedoctor&doctorID=" + doctorId + "&reservationID=" + reservationID, true);
+
+                xhr.onload = function () {
+
+                };
+
+                xhr.onerror = function () {
+
+                };
+
+                xhr.send();
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var searchInputs = document.querySelectorAll('select[name="staff"]');
+                searchInputs.forEach(function (input) {
+                    input.addEventListener('change', function () {
+
+                        loadPageServicesBFill(1, 'fillterdoctor');
+
+
+                    });
+                });
+                var customerNameInput = document.getElementById('customerName');
+                customerNameInput.addEventListener('input', function(){loadPageServicesBFill(1, 'searchname'); });
+            });
+
+
+            // Hàm tải dữ liệu của trang bằng Ajax
+            function loadPageServicesBFill(page, action) {
+                 var customerNameInput = document.getElementById('customerName');
+                // Gửi yêu cầu Ajax đến Servlet với tham số trang
+                var customerName = customerNameInput.value;
+                var staff = document.querySelector('select[name="staff"]').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
+                        + "&staffId=" + staff + '&action=' + action + '&name=' + customerName);
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Xử lý dữ liệu trả về từ máy chủ và cập nhật nội dung trang
                         document.querySelector('#reservation-list').innerHTML = xhr.responseText;
+                        //console.log(xhr.getResponseHeader('pagination'));
                         document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
                     } else {
                         console.error('Error:', xhr.status);
@@ -374,67 +499,49 @@
 
                 xhr.send();
             }
+            function paging(page, action) {
+                var customerNameInput = document.getElementById('customerName');
+                // Gửi yêu cầu Ajax đến Servlet với tham số trang
+                var customerName = customerNameInput.value;
+                var staff = document.querySelector('select[name="staff"]').value;
+                // Gửi yêu cầu Ajax đến máy chủ để lấy danh sách dịch vụ
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'reservationcontactmanager?event=fillter&page=' + page
+                        + "&staffId=" + staff + '&action=' + action + '&name=' + customerName);
 
-            // Event listener for doctor selection dropdown
-            document.addEventListener("DOMContentLoaded", function () {
-                var searchInputs = document.querySelectorAll('select[name="staff"]');
-                searchInputs.forEach(function (input) {
-                    input.addEventListener('change', function () {
-                        var page = 1;
-                        var action = 'fillterdoctor';
-                        loadPageServicesBFill(page, action);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Xử lý dữ liệu trả về từ máy chủ và cập nhật nội dung trang
+                        document.querySelector('#reservation-list').innerHTML = xhr.responseText;
+                        document.querySelector('#pagination-container').innerHTML = xhr.getResponseHeader('pagination');
+                    } else {
+                        console.error('Error:', xhr.status);
+                    }
+                };
+
+                xhr.onerror = function () {
+                    console.error('Error:', xhr.status);
+                };
+
+                xhr.send();
+
+                var paginationButtons = document.querySelectorAll('.pagination-btn');
+                paginationButtons.forEach(function (button) {
+                    button.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        if (!this.classList.contains('active')) {
+                            document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
+                                if (paginationBtn.classList.contains('active')) {
+                                    paginationBtn.classList.remove('active');
+                                }
+                            });
+                            this.classList.remove('inactive');
+                            this.classList.add('active');
+                        }
                     });
                 });
-
-                var customerNameInput = document.getElementById('customerName');
-                customerNameInput.addEventListener('input', function () {
-                    var page = 1;
-                    var action = 'searchname';
-                    loadPageServicesBFill(page, action);
-                });
-            });
-       document.addEventListener('DOMContentLoaded', function () {
-    var paginationButtons = document.querySelectorAll('.pagination-btn');
-    paginationButtons.forEach(function (button) {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (!this.classList.contains('active')) {
-                document.querySelectorAll('.pagination-btn').forEach(function (paginationBtn) {
-                    paginationBtn.classList.remove('active');
-                });
-                this.classList.add('active');
-                var page = this.dataset.page;
-                var action = 'reservation-list-paging';
-                loadPageServicesBFill(page, action);
             }
-        });
-    });
-});
-
-            function changestatus(a, uid) {
-                var text = a.textContent;
-                var textchange = document.getElementById("statusBadge-" + uid);
-                textchange.textContent = text;
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "reservationcontactmanager?event=updatestatus&status=" + text + "&reservationID=" + uid, true);
-                xhr.onload = function () {
-                };
-                xhr.onerror = function () {
-                };
-                xhr.send();
-            }
-            function changeDoctor(a, doctorId, reservationID) {
-                var text = a.textContent;
-                var textchange = document.getElementById("doctorBadge-" + reservationID);
-                textchange.textContent = text;
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "reservationcontactmanager?event=updatedoctor&doctorID=" + doctorId + "&reservationID=" + reservationID, true);
-                xhr.onload = function () {
-                };
-                xhr.onerror = function () {
-                };
-                xhr.send();
-            }
+      
         </script>
     </body>
 </html>
