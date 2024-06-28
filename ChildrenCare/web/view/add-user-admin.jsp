@@ -253,7 +253,6 @@
                                         <select class="form-select text-primary w-50 mx-3" name="role">
                                             <option value="user" <%= role.equals("user") || (!role.equals("doctor") && !role.equals("nurse") && !role.equals("manager")) ? "selected" : "" %>>User</option>
                                             <option value="doctor" <%= role.equals("doctor") ? "selected" : "" %>>Doctor</option>
-                                            <option value="nurse" <%= role.equals("nurse") ? "selected" : "" %>>Nurse</option>
                                             <option value="manager" <%= role.equals("manager") ? "selected" : "" %>>Manager</option>
                                         </select>
                                     </div>
