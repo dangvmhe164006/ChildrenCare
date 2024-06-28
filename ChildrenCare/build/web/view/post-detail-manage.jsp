@@ -109,6 +109,11 @@ boolean isManager = false;
                            ><i class="bi bi-file-earmark-post"></i>Post</a
                         >
                     </div>
+                      <div class="navbar-nav w-100 text-light">
+                        <a href="slider?action=all" class="nav-item nav-link"
+                           ><i class="bi bi-image-fill"></i>Slider</a
+                        >
+                    </div>
                     <%}%>
                 </nav>
             </div>
@@ -168,6 +173,9 @@ boolean isManager = false;
                                         <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width: 200px; margin-top: 10px;"/>
                                         <button type="button" onclick="clearImage()" class="btn btn-secondary mt-2">Clear Image</button>
                                     </div>
+                                    
+                                            <input class="form-control text-muted" type="hidden" name="postID" value="${post.getPostID()}" readonly  />
+                                       
                                     <br>
                                     <div>
                                         <div class="d-flex align-items-baseline">
@@ -248,9 +256,6 @@ boolean isManager = false;
            
 
             <script>
-
-
-
                 function readURL(input) {
                     if (input.files && input.files[0]) {
                         var reader = new FileReader();
@@ -269,14 +274,8 @@ boolean isManager = false;
                     imagePreview.src = '#';
                     imagePreview.style.display = 'none';
                 }
-
-          
-
             </script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-
     </body>
 </html>
 

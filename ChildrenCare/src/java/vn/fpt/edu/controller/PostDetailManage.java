@@ -144,7 +144,6 @@ public class PostDetailManage extends HttpServlet {
 
     protected void loadPostDetail(HttpServletRequest request, HttpServletResponse response, Post post, String event) {
         PostDAO postDAO = new PostDAO();
-//        Post post = postDAO.getPostByID(ID);
         List<String> categoryList = postDAO.allCategoryPost();
         categoryList.remove(post.getCategoryPost());
         categoryList.add(0, post.getCategoryPost());
@@ -158,7 +157,6 @@ public class PostDetailManage extends HttpServlet {
     protected Post newPost(HttpServletRequest request, HttpServletResponse response, Post post, String event) throws ServletException, IOException {
 
         PostDAO postDAO = new PostDAO();
-
         String title = request.getParameter("Title");
         String content = request.getParameter("Content");
         String briefInfo = request.getParameter("Brief");
