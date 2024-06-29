@@ -116,7 +116,7 @@
                         </div>     
                         <p>
                         <div>
-                            <input class="form-control" type="password" name="conPasswor" 
+                            <input class="form-control" type="password" name="conPassword" 
                                    value="" placeholder="Confirm password" required/>
                         </div>
                         <p>
