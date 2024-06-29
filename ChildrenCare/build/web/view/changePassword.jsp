@@ -111,7 +111,7 @@
                         </div> 
                         <p>
                         <div>
-                            <input class="form-control" type="password" name="newPasswor" 
+                            <input class="form-control" type="password" name="newPassword" 
                                    value="" placeholder="New Password" required />
                         </div>     
                         <p>
