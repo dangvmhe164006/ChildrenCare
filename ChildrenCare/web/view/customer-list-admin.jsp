@@ -173,7 +173,6 @@
                     <div class="col-md-12 row justify-content-between mb-3">
                         <div class="col-md-3">
                             <input type="text" name="name" class="form-control" placeholder="Search By Name" id="nameUser">
-                            <input type="text" name="email" class="form-control mt-2" placeholder="Search By Email" id="emailUser">
                             <input type="text" name="mobile" class="form-control mt-2" placeholder="Search By Mobile" id="mobileUser">
                         </div>
                         <div class="col-md-3">
@@ -195,7 +194,6 @@
                                 <option selected value="">Role</option>
                                 <option value="user">Customer</option>
                                 <option value="doctor">Doctor</option>
-                                <option value="nurse">Nurse</option> 
                                 <option value="manager">Manager</option>
                             </select>
 
