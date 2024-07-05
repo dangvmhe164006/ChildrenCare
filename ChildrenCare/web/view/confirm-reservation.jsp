@@ -255,6 +255,7 @@
                                 </div>
                             </div>
                         </div>
+                                
                         <div class="d-flex al justify-content-around mt-5 mb-5">
                             <button type="button" class="btn btn-none btn-block border-m btn-transparent" onclick="goBack()">
                                 <span class="d-flex align-items-center bold">
