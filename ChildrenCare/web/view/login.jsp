@@ -18,13 +18,14 @@
                     <input maxlength="30" placeholder="Your email address" type="text" id="lemail" name="lemail" required><br><br>
                     <input maxlength="30" placeholder="Password" type="password" id="lpassword" name="lpassword" required><br><br>
                     <!-- Forgot password link -->
-                    <a href="resetpassword?action=forgetpassword">Forgot password?</a><br><br>
+                    <a href="resetpassword?action=forgetpassword">Forgot password?</a>&nbsp;&nbsp;
                     <a href="${pageContext.request.contextPath}/staff?event=sent-to-login">Login staff?</a><br><br>
                     <!-- Login button -->
                     <button id="Login-button" class="Login-button" onclick="attemptLogin()">Login</button>
-                    <br><br>
-                    
-                    <br><br>
+                    <br>
+                    <div class="col-lg-12 mt-3 text-center">
+                        <h6 class="text-muted">Or</h6>
+                    </div><!--end col-->
                     <button id="Login-button" class="Login-button" onclick="attemptLogin()">Google</button>
                     <!-- Login result message -->
                     <p id="loginResult" value=""></p>
