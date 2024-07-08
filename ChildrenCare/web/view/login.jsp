@@ -22,6 +22,10 @@
                     <a href="${pageContext.request.contextPath}/staff?event=sent-to-login">Login staff?</a><br><br>
                     <!-- Login button -->
                     <button id="Login-button" class="Login-button" onclick="attemptLogin()">Login</button>
+                    <br><br>
+                    
+                    <br><br>
+                    <button id="Login-button" class="Login-button" onclick="attemptLogin()">Google</button>
                     <!-- Login result message -->
                     <p id="loginResult" value=""></p>
                     <!-- Registration link -->
