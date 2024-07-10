@@ -225,10 +225,6 @@ public class ChildrenDAO extends MyDAO {
     public static void main(String[] args) {
         ChildrenDAO childrenDAO = new ChildrenDAO();
         Children u = childrenDAO.getChildrenByChildrenId("1");
-        u.setChildName("Can Quoc Viet");
-        System.out.println(childrenDAO.updateChild(u));
-
-//        System.out.println("ketquadelete là : " + childrenDAO.deleteChild("5"));
     }
 
 }
