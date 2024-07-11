@@ -52,7 +52,7 @@
         <div class="container-fluid position-relative bg-white d-flex p-0">
             <%if(curStaff!=null){
             if(curStaff.getRole().equals("manager")) isManager=true;
-            if(curStaff.getRole().equals("doctor")||curStaff.getRole().equals("nurse")) isStaff=true;%>
+            if(curStaff.getRole().equals("doctor")) isStaff=true;%>
             <!-- Sidebar Start -->
             <div class="sidebar pe-4 pb-3">
                 <nav class="navbar navbar-light">
