@@ -57,6 +57,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
+                    </button>
                 </div>
                 <!-- End  Slider  -->
                 <!--Start sider -->
