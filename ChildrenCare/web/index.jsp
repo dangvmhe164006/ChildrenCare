@@ -248,5 +248,5 @@
         </script>
     </body>
 </html>
-<real?><!-- comment -->
+<jsp:useBean></jsp:useBean>
 
