@@ -62,7 +62,7 @@ boolean isManager = false;
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i> ChildrenCare
+                            <i class="fa fa-hashtag me-2"></i>Childrencare
                         </h3>
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
@@ -83,16 +83,6 @@ boolean isManager = false;
                         </div>
                     </div>
                     <%if(isManager){%>
-                    <div class="navbar-nav w-100 text-light">
-                        <a href="user?action=search" class="nav-item nav-link"
-                           ><i class="bi bi-people-fill"></i>User</a
-                        >
-                    </div>
-                    <div class="navbar-nav w-100 text-light">
-                        <a href="staffschedule?action=send-to-manage" class="nav-item nav-link"
-                           ><i class="bi bi-calendar-check"></i>Staff Schedule</a
-                        >
-                    </div>
                     <div class="navbar-nav w-100  text-light">
                         <a href="staff?event=send-to-medical-examination-manage" class="nav-item nav-link"
                            ><i class="far fa-check-square"></i>Medical examination</a
@@ -103,8 +93,16 @@ boolean isManager = false;
                            ><i class="fas fa-list-alt"></i>Reservations Manager</a
                         >
                     </div>
-
-
+                    <div class="navbar-nav w-100 text-light">
+                        <a href="user?action=search" class="nav-item nav-link"
+                           ><i class="bi bi-people-fill"></i>User</a
+                        >
+                    </div>
+                    <div class="navbar-nav w-100 text-light">
+                        <a href="feedback" class="nav-item nav-link"
+                           ><i class="far fa-file-alt"></i>Feedback</a
+                        >
+                    </div>
                     <div class="navbar-nav w-100 text-light">
                         <a href="service?event=manage" class="nav-item nav-link"
                            ><i class="fas fa-stethoscope"></i>Services</a
@@ -113,11 +111,6 @@ boolean isManager = false;
                     <div class="navbar-nav w-100 text-light">
                         <a href="postManage" class="nav-item nav-link active"
                            ><i class="bi bi-file-earmark-post"></i>Post</a
-                        >
-                    </div>
-                    <div class="navbar-nav w-100 text-light">
-                        <a href="slider?action=all" class="nav-item nav-link"
-                           ><i class="bi bi-image-fill"></i>Slider</a
                         >
                     </div>
                     <%}%>
@@ -129,13 +122,44 @@ boolean isManager = false;
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-
+                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <form class="d-none d-md-flex ms-4">
+                        <input
+                            class="form-control border-0"
+                            type="search"
+                            placeholder="Search"
+                            />
+                    </form>
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-
+                            <a
+                                href="#"
+                                class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                >
+                                <i class="fa fa-envelope me-lg-2"></i>
+                                <span class="d-none d-lg-inline-flex">Message</span>
+                            </a>
+                            <div
+                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
+                                >
+                            </div>
                         </div>
                         <div class="nav-item dropdown">
-
+                            <a
+                                href="#"
+                                class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown"
+                                >
+                                <i class="fa fa-bell me-lg-2"></i>
+                                <span class="d-none d-lg-inline-flex">Notification</span>
+                            </a>
+                            <div
+                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
+                                >
+                            </div>
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -156,6 +180,7 @@ boolean isManager = false;
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
+                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -176,68 +201,87 @@ boolean isManager = false;
                             <h4>POST MANAGEMENT</h4>
                             <a href="postDetailManage?event=add" class="ms-text-primary font-weight-bold">Add Post</a>
                         </div>
-                        <form action="postManage">
-                            <div class="container d-flex justify-content-between">
-                                <input type="text" name="postTitle" placeholder="Search Title" class="form-control w-25 mx-3" value="${postTitle}" />
 
+                        <div class="col-md-12">
+                            <div class="d-flex flex-column align-items-center justify-content-center mt-2">
+                                <div class="container row mt-5 mb-4">
+                                    <div class="col-md-12">
+                                        <!-- Services List -->
+                                        <table class="table">
+                                            <thead class="text-light" style="background: #1977cc;">
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Thumbnail</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Brief</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="service-list">
+                                                <c:forEach var="l" items="${list}">
 
-                            </div>
-                            <div class="col-md-12">
-                                <div class="d-flex flex-column align-items-center justify-content-center mt-2">
-                                    <div class="container row mt-5 mb-4">
-                                        <div class="col-md-12">
-                                            <!-- Services List -->
-                                            <table class="table">
-                                                <thead class="text-light" style="background: #1977cc;">
-                                                    <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Thumbnail</th>
-                                                        <th scope="col">Title</th>
-                                                        <th scope="col">Category</th>
-                                                        <th scope="col">Brief</th>
-                                                        <th scope="col">Status</th>
-                                                        <th scope="col">Action</th>
+                                                    <tr id="${l.getPostID()}" class="service p-3 " ${l.isStatusPost()}>
+                                                        <th scope="row">${l.getPostID()}</th>
+                                                        <td><img src="${l.getThumbnail()}" alt="ìmg" style="width: 12rem;height: 8rem;object-fit: cover;" /></td>
+                                                        <td>${l.getTitle()}</td>
+                                                        <td>${l.getCategoryPost()}</td>
+                                                        <td>${l.getBriefInfo()} </td>
+                                                        <c:if test="${l.isStatusPost()}"><td><p class="status text-success mt-2">Active</p></td></c:if>
+                                                        <c:if test="${!l.isStatusPost()}"><td><p class="status text-black-50 mt-2">Inactive</p></td></c:if>
+                                                            <td>
+                                                                <div class="d-flex h-50 align-content-center flex-wrap" >
+                                                                    <div class="d-flex">
+                                                                    <c:if test="${l.isStatusPost()}"> <a href="postManage?event=hide&postId=${l.getPostID()}"><button class="button-icon me-2 showhide hide-service-button"><img src="resources/img/icon/hide.png" alt="alt"/></button></a> </c:if>
+                                                                    <c:if test="${!l.isStatusPost()}"> <a href="postManage?event=show&postId=${l.getPostID()}"><button class="button-icon me-2 showhide show-service-button"><img src="resources/img/icon/visual.png" alt="alt"/></button> </c:if>
+                                                                        <button class="button-icon"><a href="postDetailManage?event=update&postID=${l.getPostID()}"><img src="resources/img/icon/pen.png" alt="alt"/></a></button>
+                                                                </div></div>
+                                                        </td>
                                                     </tr>
-                                                </thead>
-                                                <tbody id="service-list">
-                                                    <c:forEach var="l" items="${list}">
+                                                </c:forEach>
 
-                                                        <tr id="${l.getPostID()}" class="service p-3 " ${l.isStatusPost()}>
-                                                            <th scope="row">${l.getPostID()}</th>
-                                                            <td><img src="${l.getThumbnail()}" alt="ìmg" style="width: 12rem;height: 8rem;object-fit: cover;" /></td>
-                                                            <td>${l.getTitle()}</td>
-                                                            <td>${l.getCategoryPost()}</td>
-                                                            <td>${l.getBriefInfo()} </td>
-                                                            <c:if test="${l.isStatusPost()}"><td><p class="status text-success mt-2">Active</p></td></c:if>
-                                                            <c:if test="${!l.isStatusPost()}"><td><p class="status text-black-50 mt-2">Inactive</p></td></c:if>
-                                                                <td>
-                                                                    <div class="d-flex h-50 align-content-center flex-wrap" >
-                                                                        <div class="d-flex">
-                                                                        <c:if test="${l.isStatusPost()}"> <a href="postManage?event=hide&postId=${l.getPostID()}"><button class="button-icon me-2 showhide hide-service-button"><img src="resources/img/icon/hide.png" alt="alt"/></button></a> </c:if>
-                                                                        <c:if test="${!l.isStatusPost()}"> <a href="postManage?event=show&postId=${l.getPostID()}"><button class="button-icon me-2 showhide show-service-button"><img src="resources/img/icon/visual.png" alt="alt"/></button> </c:if>
-                                                                            <button class="button-icon"><a href="postDetailManage?event=update&postID=${l.getPostID()}"><img src="resources/img/icon/pen.png" alt="alt"/></a></button>
-                                                                    </div></div>
-                                                            </td>
-                                                        </tr>
+                                            </tbody>
+                                        </table>
+                                        <form action="postManage">
+                                            <div class="container d-flex justify-content-between">
+                                                <input type="text" name="postTitle" placeholder="Search Title" class="form-control w-25 mx-3" value="${postTitle}" />
+                                                <select class="form-select text-primary w-25 me-3" name="postAuthor" >
+                                                    <c:forEach var="a" items="${authorList}">
+                                                        <option value="${a.getUserID()}">${a.getFirstName()} ${a.getLastName()} </option>
                                                     </c:forEach>
-
-                                                </tbody>
-                                            </table>
-
-                                        </div>
+                                                </select>
+                                                <select class="form-select text-primary w-25 me-3" name="postCategory" >
+                                                    <c:forEach var="c" items="${categoryList}">
+                                                        <option value="${c}">${c} </option>
+                                                    </c:forEach>
+                                                </select>
+                                                <select class="form-select text-primary w-25 me-3" name="sortBy" >
+                                                    <c:forEach var="s" items="${sortList}">
+                                                        <option value="${s}">${s}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-center mb-5" id="pagination-container">
-                                    <c:forEach var="p" begin="1" end="${numOfPage}">
-                                        <input class="pagination-btn ms-2 active" type="submit" name="page" value="${p}" /> 
-                                    </c:forEach>
-                                </div>
                             </div>
+                            <div class="d-flex justify-content-center mb-5" id="pagination-container">
+                                <c:forEach var="p" begin="1" end="${numOfPage}">
+                                    <input class="pagination-btn ms-2 active" type="submit" name="page" value="${p}" /> 
+                                </c:forEach>
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
 
+                <!-- Blank End -->
 
+                <!-- Footer Start -->
+                <div class="mt-4">
+                    <jsp:include page="layout/footer.jsp" />
+                </div>
+                <!-- Footer End -->
             </div>
             <!-- Content End -->
         </div>
@@ -255,7 +299,7 @@ boolean isManager = false;
             crossorigin="anonymous"
         ></script>
 
-        <!-- Template Javascript -->
-
+        
+       
     </body>
 </html>

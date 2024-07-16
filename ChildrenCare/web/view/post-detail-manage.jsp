@@ -155,7 +155,6 @@ boolean isManager = false;
                             <div
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
-                                <a href="#" class="dropdown-item">My Profile</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -229,7 +228,7 @@ boolean isManager = false;
                                     <c:if test="${! empty errorMessage3}">
                                         <h5 class="text-danger text-start fw-bold">${errorMessage3}</h5>
                                     </c:if>
-
+                        
                                     <div class="d-flex justify-content-center">
                                         <input hidden="" name="event" value="${event}">
                                         <input class="btn btn-primary mt-3 w-25" type="submit" value="${event}" name="event" />
