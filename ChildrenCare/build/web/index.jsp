@@ -248,5 +248,4 @@
         </script>
     </body>
 </html>
-<jsp:useBean></jsp:useBean>
 
