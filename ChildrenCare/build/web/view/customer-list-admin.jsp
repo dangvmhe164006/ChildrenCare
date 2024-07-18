@@ -110,9 +110,9 @@
     </head>
     <body>
         <%@ page import="jakarta.servlet.http.HttpSession" %>
-        <%@page import = "vn.fpt.edu.model.*" %>
-        <%@page import = "vn.fpt.edu.Database.*" %>
-        <%@page import = "java.util.*" %>
+        <%@page import= "vn.fpt.edu.model.*" %>
+        <%@page import= "vn.fpt.edu.Database.*" %>
+        <%@page import= "java.util.*" %>
         <%
         UserDAO userDAO = new UserDAO();
         Staff admin = (Staff) request.getAttribute("admin");
@@ -122,13 +122,14 @@
         <nav class="navbar navbar-light bg-light p-3">
             <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
                 <a class="navbar-brand" href="#">
-                    ChildrenCare
+                    Simple Dashboard
                 </a>
                 <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
             <div class="col-12 col-md-4 col-lg-2">
+                <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
                 <div class="dropdown">
@@ -138,7 +139,7 @@
                         <img src="<%=admin.getProfileImage()%>" alt="Admin Avatar" class="admin-avatar">
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      
+                       
                         <li><a class="dropdown-item" href="admin?action=logout">Sign out</a></li>
                     </ul>
                 </div>
@@ -149,19 +150,14 @@
                 <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div class="position-sticky">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="admin">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                                    <span class="ml-2">Home</span>
-                                </a>
-                            </li>
+                           
                             <li class="nav-item">
                                 <a class="nav-link active" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                                     <span class="ml-2">Users</span>
                                 </a>
                             </li>
-                        
+                         
                         </ul>
                     </div>
                 </nav>
@@ -173,6 +169,7 @@
                     <div class="col-md-12 row justify-content-between mb-3">
                         <div class="col-md-3">
                             <input type="text" name="name" class="form-control" placeholder="Search By Name" id="nameUser">
+                            <input type="text" name="email" class="form-control mt-2" placeholder="Search By Email" id="emailUser">
                             <input type="text" name="mobile" class="form-control mt-2" placeholder="Search By Mobile" id="mobileUser">
                         </div>
                         <div class="col-md-3">
@@ -194,13 +191,16 @@
                                 <option selected value="">Role</option>
                                 <option value="user">Customer</option>
                                 <option value="doctor">Doctor</option>
+                                <option value="nurse">Nurse</option> 
                                 <option value="manager">Manager</option>
                             </select>
 
                             <select class="form-select mt-3" id="sort">
                                 <option selected value="">Sort By</option>
+                                <option value="ID">Sort By ID</option>
                                 <option value="Name">Sort By Name</option>
                                 <option value="Gender">Sort By Gender</option>
+                                <option value="Email">Sort By Email</option>
                                 <option value="PhoneNumber">Sort By Mobile</option> 
                                 <option value="Role">Sort By Role</option>
                                 <option value="Status">Sort By status</option>
@@ -272,7 +272,6 @@
 
                     </div>
 
-                   
                 </main>
             </div>
         </div>
