@@ -23,10 +23,6 @@
                     <!-- Login button -->
                     <button id="Login-button" class="Login-button" onclick="attemptLogin()">Login</button>
                     <br>
-                    <div class="col-lg-12 mt-3 text-center">
-                        <h6 class="text-muted">Or</h6>
-                    </div><!--end col-->
-                    <button id="Login-button" class="Login-button" onclick="attemptLogin()">Google</button>
                     <!-- Login result message -->
                     <p id="loginResult" value=""></p>
                     <!-- Registration link -->
