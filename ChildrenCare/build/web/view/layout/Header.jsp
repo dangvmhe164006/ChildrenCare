@@ -67,6 +67,8 @@
     </body>
 
     <%}else{%>
+    <a onclick="showRegisterPopup()" id="register"class="appointment-btn scrollto"><span class="d-none d-md-inline">Register Now</a>
+    <a onclick="showLoginPopup()" id="login"class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</a>
 
 </div>
 </header>
