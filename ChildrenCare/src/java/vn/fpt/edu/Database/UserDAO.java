@@ -1,4 +1,3 @@
-
 package vn.fpt.edu.Database;
 
 import java.sql.Date;
@@ -457,11 +456,31 @@ public class UserDAO extends MyDAO {
 
     public List<User> getAllUsersByAdmin(int page, int pageSize, String sortBy, String searchFullName, String searchEmail, String searchMobile, String filterGender, String filterRole, int filterStatus) {
         List<User> userList = new ArrayList<>();
-        String sql = "SELECT * FROM ("
-                + "SELECT UserID as ID, CONCAT(LastName, ' ', FirstName) as Name, Gender, Email, ProfileImage, PhoneNumber, CAST(Status AS BIT) as Status, 'user' as Role FROM Users "
-                + "UNION "
-                + "SELECT StaffID as ID, FullName as Name, Gender, Email, ProfileImage, PhoneNumber, 1 AS Status, StaffRole as Role FROM Staff"
-                + ") AS USERLIST WHERE 1=1";
+        String sql = "SELECT * FROM (\n"
+                + "    SELECT \n"
+                + "        UserID as ID, \n"
+                + "        CONCAT(LastName, ' ', FirstName) as Name, \n"
+                + "        Gender, \n"
+                + "        Email, \n"
+                + "        ProfileImage, \n"
+                + "        PhoneNumber, \n"
+                + "        CAST(Status AS BIT) as Status, \n"
+                + "        'user' as Role \n"
+                + "    FROM Users\n"
+                + "    UNION\n"
+                + "    SELECT \n"
+                + "        StaffID as ID, \n"
+                + "        FullName as Name, \n"
+                + "        Gender, \n"
+                + "        Email, \n"
+                + "        ProfileImage, \n"
+                + "        PhoneNumber, \n"
+                + "        1 AS Status, \n"
+                + "        StaffRole as Role \n"
+                + "    FROM Staff\n"
+                + "    WHERE StaffRole != 'admin'\n"
+                + ") AS USERLIST\n"
+                + "WHERE 1=1";
 
         // Create a list to store the prepared statement parameters
         List<Object> parameters = new ArrayList<>();

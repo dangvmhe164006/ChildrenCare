@@ -10,159 +10,107 @@
     UserDAO dao = new UserDAO();
     User curUser = dao.getUser(email);
     %>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="css/profile.css" rel="stylesheet" type="text/css"/>
+    </head>
 
-    <style>
-        .inputfile {
-            width: 0.1px;
-            height: 0.1px;
-            opacity: 0;
-            overflow: hidden;
-            position: absolute;
-            z-index: -1;
-            border: 1px solid #000;
-        }
-        .inputfile + label {
-            font-size: 1.25em;
-            font-weight: 700;
-            display: inline-block;
-            cursor: pointer;
-        }
+    <body>
+        <div class="container">
+            <div class="main-body">
 
-        .inputfile:focus + label,
-        .inputfile + label:hover {
-        }
-    </style>
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="home">Home</a></li>
+                    </ol>
+                </nav>
+                <!-- /Breadcrumb -->
 
-    <body>       
-        <!-- Modal -->
-        <form action="user?action=updateprofile&userId=<%=curUser.getUserID()%>" method="post" enctype="multipart/form-data">
-            <div class="modal fade" id="myProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Profile information</h5>
-
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="p-4">
-
-                                <div class="row">
-
-                                    <div class="row mb-3">
-                                        <h5 class="mb-0">Avatar Image</h5>
-                                        <div class="text-center">
-
-                                            <input type="file" readonly="" name="images" id="file" class="inputfile" accept="image/*"/>
-                                            <label for="file"><img id="img-preview" style="height: 160px;width: 160px;" 
-                                                                   class="rounded-circle mx-auto d-block" 
-                                                                   src="<%=curUser.getProfileImage()%>"  />
-                                                <i class="bi bi-pencil-square "></i>
-                                            </label>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">First Name</label>
-                                            <input name="firstname_raw" readonly="" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="<%=curUser.getFirstName()%>" id="firstName" type="text" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Last Name</label>
-                                            <input name="lastname_raw" readonly="" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="<%=curUser.getLastName()%>" id="name2" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input name="email" readonly="" value="<%=curUser.getEmail()%>" id="email" type="email" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Phone number</label>
-                                            <input name="phone_raw" readonly="" oninvalid="CheckPhone(this);" oninput="CheckPhone(this);" value="<%=curUser.getPhoneNumber()%>" id="number" type="text" class="form-control">
-                                        </div>                                                                               
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Gender</label>
-                                            <div class="my-3">
-                                                <div class="form-check">
-                                                    <input id="credit" readonly="" name="gender" value="Male" type="radio" class="form-check-input" 
-                                                           <%= curUser.getGender().equals("Male") ? "checked" : "" %> required>
-                                                    <label class="form-check-label">Male</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input id="debit" readonly="" name="gender" value="Female" type="radio" class="form-check-input" 
-                                                           <%= curUser.getGender().equals("Female") ? "checked" : "" %> required>
-                                                    <label class="form-check-label">Female</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Address</label>
-                                            <input name="address" readonly="" value="<%=curUser.getAddress()%>" id="address" type="text" class="form-control">
-                                        </div>
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+<!--                                    <img src="<%=curUser.getProfileImage()%>" alt="Admin" class="rounded-circle" width="150">-->
+                                    <label for="file"><img id="img-preview" style="height: 160px;width: 160px;" 
+                                                           class="rounded-circle mx-auto d-block" 
+                                                           src="<%=curUser.getProfileImage()%>"  />
+                                        <i class="bi bi-pencil-square "></i>
+                                    </label>
+                                    <div class="mt-3">
+                                        <h4><%=curUser.getLastName()%></h4>
+                                        <p class="text-secondary mb-1"><%=curUser.getEmail()%></p>
+                                        <p class="text-muted font-size-sm"><%=curUser.getPhoneNumber()%></p>
                                     </div>
                                 </div>
                             </div>
-                        </div>                                     
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">First name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <%=curUser.getFirstName()%>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Last name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <%=curUser.getLastName()%>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <%=curUser.getEmail()%>
+                                    </div>
+                                </div>
+                                <hr>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Phone</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <%=curUser.getPhoneNumber()%>
+                                    </div>
+                                </div>
+                                <hr>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <%=curUser.getAddress()%>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
-        </form>
-
-        <script>
-
-            let noimage =
-                    "https://ami-sni.com/wp-content/themes/consultix/images/no-image-found-360x250.png";
-
-            function readURL(input) {
-                console.log(input.files);
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $("#img-preview").attr("src", e.target.result);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                } else {
-                    $("#img-preview").attr("src", noimage);
-                }
-            }
-
-            function CheckFullName(text) {
-                var name = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]{4,}(?:[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+){0,2}$/;
-                if (!name.test(text.value)) {
-                    text.setCustomValidity('Name is not valid');
-                } else {
-                    text.setCustomValidity('');
-                }
-                return true;
-            }
-
-            function CheckPhone(text) {
-                var phone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
-                if (!phone.test(text.value)) {
-                    text.setCustomValidity('Phone is not valid');
-                } else {
-                    text.setCustomValidity('');
-                }
-                return true;
-            }
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        </div>
     </body>
 
 </html>
