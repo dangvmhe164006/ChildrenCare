@@ -219,7 +219,7 @@
                                     </select>
                                     <select class="form-select mt-2" id="status">
                                         <option selected value="">Status</option>
-                                        <option value="pending">Pending</option>
+                                        <option value="pending">Accept</option>
                                         <option value="waiting for examination">Waiting For Examination</option> 
                                         <option value="done">Done</option>
                                         <option value="cancel">Cancel</option>

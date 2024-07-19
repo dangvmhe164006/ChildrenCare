@@ -3,21 +3,41 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservation-of-staff.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/add-service.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/MyReservationController.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/AdminController.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationDetailController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservation-manager-list.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/DBContext.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/post-detail-manage.jsp</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/PostDetailManage.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/post-list-manage.jsp</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/StaffController.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationContact.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/MedicalExaminationController.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationInformationController.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/CheckResultController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationdetail-of-staff.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/choose-children.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/UserDAO.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/resetPassword.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/StaffManageSchedule.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationstatus.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/PostDAO.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationDetail.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ResetPassController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/CPasswordController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/BlogController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/DocDetailController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationcontact.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationdetail-of-manager.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationdetail.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/MedicalExaminationDAO.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationinformation.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/ServiceStaffDAO.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/StaffController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationContact.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/RegisterController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/schedule-manage.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationInformationController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/StaffScheduleDAO.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/CheckResultController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/PaymentController.java</file>
-            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/PostManageController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/schedules-of-staff.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/model/Mail.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/LogoutController.java</file>
         </group>
     </open-files>
 </project-private>

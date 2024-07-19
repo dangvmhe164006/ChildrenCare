@@ -5,6 +5,7 @@ import vn.fpt.edu.Database.StaffDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,6 +18,10 @@ import vn.fpt.edu.model.Slider;
 import vn.fpt.edu.model.Staff;
 
 
+@MultipartConfig( //        fileSizeThreshold = 1024 * 10, // 10 KB
+        //        maxFileSize = 1024 * 300, // 300 KB
+        //        maxRequestSize = 1024 * 1024 // 1 MB 
+        )
 public class SliderController extends HttpServlet {
 
     /**

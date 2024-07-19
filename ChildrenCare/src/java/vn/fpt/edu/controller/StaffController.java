@@ -91,9 +91,7 @@ public class StaffController extends HttpServlet {
                 request.setAttribute(id, id);
                 request.getRequestDispatcher("./view/edit-medical-examination.jsp").forward(request, response);
                 break;
-            case "send-to-feedback":
-                request.getRequestDispatcher("feedback").forward(request, response);
-                break;
+        
             case "send-to-children-list":
                 if (!isManager && !isStaff) {
                     request.getRequestDispatcher("./view/403-forbidden.jsp").forward(request, response);
@@ -235,8 +233,6 @@ public class StaffController extends HttpServlet {
             throws ServletException, IOException {
         String id = (String) request.getParameter("id");
         String role = (String) request.getParameter("role");
-//        Logger logger = Logger.getLogger(StaffController.class.getName());
-//        logger.log(Level.INFO, "vão ò :" +id +"  "+ role);
         HttpSession session = request.getSession(true);
         StaffDAO staffDAO = new StaffDAO();
         String adminEmail = (String) session.getAttribute("adminEmail");

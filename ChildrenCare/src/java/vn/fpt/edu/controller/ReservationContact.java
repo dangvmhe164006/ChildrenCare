@@ -126,7 +126,7 @@ public class ReservationContact extends HttpServlet {
                         + "                                                        </button>\n"
                         + "                                                        <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuLink\">\n"
                         + "                                                            <li><a class=\"dropdown-item status-change\" href=\"#\" onclick=\"changestatus(this, " + reservation.getReservationID() + ")\">cancel</a></li>\n"
-                        + "                                                            <li><a class=\"dropdown-item status-change\" href=\"#\" onclick=\"changestatus(this, " + reservation.getReservationID() + ")\">pending</a></li>\n"
+                        + "                                                            <li><a class=\"dropdown-item status-change\" href=\"#\" onclick=\"changestatus(this, " + reservation.getReservationID() + ")\">accept</a></li>\n"
                         + "                                                            <li><a class=\"dropdown-item status-change\" href=\"#\" onclick=\"changestatus(this, " + reservation.getReservationID() + ")\">waiting for examination</a></li>\n"
                         
                         + "                                                            <li><a class=\"dropdown-item status-change\" href=\"#\" onclick=\"changestatus(this, " + reservation.getReservationID() + ")\">done</a></li>\n"
@@ -142,15 +142,8 @@ public class ReservationContact extends HttpServlet {
             //get information
             String status = request.getParameter("status");
             String reservationID = request.getParameter("reservationID");
-            // check for send mail
-            if (status.equals("done")) {
-                UserDAO userdao = new UserDAO();
-                User user = userdao.getUserByID(reservationdao.getReservationByID(Integer.parseInt(reservationID)).getUserID());
-                Mail.sendEmail(user.getEmail(), "THANK TO USE SERVICE", "Thank you for using our service\n"
-                        + "Please give us feedback about the service by clicking on feedback in the header on the homepage on the website");
-            }
-
             reservationdao.updateStatus(status, reservationID);
+            
         } else if (event.equals("updatedoctor")) {
             String doctorID = request.getParameter("doctorID");
             String reservationID = request.getParameter("reservationID");

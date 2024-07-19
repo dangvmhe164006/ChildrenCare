@@ -42,8 +42,7 @@ boolean isStaff = false;
                 <nav class="navbar navbar-light">
                     <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-light">
-                            <i class="fa fa-hashtag me-2"></i>ChildrenCare
-                        </h3>
+                            <i class="fa fa-hashtag me-2"></i>ChildranCare
                     </a>
                     <div class="d-flex align-items-center ms-4 mb-4">
                         <div class="position-relative">
@@ -100,7 +99,11 @@ boolean isStaff = false;
                            ><i class="fas fa-list-alt"></i>Reservations Manager</a
                         >
                     </div>
-                   
+                    <div class="navbar-nav w-100 text-light">
+                        <a href="feedback" class="nav-item nav-link"
+                           ><i class="far fa-file-alt"></i>Feedback</a
+                        >
+                    </div>
                     <div class="navbar-nav w-100 text-light">
                         <a href="service?event=manage" class="nav-item nav-link"
                            ><i class="fas fa-stethoscope"></i>Services</a
@@ -126,13 +129,22 @@ boolean isStaff = false;
                 <!-- Navbar Start -->
                 <nav class="navbar navbar-expand navbar-light sticky-top px-4 py-0" style="background-color: #1977cc;">
 
-                   
+                    <a href="#" class="sidebar-toggler flex-shrink-0 text-decoration-none text-light">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <form class="d-none d-md-flex ms-4">
+                        <input
+                            class="form-control border-0"
+                            type="search"
+                            placeholder="Search"
+                            />
+                    </form>
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                      
+                           
                         </div>
                         <div class="nav-item dropdown">
-                           
+                          
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -153,6 +165,7 @@ boolean isStaff = false;
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
+                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -273,7 +286,6 @@ boolean isStaff = false;
             </div>
 
         </div>
-        
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -449,6 +461,14 @@ boolean isStaff = false;
                 }
             });
         }
-  
+        document.querySelector('.sidebar-toggler').addEventListener('click', function () {
+            var sidebar = document.querySelector('.sidebar');
+            var content = document.querySelector('.content');
+
+            sidebar.classList.toggle('open');
+            content.classList.toggle('open');
+
+            return false;
+        });
     </script>
 </html>
