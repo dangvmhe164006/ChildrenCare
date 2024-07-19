@@ -47,7 +47,7 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myProfile" >My profile</a></li>
+                    <li><a class="dropdown-item" href="../ChildrenCare/view/profile2.jsp" >My profile</a></li>
                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myProfile" >Changer profile</a></li>
                     <li><a onclick="changePassowrd()" class="dropdown-item">Change Password</a></li>
                     <li><a class="dropdown-item" href="myreservation">My reservation</a></li>
@@ -67,8 +67,6 @@
     </body>
 
     <%}else{%>
-    <a onclick="showRegisterPopup()" id="register"class="appointment-btn scrollto"><span class="d-none d-md-inline">Register Now</a>
-    <a onclick="showLoginPopup()" id="login"class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</a>
 
 </div>
 </header>

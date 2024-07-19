@@ -77,8 +77,6 @@ if (message != null) {
                                                                    src="<%=curUser.getProfileImage()%>"  />
                                                 <i class="bi bi-pencil-square "></i>
                                             </label>
-
-
                                         </div>
 
                                     </div>

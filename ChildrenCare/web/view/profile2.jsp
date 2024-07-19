@@ -45,25 +45,8 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <% 
-String message = (String) request.getSession().getAttribute("message");
-String alertClass = "alert-success";
 
-if (message != null) { 
-   if (message.contains("error")) {
-       alertClass = "alert-danger";
-   }
-                            %>
-                            <div class="alert <%= alertClass %> alert-dismissible fade show" role="alert">
-                                <strong><%= message %></strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <%
-                                request.getSession().removeAttribute("message");
-                            }
-                            %>
                             <div class="p-4">
-
 
                                 <div class="row">
 
@@ -71,7 +54,7 @@ if (message != null) {
                                         <h5 class="mb-0">Avatar Image</h5>
                                         <div class="text-center">
 
-                                            <input type="file" name="images" id="file" class="inputfile" onchange="readURL(this)" accept="image/*"/>
+                                            <input type="file" readonly="" name="images" id="file" class="inputfile" accept="image/*"/>
                                             <label for="file"><img id="img-preview" style="height: 160px;width: 160px;" 
                                                                    class="rounded-circle mx-auto d-block" 
                                                                    src="<%=curUser.getProfileImage()%>"  />
@@ -83,14 +66,14 @@ if (message != null) {
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">First Name</label>
-                                            <input name="firstname_raw" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="<%=curUser.getFirstName()%>" id="firstName" type="text" class="form-control">
+                                            <input name="firstname_raw" readonly="" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="<%=curUser.getFirstName()%>" id="firstName" type="text" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Last Name</label>
-                                            <input name="lastname_raw" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="<%=curUser.getLastName()%>" id="name2" type="text" class="form-control">
+                                            <input name="lastname_raw" readonly="" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);" value="<%=curUser.getLastName()%>" id="name2" type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -103,7 +86,7 @@ if (message != null) {
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Phone number</label>
-                                            <input name="phone_raw" oninvalid="CheckPhone(this);" oninput="CheckPhone(this);" value="<%=curUser.getPhoneNumber()%>" id="number" type="text" class="form-control">
+                                            <input name="phone_raw" readonly="" oninvalid="CheckPhone(this);" oninput="CheckPhone(this);" value="<%=curUser.getPhoneNumber()%>" id="number" type="text" class="form-control">
                                         </div>                                                                               
                                     </div>
 
@@ -112,12 +95,12 @@ if (message != null) {
                                             <label class="form-label">Gender</label>
                                             <div class="my-3">
                                                 <div class="form-check">
-                                                    <input id="credit" name="gender" value="Male" type="radio" class="form-check-input" 
+                                                    <input id="credit" readonly="" name="gender" value="Male" type="radio" class="form-check-input" 
                                                            <%= curUser.getGender().equals("Male") ? "checked" : "" %> required>
                                                     <label class="form-check-label">Male</label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input id="debit" name="gender" value="Female" type="radio" class="form-check-input" 
+                                                    <input id="debit" readonly="" name="gender" value="Female" type="radio" class="form-check-input" 
                                                            <%= curUser.getGender().equals("Female") ? "checked" : "" %> required>
                                                     <label class="form-check-label">Female</label>
                                                 </div>
@@ -129,16 +112,12 @@ if (message != null) {
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
-                                            <input name="address" value="<%=curUser.getAddress()%>" id="address" type="text" class="form-control">
+                                            <input name="address" readonly="" value="<%=curUser.getAddress()%>" id="address" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>                                      
+                        </div>                                     
                     </div>
                 </div>
             </div>
