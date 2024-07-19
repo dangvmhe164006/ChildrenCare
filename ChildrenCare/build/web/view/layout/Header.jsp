@@ -48,10 +48,10 @@
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myProfile" >My profile</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myProfile" >Changer profile</a></li>
                     <li><a onclick="changePassowrd()" class="dropdown-item">Change Password</a></li>
                     <li><a class="dropdown-item" href="myreservation">My reservation</a></li>
                     <li><a class="dropdown-item" href="logout">Logout</a></li>
-
                 </ul>
             </div>
         </div>
