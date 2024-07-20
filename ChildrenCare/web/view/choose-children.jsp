@@ -257,13 +257,6 @@
                                                     <div class="col-md-9">
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <button class="btn btn-danger btn-block border-m trash" value="${c.childID}">
-                                                                    <span class="d-flex align-items-center">
-                                                                        <i class="fas fa-arrow-circle-left mr-2"></i> Delete
-                                                                    </span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-md-4">
                                                                 <button class="btn btn-primary btn-block border-m" data-bs-toggle="modal"
                                                                         data-bs-target="#updatePatientModal${c.childID}"><span
                                                                         class="d-flex align-items-center">
@@ -415,7 +408,7 @@
                             <button type="button" class="btn btn-block border-m btn-continue text-white" data-bs-toggle="modal"
                                     data-bs-target="#addPatientModal">
                                 <span class="d-flex align-items-center">
-                                    Add profile
+                                    Add Children profile
                                 </span>
                             </button>
                         </div>

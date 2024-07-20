@@ -99,11 +99,6 @@ boolean isManager = false;
                         >
                     </div>
                     <div class="navbar-nav w-100 text-light">
-                        <a href="feedback" class="nav-item nav-link"
-                           ><i class="far fa-file-alt"></i>Feedback</a
-                        >
-                    </div>
-                    <div class="navbar-nav w-100 text-light">
                         <a href="service?event=manage" class="nav-item nav-link"
                            ><i class="fas fa-stethoscope"></i>Services</a
                         >
@@ -134,32 +129,10 @@ boolean isManager = false;
                     </form>
                     <div class="navbar-nav align-items-center ms-auto">
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                           
                         </div>
                         <div class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                >
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notification</span>
-                            </a>
-                            <div
-                                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-                                >
-                            </div>
+                            
                         </div>
                         <%if(curStaff!=null){%>
                         <div class="nav-item dropdown">
@@ -180,7 +153,6 @@ boolean isManager = false;
                                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
                                 >
                                 <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
                                 <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
@@ -210,7 +182,7 @@ boolean isManager = false;
                                         <table class="table">
                                             <thead class="text-light" style="background: #1977cc;">
                                                 <tr>
-                                                    <th scope="col">ID</th>
+                                                
                                                     <th scope="col">Thumbnail</th>
                                                     <th scope="col">Title</th>
                                                     <th scope="col">Category</th>
@@ -223,7 +195,6 @@ boolean isManager = false;
                                                 <c:forEach var="l" items="${list}">
 
                                                     <tr id="${l.getPostID()}" class="service p-3 " ${l.isStatusPost()}>
-                                                        <th scope="row">${l.getPostID()}</th>
                                                         <td><img src="${l.getThumbnail()}" alt="ìmg" style="width: 12rem;height: 8rem;object-fit: cover;" /></td>
                                                         <td>${l.getTitle()}</td>
                                                         <td>${l.getCategoryPost()}</td>
@@ -244,24 +215,7 @@ boolean isManager = false;
                                             </tbody>
                                         </table>
                                         <form action="postManage">
-                                            <div class="container d-flex justify-content-between">
-                                                <input type="text" name="postTitle" placeholder="Search Title" class="form-control w-25 mx-3" value="${postTitle}" />
-                                                <select class="form-select text-primary w-25 me-3" name="postAuthor" >
-                                                    <c:forEach var="a" items="${authorList}">
-                                                        <option value="${a.getUserID()}">${a.getFirstName()} ${a.getLastName()} </option>
-                                                    </c:forEach>
-                                                </select>
-                                                <select class="form-select text-primary w-25 me-3" name="postCategory" >
-                                                    <c:forEach var="c" items="${categoryList}">
-                                                        <option value="${c}">${c} </option>
-                                                    </c:forEach>
-                                                </select>
-                                                <select class="form-select text-primary w-25 me-3" name="sortBy" >
-                                                    <c:forEach var="s" items="${sortList}">
-                                                        <option value="${s}">${s}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
+                                           
                                     </div>
                                 </div>
                             </div>

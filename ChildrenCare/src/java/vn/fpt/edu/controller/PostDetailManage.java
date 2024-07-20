@@ -144,12 +144,9 @@ public class PostDetailManage extends HttpServlet {
 
     protected void loadPostDetail(HttpServletRequest request, HttpServletResponse response, Post post, String event) {
         PostDAO postDAO = new PostDAO();
-        List<String> categoryList = postDAO.allCategoryPost();
-        categoryList.remove(post.getCategoryPost());
-        categoryList.add(0, post.getCategoryPost());
+
         request.setAttribute("author", postDAO.getNameByUserID(post.getAuthorID()));
         request.setAttribute("avatar", postDAO.getAvatarByUserID(post.getAuthorID()));
-        request.setAttribute("categoryList", categoryList);
         request.setAttribute("post", post);
         request.setAttribute("event", event);
     }

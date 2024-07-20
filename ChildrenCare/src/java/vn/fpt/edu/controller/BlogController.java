@@ -57,10 +57,8 @@ public class BlogController extends HttpServlet {
          SliderDAO sliderDAO = new SliderDAO();
         List<Slider> listSlide = sliderDAO.getAllSlideActive();
         request.setAttribute("slider", listSlide);
-
         PostDAO postDAO = new PostDAO();
         List<Post> listPost = postDAO.getAllPosts();
-
         List<Post> latestPosts = new ArrayList<>();
         if (listPost.size() < 3) {
             for (int i = listPost.size() - 1; i >= 0; i--) {
@@ -71,27 +69,6 @@ public class BlogController extends HttpServlet {
                 latestPosts.add(listPost.get(i));
             }
         }
-
-        
-
-
-        try {
-            postTitle = request.getParameter("postTitle");
-            if (postTitle == null) {
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            postTitle = "";
-        }
-        String postCategory;
-        try {
-            postCategory = request.getParameter("postCategory");
-            if (postCategory == null || postCategory.equals("Post Category")) {
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            postCategory = "";
-        }
         int page;
         try {
             page = Integer.parseInt(request.getParameter("page"));
@@ -99,21 +76,13 @@ public class BlogController extends HttpServlet {
             page = 1;
         }
         PostDAO postDao = new PostDAO();
-        List<String> categoryList = postDao.allCategoryPost();
-        int numOfPage = (postDao.getCountOfPostsUserChoose(postTitle, postCategory) + 5) / 6;
-        List<Post> list = postDao.getSortedPagedPostsByUserChoice((page - 1) * 6, 6, postTitle, postCategory);
-        categoryList.add(0, "Post Category");
-        if (!postCategory.isEmpty()) {
-            categoryList.remove(postCategory);
-            categoryList.add(0, postCategory);
-        }
+            int numOfPage = (postDao.getCountOfPosts() + 5) / 6;
+           List<Post> list = postDao.getPagedPosts((page - 1) * 6, 6);
+    
         if (list.isEmpty()) {
             request.setAttribute("notFound", "There are no matching posts");
             request.getRequestDispatcher("./view/blog-list.jsp").forward(request, response);
         } else {
-            request.setAttribute("postTitle", postTitle);
-            request.setAttribute("postCategory", postCategory);
-            request.setAttribute("categoryList", categoryList);
             request.setAttribute("numOfPage", numOfPage);
             request.setAttribute("list", list);
             request.setAttribute("last3post", latestPosts);

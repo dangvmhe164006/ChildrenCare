@@ -191,7 +191,6 @@
                                 <option selected value="">Role</option>
                                 <option value="user">Customer</option>
                                 <option value="doctor">Doctor</option>
-                                <option value="nurse">Nurse</option> 
                                 <option value="manager">Manager</option>
                             </select>
 

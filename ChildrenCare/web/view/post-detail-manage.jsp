@@ -179,7 +179,7 @@ boolean isManager = false;
                                         <button type="button" onclick="clearImage()" class="btn btn-secondary mt-2">Clear Image</button>
                                     </div>
                                     
-                                            <input class="form-control text-muted" type="hidden" name="postID" value="${post.getPostID()}" readonly  />
+                                    <input class="form-control text-muted" type="hidden" name="postID" value="${post.getPostID()}" readonly  />
                                        
                                     <br>
                                     <div>

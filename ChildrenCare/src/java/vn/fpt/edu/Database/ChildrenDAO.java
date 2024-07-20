@@ -224,7 +224,7 @@ public class ChildrenDAO extends MyDAO {
 
     public static void main(String[] args) {
         ChildrenDAO childrenDAO = new ChildrenDAO();
-        Children u = childrenDAO.getChildrenByChildrenId("1");
+       boolean v = childrenDAO.deleteChild("1");
     }
 
 }
