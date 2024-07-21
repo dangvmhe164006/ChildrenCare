@@ -9,21 +9,6 @@ import vn.fpt.edu.model.Reservation;
 
 
 public class ReservationDAO extends MyDAO {
-    //update status
-    public void updateDoctor(String staffId, String reservationID) {
-        xSql = "UPDATE Reservations\n"
-                + "SET StaffID = ? \n"
-                + "WHERE ReservationID = ?;";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setString(1, staffId);
-            ps.setString(2, reservationID);
-            ps.executeUpdate();
-            ps.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     //update status
     public void updateStatus(String status, String reservationID) {

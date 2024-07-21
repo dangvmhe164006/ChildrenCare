@@ -62,11 +62,11 @@
             <!-- Sidebar Start -->
             <div class="sidebar pe-4 pb-3">
                 <nav class="navbar navbar-light">
-                    <a href="staff?event=sent-to-home" class="navbar-brand mx-4 mb-3">
+                
                         <h3 class="text-light">
                             <i class="fa fa-hashtag me-2"></i>ChildrenCare
                         </h3>
-                    </a>
+           
                     <div class="d-flex align-items-center ms-4 mb-4">
                         <div class="position-relative">
                             <img
@@ -273,13 +273,6 @@
                                                         <button style="border: 0px; padding: 0px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <span class="badge bg-primary"  id="doctorBadge-${reservation.getReservationID()}"><%= staffa.getStaffName() %></span>
                                                         </button>
-                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                            <p>Doctor</p>
-                                                            <c:forEach var="listdoctor" items="<%= staff %>">
-                                                                <li><a class="dropdown-item status-change" href="#" onclick="changeDoctor(this, ${listdoctor.getStaffID()},${reservation.getReservationID()})">${listdoctor.getStaffName()}</a></li>
-                                                                </c:forEach>
-                                                        </ul>
-
                                                     </div>
                                                 </td>
 
@@ -290,7 +283,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Cancel</a></li>
-                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Accept</a></li>
+                                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Pending</a></li>
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Waiting for examination</a></li>
                                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, ${reservation.getReservationID()})">Done</a></li>
                                                         </ul>

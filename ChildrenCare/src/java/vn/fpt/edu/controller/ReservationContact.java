@@ -144,10 +144,6 @@ public class ReservationContact extends HttpServlet {
             String reservationID = request.getParameter("reservationID");
             reservationdao.updateStatus(status, reservationID);
             
-        } else if (event.equals("updatedoctor")) {
-            String doctorID = request.getParameter("doctorID");
-            String reservationID = request.getParameter("reservationID");
-            reservationdao.updateDoctor(doctorID, reservationID);
         } else if (event.equals("fillter")) {
             //get parameter
             String page = request.getParameter("page");

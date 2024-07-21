@@ -10,13 +10,19 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="" name="keywords" />
         <meta content="" name="description" />
+
+        <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon" />
+
+        <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap"
             rel="stylesheet"
             />
+
+        <!-- Icon Font Stylesheet -->
         <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
             rel="stylesheet"
@@ -25,6 +31,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
             rel="stylesheet"
             />
+
         <!-- Libraries Stylesheet -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -32,6 +39,7 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
             />
+
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="./resources/css/staff-dashboard.css">
@@ -41,8 +49,6 @@
         <%
       String email = (String) session.getAttribute("email");
       StaffDAO staffDAO = new StaffDAO();
-      ChildrenDAO childrenDAO = new ChildrenDAO();
-      ReservationDAO reservationDAO = new ReservationDAO();
       Staff curStaff = staffDAO.getStaffByStaffEmail(email);
       UserDAO userDAO = new UserDAO();
       ServiceDAO serviceDAO = new ServiceDAO();
@@ -52,7 +58,7 @@
         <div class="container-fluid position-relative bg-white d-flex p-0">
             <%if(curStaff!=null){
             if(curStaff.getRole().equals("manager")) isManager=true;
-            if(curStaff.getRole().equals("doctor")) isStaff=true;%>
+            if(curStaff.getRole().equals("doctor")||curStaff.getRole().equals("nurse")) isStaff=true;%>
             <!-- Sidebar Start -->
             <div class="sidebar pe-4 pb-3">
                 <nav class="navbar navbar-light">
@@ -175,97 +181,7 @@
                 <!-- Navbar End -->
 
                 <!-- Blank Start -->
-                <div class="container-fluid pt-4 px-4">
-                    <div
-                        class="min-vh-100 bg-light rounded justify-content-center align-items-center mx-0"
-                        >
-                        <div class="row px-4 justify-content-between bg-white rounded-3 border-2 border-light">
-                            <div class="col-md-12 col-lg-4">
-                                <div class="d-flex">
-                                    <div class="me-3">
-                                        <img src="./resources/img/icon/icon-01.png" class="img-fluid" alt="patient" width="100px">
-                                    </div>
-                                    <div class="dash-widget-info">
-                                        <h6>Total Patient</h6>
-                                        <h3><%=childrenDAO.countChildren()%></h3>
-                                        <p class="text-muted">Till Today</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-lg-4">
-                                <div class="d-flex">
-                                    <div class="me-3">
-                                        <img src="./resources/img/icon/icon-02.png" class="img-fluid" alt="Patient" width="100px">
-                                    </div>
-                                    <div class="dash-widget-info">
-                                        <h6>Today Patient</h6>
-                                        <h3><%=reservationDAO.countPatientToday(curStaff.getStaffID()+"")%></h3>
-                                        <p class="text-muted">Today</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-lg-4">
-                                <div class="d-flex">
-                                    <div class="me-3">
-                                        <img src="./resources/img/icon/icon-03.png" class="img-fluid" alt="Patient" width="100px">
-                                    </div>
-                                    <div class="dash-widget-info">
-                                        <h6>Appoinments</h6>
-                                        <h3><%=reservationDAO.countApoinmentTodayOfStaff(curStaff.getStaffID()+"")%></h3>
-                                        <p class="text-muted">Today</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 class="px-4 mt-3"> Patient Appoinment Today </h3>
-
-                        <div class="table-responsive p-4 bg-light border-2 border-light">
-                            <%if(curStaff!=null){%>
-                            <table class="table table-striped table-hover">
-                                <thead class="text-light" style="background: #1977cc;">
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Reserved date</th>
-                                        <th scope="col">Customer name</th>
-                                        <th scope="col">Service</th>
-                                        <th scope="col">Cost</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="reservations-list">
-                                    <%
-                                    List<Reservation> reservations = reservationDAO.getApoinmentTodayOfStaff(curStaff.getStaffID()+"");
-        
-                                    if(reservations!=null){
-                                    for (Reservation reservation : reservations) {
-                                    %>
-                                    <tr>
-                                        <th scope="row"><a href="staff?event=send-to-reservation-detail&reserdid=<%=reservation.getReservationID()%>" class="text-decoration-none text-dark"><%=reservation.getReservationID()%></a></th>
-                                        <td><%=reservation.getReservationDate()%></td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img class="rounded-circle object-cover me-3" src="<%=userDAO.getUserByID(reservation.getUserID()).getProfileImage()%>" alt="alt" width="30px" height="30px"/>
-                                                <div><%=userDAO.getUserByID(reservation.getUserID()).getFirstName()%></div>
-                                            </div>
-                                        </td>
-                                        <td><%=serviceDAO.getServiceByID(reservation.getServiceID()+"").getTitle()%></td>
-                                        <td><%=reservation.getCost()%></td>
-                                        <td><%=reservation.getStatus()%></td>
-                                        <td><a href="staff?event=send-to-reservation-detail&reserdid=<%=reservation.getReservationID()%>"><img src="resources/img/icon/detail.png" alt="alt" width="25px"/></a></td>
-                                    </tr>
-                                    <%}}%>
-
-                                </tbody>
-                            </table>
-                            <%}%>    
-                        </div>
-
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
