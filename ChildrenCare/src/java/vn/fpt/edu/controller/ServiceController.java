@@ -370,7 +370,6 @@ public class ServiceController extends HttpServlet {
             throws ServletException, IOException {
         StaffDAO staffDAO = new StaffDAO();
         String id = request.getParameter("serviceID");
-        System.out.println("id cua services" + id);
         ServiceDAO serviceDAO = new ServiceDAO();
         Service services = serviceDAO.getServiceByID(id);
         request.setAttribute("service", services);

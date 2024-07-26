@@ -1,4 +1,3 @@
-
 package vn.fpt.edu.controller;
 
 import vn.fpt.edu.Database.ChildrenDAO;
@@ -23,10 +22,23 @@ import vn.fpt.edu.model.Staff;
 
 public class ReservationDetail extends HttpServlet {
 
+    // Helper method to check if a string is numeric
+    private boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession(true);
             if (session.getAttribute("email") == null) {
                 response.sendRedirect("home");
@@ -38,10 +50,16 @@ public class ReservationDetail extends HttpServlet {
             reservationDAO.updateDatabase();
 
             // Receive serviceID, staffID, childID, action
-            String serviceID = (String) request.getParameter("serviceID");
-            String staffID = (String) request.getParameter("staffID");
-            String childID = (String) request.getParameter("childID");
-            String action = (String) request.getParameter("action");
+            String serviceID = request.getParameter("serviceID");
+            String staffID = request.getParameter("staffID");
+            String childID = request.getParameter("childID");
+            String action = request.getParameter("action");
+
+            // Check if serviceID is null or empty
+            if (serviceID == null || serviceID.isEmpty()) {
+                response.sendRedirect("404");
+                return;
+            }
 
             UserDAO userDAO = new UserDAO();
             ChildrenDAO childrenDAO = new ChildrenDAO();
@@ -55,8 +73,6 @@ public class ReservationDetail extends HttpServlet {
 
             // Get the current date
             LocalDate currentDate = LocalDate.now();
-
-            // Get the current month as an integer (1-12)
             int currentMonthValue = currentDate.getMonthValue();
             int currentYearValue = currentDate.getYear();
 
@@ -64,35 +80,12 @@ public class ReservationDetail extends HttpServlet {
             StaffScheduleDAO staffscheduleDAO = new StaffScheduleDAO();
             ServiceDAO serviceDAO = new ServiceDAO();
 
-            // Check the service id is not null
-            if (serviceID == null) {
-                response.sendRedirect("404");
-                return;
-            }
+            // Check if staffID is provided and valid
+            if (staffID != null && !staffID.isEmpty() && isNumeric(staffID)) {
+                int staffIdInt = Integer.parseInt(staffID);
 
-            // Check is user choose service or choose staff
-            if (staffID == null) {
-                if (serviceDAO.getServiceByID(serviceID) != null) {
-                    // Set attribute to send to the page
-                    Service service = serviceDAO.getServiceByID(serviceID);
-                    request.setAttribute("service", service);
-
-                    request.setAttribute("staff", null);
-                    request.setAttribute("ChildID", childID);
-
-                    // Process the service schedule for all staff available
-                    List<Integer> Workday = staffscheduleDAO.getWorkdayByServiceID(serviceID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-                    List<Integer> fullDay = staffscheduleDAO.getFullDayByServiceID(serviceID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-                    request.setAttribute("Workday", Workday);
-                    request.setAttribute("fullDay", fullDay);
-
-                    request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
-                } else {
-                    response.sendRedirect("404");
-                }
-            } else {
                 // Check the existence of the staff and services
-                if (staffDAO.getStaffByStaffId(Integer.parseInt(staffID)) != null && serviceDAO.getServiceByID(serviceID) != null) {
+                if (staffDAO.getStaffByStaffId(staffIdInt) != null && serviceDAO.getServiceByID(serviceID) != null) {
                     // Check if the Staff is correctly working for the service
                     ServiceStaffDAO servicestaffDAO = new ServiceStaffDAO();
                     if (!servicestaffDAO.checkExist(staffID, serviceID)) {
@@ -101,7 +94,7 @@ public class ReservationDetail extends HttpServlet {
                     }
 
                     // Get the staff
-                    Staff staff = staffDAO.getStaffByStaffId(Integer.parseInt(staffID));
+                    Staff staff = staffDAO.getStaffByStaffId(staffIdInt);
 
                     // Set attribute to send to the page
                     Service service = serviceDAO.getServiceByID(serviceID);
@@ -110,44 +103,59 @@ public class ReservationDetail extends HttpServlet {
                     request.setAttribute("ChildID", childID);
 
                     // Process staff schedule
-                    List<Integer> Workday = staffscheduleDAO.getWorkDay(staffID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue)); // The variable will contain the number of workdays
-
-                    // List of slot and day in the reservation of that staff ID
-                    List<Integer> temp = staffscheduleDAO.getWorkDay(staffID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
+                    List<Integer> Workday = staffscheduleDAO.getWorkDay(staffID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
                     List<Integer> fullDay = staffscheduleDAO.getWorkDay(staffID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-                    // loop to check if at least one slot for that day is available
-                    for (int day : temp) {
-                        // Boolean to check if the slot is available
+
+                    for (int day : Workday) {
                         boolean check = false;
-                        // Select all the slot have in that day
                         for (int slot : staffscheduleDAO.getWorkSlots(Integer.toString(day), Integer.toString(currentMonthValue), Integer.toString(currentYearValue), staffID)) {
-                            if (reservationDAO.checkSlotForAvailable(Integer.toString(slot), staffID, Integer.toString(day), Integer.toString(currentMonthValue), Integer.toString(currentYearValue)) == true) {
+                            if (reservationDAO.checkSlotForAvailable(Integer.toString(slot), staffID, Integer.toString(day), Integer.toString(currentMonthValue), Integer.toString(currentYearValue))) {
                                 check = true;
                                 break;
                             }
-
                         }
-                        // If we can search the slot in the reservation with status != cancel => fullDay remove it
-                        if (check == true) {
+                        if (check) {
                             fullDay.remove(Integer.valueOf(day));
                         }
                     }
+
                     request.setAttribute("Workday", Workday);
                     request.setAttribute("fullDay", fullDay);
+
                     if (action != null) {
-                        String reservationID = (String) request.getParameter("reservationID");
-                        Reservation reservation = reservationDAO.getReservationByID(Integer.parseInt(reservationID));
-                        // Check if the reservation belongs to the user 
-                        if (reservation.getUserID() != userDAO.getUser(email).getUserID()) {
+                        String reservationID = request.getParameter("reservationID");
+                        if (reservationID != null && isNumeric(reservationID)) {
+                            Reservation reservation = reservationDAO.getReservationByID(Integer.parseInt(reservationID));
+                            if (reservation.getUserID() != userDAO.getUser(email).getUserID()) {
+                                response.sendRedirect("404");
+                                return;
+                            }
+                            request.setAttribute("dateChange", reservation.getReservationDate());
+                            request.setAttribute("reservationID", reservation.getReservationID());
+                            request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
+                        } else {
                             response.sendRedirect("404");
-                            return;
                         }
-                        request.setAttribute("dateChange", reservation.getReservationDate());
-                        request.setAttribute("reservationID", reservation.getReservationID());
-                        request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
                     } else {
                         request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
                     }
+                } else {
+                    response.sendRedirect("404");
+                }
+            } else {
+                if (serviceDAO.getServiceByID(serviceID) != null) {
+                    // Set attribute to send to the page
+                    Service service = serviceDAO.getServiceByID(serviceID);
+                    request.setAttribute("service", service);
+                    request.setAttribute("staff", null);
+                    request.setAttribute("ChildID", childID);
+
+                    List<Integer> Workday = staffscheduleDAO.getWorkdayByServiceID(serviceID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
+                    List<Integer> fullDay = staffscheduleDAO.getFullDayByServiceID(serviceID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
+                    request.setAttribute("Workday", Workday);
+                    request.setAttribute("fullDay", fullDay);
+
+                    request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
                 } else {
                     response.sendRedirect("404");
                 }

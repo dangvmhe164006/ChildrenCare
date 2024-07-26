@@ -114,23 +114,28 @@
                     <div class="col-md-4 mt-5">
                         <div class="card mt-4 border-m shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Info of examination</h5>
+                                <h5 class="card-title">Infor of examination</h5>
                                 <table class="table">
                                     <tbody>
-                                        <c:if test="${staff.staffID != null}">
-                                            <tr>
-                                                <td><i class="fas fa-user-md"></i></td>
-                                                <td><strong>Dr:</strong></td>
-                                                <td>${staff.staffName}</td>
-                                            </tr>
-                                        </c:if>
                                         <tr>
-                                            <td><i class="fas fa-stethoscope"></i></td>
+                                            <td colspan="2">
+                                                <label for="doctorSelect"><strong>Doctor:</strong></label>
+                                                <select id="doctorSelect" name="doctorSelect" class="form-control">
+                                                    <c:forEach var="doc" items="${listDoc}">
+                                                        <option value="${doc.staffID}" ${doc.staffID == staff.staffID ? 'selected' : ''}>
+                                                            ${doc.staffName}
+                                                        </option>
+                                                    </c:forEach>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td><strong>Services:</strong></td>
                                             <td>${service.title}</td>
                                         </tr>
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
@@ -265,12 +270,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="">
-                                                        <form action="reservationdetail?" method="POST">
+                                                    <div>
+                                                        <form action="reservationdetail?" method="POST" id="reservationForm">
                                                             <input type="hidden" name="serviceID" value="${service.serviceID}">
-                                                            <c:if test="${staff.staffID != null}">
-                                                                <input type="hidden" name="staffID" value="${staff.staffID}">
-                                                            </c:if>
+                                                           
+                                                            <input type="hidden" name="staffID" id="staffIDHidden">
+                                                           
                                                             <input type="hidden" name="childID" value="${c.childID}">
                                                             <button type="submit" class="btn-continue btn btn-block text-white">
                                                                 <span class="d-flex align-items-center">
@@ -278,13 +283,13 @@
                                                                 </span>
                                                             </button>
                                                         </form>
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="modal fade" id="updatePatientModal${c.childID}" tabindex="-1" role="dialog" aria-labelledby="patientModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <form action="user?action=update-child" method="POST" enctype="multipart/form-data">
@@ -297,6 +302,7 @@
                                                     <div class="container">
                                                         <!-- Image Upload -->
                                                         <input type="hidden"  name="childID" value="${c.childID}">
+                                                        a
                                                         <div class="form-group text-center">
                                                             <input type="file" style="display: none;" name="images"  class="inputfile" onchange="readURL(this)" accept="image/*" />
                                                             <label for="file">
@@ -304,10 +310,14 @@
                                                                 <i class="bi bi-pencil-square image-create"></i>
                                                             </label>
                                                         </div>
+
+
                                                         <!-- Fullname -->
                                                         <div class="form-group">
                                                             <label for="patientName">Fullname:</label>
                                                             <input required type="text" class="form-control" oninvalid="CheckFullName(this);" oninput="CheckFullName(this);"  name="fullname" placeholder="Enter fullname of your child" value="${c.childName}">
+
+
                                                         </div>
                                                         <!-- Date of Birth -->
                                                         <div class="row">
@@ -420,6 +430,10 @@
                  aria-hidden="true" >
                 <div class="modal-dialog" role="document" >
                     <form action="user?action=add-child" method="POST" enctype="multipart/form-data">
+                        <input  type="hidden"  name="serviceId"  value="${service.serviceID}"/>
+                       
+                     <input type="hidden" name="staffID" id="staffIDHidden">
+
                         <div class="modal-content border-m" style="width:140%">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="addPatientModalLabel">Add children information</h5>
@@ -540,7 +554,16 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
+                                 document.getElementById('doctorSelect').addEventListener('change', function() {
+        var selectedStaffID = this.value;
+        // Cập nhật giá trị của trường ẩn staffIDHidden
+        document.getElementById('staffIDHidden').value = selectedStaffID;
+    });
+
                                             $(".trash").click(function () {
+
+
+
                                                 var cardElement = $(this).closest('.child-card'); // Tìm phần tử gần nhất có class 'child-card'
                                                 var childID = $(this).val(); // Lấy giá trị childID từ nút xóa
 

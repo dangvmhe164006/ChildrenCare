@@ -436,10 +436,10 @@ public class StaffScheduleDAO extends MyDAO {
 
     public static void main(String args[]) {
         StaffScheduleDAO staffScheduleDAO = new StaffScheduleDAO();
-        List<StaffSchedule> staffSchedules = staffScheduleDAO.getStaffUnconfirmSchedules(1, 10);
-        StaffDAO staffDAO = new StaffDAO();
-        for (StaffSchedule staffSchedule : staffSchedules) {
-            System.out.println(staffSchedule.getStaffID());
+       List<Integer> l = staffScheduleDAO.getFullDayByServiceID("1", "7", "2024");
+        for (Integer integer : l) {
+            System.out.println(integer.byteValue());
+            
         }
     }
 }

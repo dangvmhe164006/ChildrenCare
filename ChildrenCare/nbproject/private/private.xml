@@ -6,6 +6,7 @@
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservation-of-staff.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/add-service.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservation-manager-list.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/AdminController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/service-manage.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationdetail-of-staff.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/choose-children.jsp</file>
@@ -22,7 +23,10 @@
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ResetPassController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/service-list.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/PostManageController.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/staff-detail-admin.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/user-list.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/ServiceDAO.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/staff-dashboard.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/edit-medical-examination.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationdetail.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/reservationinformation.jsp</file>
@@ -47,6 +51,7 @@
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/service-edit.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/MyReservationController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/DBContext.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/model/Staff.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationDetailController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/slider-detail.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/post-detail-manage.jsp</file>
@@ -54,8 +59,10 @@
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/StaffManageSchedule.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/slider-list.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/confirm-reservation.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/doctor-detail.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ServiceController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/my-patient-list.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/model/Service.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/customer-list-admin.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/add-user-admin.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/CPasswordController.java</file>
@@ -67,10 +74,12 @@
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/MedicalExaminationDAO.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/servicedetail.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/service-detail-manage.jsp</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/web/view/login-staff.jsp</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/RelationshipDAO.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/ServiceStaffDAO.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/model/Post.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationContact.java</file>
+            <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/model/MaHoa.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/StaffListController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/controller/ReservationInformationController.java</file>
             <file>file:/D:/SWP/Project/ChildrenCare/ChildrenCare/src/java/vn/fpt/edu/Database/StaffScheduleDAO.java</file>

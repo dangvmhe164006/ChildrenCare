@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import vn.fpt.edu.model.CategoryService;
 import vn.fpt.edu.model.Children;
-import vn.fpt.edu.model.Mail;
 import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Staff;
@@ -39,17 +38,6 @@ public class CheckResultController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //Begin process return from VNPAY
-        /* Payment Notify
-     * IPN URL: Ghi nhận kết quả thanh toán từ VNPAY
-     * Các bước thực hiện:
-     * Kiểm tra checksum 
-     * Tìm giao dịch trong database
-     * Kiểm tra số tiền giữa hai hệ thống
-     * Kiểm tra tình trạng của giao dịch trước khi cập nhật
-     * Cập nhật kết quả vào Database
-     * Trả kết quả ghi nhận lại cho VNPAY
-         */
         HttpSession session = request.getSession();
         if (request.getParameter("method") != null && !request.getParameter("method").isEmpty()) {
             String reservationIDStr = request.getParameter("reservation");
@@ -74,10 +62,6 @@ public class CheckResultController extends HttpServlet {
             reservation.setStatus("waiting for examination");
             reservationDAO.update(reservation);
             request.getSession().setAttribute("message", "Payment successfully");
-            Thread emailThread = new Thread(() -> {
-                Mail.sendEmail(users.getEmail(), "Information about your reservations ", Mail.setInfo(reservation,service,doctor,children,cate));
-            });
-            emailThread.start();
             request.getRequestDispatcher("./view/reservationstatus.jsp").forward(request, response);
         } else {
 

@@ -63,7 +63,7 @@ public class UserController extends HttpServlet {
             isAdmin = true;
         }
         if (curStaff != null) {
-            if (curStaff.getRole().equals("doctor") || curStaff.getRole().equals("nurse")) {
+            if (curStaff.getRole().equals("doctor")) {
                 isStaff = true;
             }
             if (curStaff.getRole().equals("manager")) {
@@ -112,40 +112,46 @@ public class UserController extends HttpServlet {
             }
 
             if (action.equals("my-children")) {
-               if(users!=null){
+                if (users != null) {
                     int userID = users.getUserID();
-                      
-                String serviceID = request.getParameter("serviceID");
-                ServiceDAO serviceDAO = new ServiceDAO();
-                Service service = serviceDAO.getServiceByID(serviceID);
-                String staffIDstr = request.getParameter("staffID");
-                Staff staff = null;  // Initialize to null
-                if (staffIDstr != null) {
-                    int staffID = Integer.parseInt(staffIDstr);
-                    StaffDAO staffDAO = new StaffDAO();
-                    staff = staffDAO.getStaffByStaffId(staffID);
-                    request.setAttribute("staff", staff);
-                }
-                request.setAttribute("service", service);
-                ChildrenDAO cDao = new ChildrenDAO();
-                if (cDao.countChildrenByUserID(userID) != 0) {
-                    List<Children> childList = cDao.getListChildrenByUserId(userID + "");
-                    request.setAttribute("child", childList);
-                }
-                RelationshipDAO reDAO = new RelationshipDAO();
-                List<Relationship> reList = reDAO.getRelationshipList();
-                request.setAttribute("relationship", reList);
-                request.getRequestDispatcher("./view/choose-children.jsp").forward(request, response);
 
-               }else{
-                   response.sendRedirect("home");
-               }
-                
-            
+                    String serviceID = request.getParameter("serviceID");
+                    ServiceDAO serviceDAO = new ServiceDAO();
+                    Service service = serviceDAO.getServiceByID(serviceID);
+                    String staffIDstr = request.getParameter("staffID");
+                     Staff staff = null; 
+                     StaffDAO staffDAO = new StaffDAO();
+
+                    if (staffIDstr != null) {
+                        int staffID = Integer.parseInt(staffIDstr);
+                        staff = staffDAO.getStaffByStaffId(staffID);
+                        request.setAttribute("staff", staff);
+                    }
+                      
+                    List<Staff> listDoc = staffDAO.getDoctorByServices(serviceID);
+                    request.setAttribute("listDoc", listDoc);
+                    request.setAttribute("service", service);
+                    ChildrenDAO cDao = new ChildrenDAO();
+                    if (cDao.countChildrenByUserID(userID) != 0) {
+                        List<Children> childList = cDao.getListChildrenByUserId(userID + "");
+                        request.setAttribute("child", childList);
+                    }
+                    
+                    
+                    RelationshipDAO reDAO = new RelationshipDAO();
+                    List<Relationship> reList = reDAO.getRelationshipList();
+                    request.setAttribute("relationship", reList);
+                    request.getRequestDispatcher("./view/choose-children.jsp").forward(request, response);
+
+                } else {
+                    response.sendRedirect("home");
+                }
+
             }
 
             if (action.equals("add-child")) {
                 ChildrenDAO childDAO = new ChildrenDAO();
+ 
                 String fullName = request.getParameter("fullname");
                 String year = request.getParameter("year");
                 String month = request.getParameter("month");
@@ -190,15 +196,64 @@ public class UserController extends HttpServlet {
                     users.setPhoneNumber(phoneNumber);
                     userdao.updateProfile(users);
                 }
+                
+                
+                   ServiceDAO serviceDAO = new ServiceDAO();
+                   StaffDAO staffDAO = new StaffDAO();
+                   
+                    String serviceID = request.getParameter("serviceId");
+                    Service service = serviceDAO.getServiceByID(serviceID);
+                    String staffIDstr = request.getParameter("docId");
+                    Staff staff = null; 
+                        List<Staff> listDoc = staffDAO.getDoctorByServices(serviceID);
+                    request.setAttribute("listDoc", listDoc);
+                    if (staffIDstr != null) {
+                        int staffID = Integer.parseInt(staffIDstr);
+                        staff = staffDAO.getStaffByStaffId(staffID);
+                        request.setAttribute("staff", staff);
+                    }
+                    request.setAttribute("service", service);
+                    int userID = users.getUserID();
 
+                    ChildrenDAO cDao = new ChildrenDAO();
+                    if (cDao.countChildrenByUserID(userID) != 0) {
+                        List<Children> childList = cDao.getListChildrenByUserId(userID + "");
+                        request.setAttribute("child", childList);
+                    }
+                    List<Relationship> reList = reDAO.getRelationshipList();
+                    request.setAttribute("relationship", reList);
                 String message = (statusUpdate) ? "Add children profile successfully" : "An error when add children profile";
                 session.setAttribute("message", message);
-                response.sendRedirect("user?action=my-children");
-//                request.getRequestDispatcher().forward(request, response);
+                request.getRequestDispatcher("./view/choose-children.jsp").forward(request, response);
 
             }
             if (action.equals("update-child")) {
-                ChildrenDAO childDAO = new ChildrenDAO();
+                   ChildrenDAO childDAO = new ChildrenDAO();
+                   ServiceDAO serviceDAO = new ServiceDAO();
+                   StaffDAO staffDAO = new StaffDAO();
+                    String serviceID = request.getParameter("serviceId");
+                    Service service = serviceDAO.getServiceByID(serviceID);
+                    String staffIDstr = request.getParameter("docId");
+                    Staff staff = null; 
+                    if (staffIDstr != null) {
+                        int staffID = Integer.parseInt(staffIDstr);
+                        staff = staffDAO.getStaffByStaffId(staffID);
+                        request.setAttribute("staff", staff);
+                    }
+                    request.setAttribute("service", service);
+                    int userID = users.getUserID();
+
+                    ChildrenDAO cDao = new ChildrenDAO();
+                    if (cDao.countChildrenByUserID(userID) != 0) {
+                        List<Children> childList = cDao.getListChildrenByUserId(userID + "");
+                        request.setAttribute("child", childList);
+                    }
+                    RelationshipDAO reDAO = new RelationshipDAO();
+                    List<Relationship> reList = reDAO.getRelationshipList();
+                    request.setAttribute("relationship", reList);
+                
+                
+                
                 String childID = request.getParameter("childID");
                 Children child = childDAO.getChildrenByChildrenId(childID);
                 String fullName = request.getParameter("fullname");
@@ -209,7 +264,6 @@ public class UserController extends HttpServlet {
                 Part filePart = request.getPart("images");
                 String relationshipIDstr = request.getParameter("relaID");
                 int relationshipID = Integer.parseInt(relationshipIDstr);
-                RelationshipDAO reDAO = new RelationshipDAO();
                 Relationship relationship = reDAO.getRelationByID(relationshipID);
                 Date sqlDOB = null;
                 try {
@@ -240,16 +294,10 @@ public class UserController extends HttpServlet {
 
                 String message = (statusUpdate) ? "Add update profile successfully" : "Add update profile failed";
                 session.setAttribute("message", message);
-                response.sendRedirect("user?action=my-children");
-//                request.getRequestDispatcher().forward(request, response);
+                    request.getRequestDispatcher("./view/choose-children.jsp").forward(request, response);
 
             }
-            if (action.equals("delete-child")) {
-                String childID = request.getParameter("childID");
-                System.out.println(childID);
-                ChildrenDAO childDAO = new ChildrenDAO();
-                childDAO.deleteChild(childID);
-            }
+
             if (action.equals("search")) {
                 if (isManager) {
                     // Retrieve search parameters from the request
