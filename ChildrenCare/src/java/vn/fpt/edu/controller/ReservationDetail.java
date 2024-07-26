@@ -142,24 +142,7 @@ public class ReservationDetail extends HttpServlet {
                 } else {
                     response.sendRedirect("404");
                 }
-            } else {
-                if (serviceDAO.getServiceByID(serviceID) != null) {
-                    // Set attribute to send to the page
-                    Service service = serviceDAO.getServiceByID(serviceID);
-                    request.setAttribute("service", service);
-                    request.setAttribute("staff", null);
-                    request.setAttribute("ChildID", childID);
-
-                    List<Integer> Workday = staffscheduleDAO.getWorkdayByServiceID(serviceID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-                    List<Integer> fullDay = staffscheduleDAO.getFullDayByServiceID(serviceID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-                    request.setAttribute("Workday", Workday);
-                    request.setAttribute("fullDay", fullDay);
-
-                    request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
-                } else {
-                    response.sendRedirect("404");
-                }
-            }
+            } 
         }
     }
 

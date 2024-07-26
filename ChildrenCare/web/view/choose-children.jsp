@@ -271,11 +271,10 @@
                                                         </div>
                                                     </div>
                                                     <div>
+
                                                         <form action="reservationdetail?" method="POST" id="reservationForm">
                                                             <input type="hidden" name="serviceID" value="${service.serviceID}">
-                                                           
-                                                            <input type="hidden" name="staffID" id="staffIDHidden">
-                                                           
+                                                            <input type="hidden" name="staffID" id="staffIDHidden${c.childID}" >
                                                             <input type="hidden" name="childID" value="${c.childID}">
                                                             <button type="submit" class="btn-continue btn btn-block text-white">
                                                                 <span class="d-flex align-items-center">
@@ -283,6 +282,7 @@
                                                                 </span>
                                                             </button>
                                                         </form>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -431,8 +431,8 @@
                 <div class="modal-dialog" role="document" >
                     <form action="user?action=add-child" method="POST" enctype="multipart/form-data">
                         <input  type="hidden"  name="serviceId"  value="${service.serviceID}"/>
-                       
-                     <input type="hidden" name="staffID" id="staffIDHidden">
+
+                        <input type="hidden" name="staffID" id="staffIDHidden">
 
                         <div class="modal-content border-m" style="width:140%">
                             <div class="modal-header">
@@ -554,45 +554,28 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-                                 document.getElementById('doctorSelect').addEventListener('change', function() {
-        var selectedStaffID = this.value;
-        // Cập nhật giá trị của trường ẩn staffIDHidden
-        document.getElementById('staffIDHidden').value = selectedStaffID;
-    });
-
-                                            $(".trash").click(function () {
 
 
+                                            document.addEventListener('DOMContentLoaded', function () {
+                                                var doctorSelect = document.getElementById('doctorSelect');
 
-                                                var cardElement = $(this).closest('.child-card'); // Tìm phần tử gần nhất có class 'child-card'
-                                                var childID = $(this).val(); // Lấy giá trị childID từ nút xóa
+                                                // Cập nhật staffIDHidden khi doctorSelect thay đổi
+                                                doctorSelect.addEventListener('change', function () {
+                                                    var selectedStaffID = doctorSelect.value;
 
-                                                Swal.fire({
-                                                    title: 'Are you sure?',
-                                                    text: "You won't be able to revert this!",
-                                                    icon: 'warning',
-                                                    showCancelButton: true,
-                                                    confirmButtonColor: '#3085d6',
-                                                    cancelButtonColor: '#d33',
-                                                    confirmButtonText: 'Yes, delete it!'
-                                                }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        $.ajax({
-                                                            url: '/ChildrenCare/user?action=delete-child',
-                                                            type: 'GET',
-                                                            data: {childID: childID},
-                                                            success: function (response) {
-                                                                cardElement.fadeOut(300, function () {
-                                                                    $(this).remove();
-                                                                });
-                                                            },
-                                                            error: function () {
-                                                                alert('Error!');
-                                                            }
-                                                        });
-                                                    }
+                                                    // Cập nhật tất cả các input staffIDHidden trong các form
+                                                    document.querySelectorAll('input[id^="staffIDHidden"]').forEach(function (staffIDHidden) {
+                                                        staffIDHidden.value = selectedStaffID;
+                                                    });
+                                                });
+
+                                                // Khởi tạo giá trị của staffIDHidden khi trang tải xong
+                                                var initialStaffID = doctorSelect.value;
+                                                document.querySelectorAll('input[id^="staffIDHidden"]').forEach(function (staffIDHidden) {
+                                                    staffIDHidden.value = initialStaffID;
                                                 });
                                             });
+
 
                                             function readURL(input) {
                                                 console.log(input.files);
