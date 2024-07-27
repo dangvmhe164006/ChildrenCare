@@ -136,10 +136,10 @@
                                     </label>
                                 </div>
                                 <div id="pending-lg" class="text-primary flex-column align-items-center">
-                                    <i class="far fa-clock fa-6x mb-3"></i>
+                                    <i class="far fa-circle-check fa-6x mb-3"></i>
                                     <label for="">
-                                        <p class="text-uppercase">
-                                            <small>PENDING (PAY FAILED)</small>
+                                       <p class="text-uppercase">
+                                            <small>WAITTING FOR EXAMINATION</small>
                                         </p>
                                     </label>
                                 </div>

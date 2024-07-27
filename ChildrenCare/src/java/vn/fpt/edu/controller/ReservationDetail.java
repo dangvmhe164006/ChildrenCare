@@ -3,7 +3,6 @@ package vn.fpt.edu.controller;
 import vn.fpt.edu.Database.ChildrenDAO;
 import vn.fpt.edu.Database.ReservationDAO;
 import vn.fpt.edu.Database.ServiceDAO;
-import vn.fpt.edu.Database.ServiceStaffDAO;
 import vn.fpt.edu.Database.StaffDAO;
 import vn.fpt.edu.Database.StaffScheduleDAO;
 import vn.fpt.edu.Database.UserDAO;
@@ -19,6 +18,7 @@ import java.util.List;
 import vn.fpt.edu.model.Reservation;
 import vn.fpt.edu.model.Service;
 import vn.fpt.edu.model.Staff;
+import vn.fpt.edu.model.StaffSchedule;
 
 public class ReservationDetail extends HttpServlet {
 
@@ -72,10 +72,6 @@ public class ReservationDetail extends HttpServlet {
             }
 
             // Get the current date
-            LocalDate currentDate = LocalDate.now();
-            int currentMonthValue = currentDate.getMonthValue();
-            int currentYearValue = currentDate.getYear();
-
             StaffDAO staffDAO = new StaffDAO();
             StaffScheduleDAO staffscheduleDAO = new StaffScheduleDAO();
             ServiceDAO serviceDAO = new ServiceDAO();
@@ -86,12 +82,6 @@ public class ReservationDetail extends HttpServlet {
 
                 // Check the existence of the staff and services
                 if (staffDAO.getStaffByStaffId(staffIdInt) != null && serviceDAO.getServiceByID(serviceID) != null) {
-                    // Check if the Staff is correctly working for the service
-                    ServiceStaffDAO servicestaffDAO = new ServiceStaffDAO();
-                    if (!servicestaffDAO.checkExist(staffID, serviceID)) {
-                        response.sendRedirect("404");
-                        return;
-                    }
 
                     // Get the staff
                     Staff staff = staffDAO.getStaffByStaffId(staffIdInt);
@@ -101,48 +91,14 @@ public class ReservationDetail extends HttpServlet {
                     request.setAttribute("service", service);
                     request.setAttribute("Staff", staff);
                     request.setAttribute("ChildID", childID);
+                    List<StaffSchedule> list = staffscheduleDAO.getAvailableStaffSchedules(staffID);
+                    request.setAttribute("list", list);
+                    request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
 
-                    // Process staff schedule
-                    List<Integer> Workday = staffscheduleDAO.getWorkDay(staffID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-                    List<Integer> fullDay = staffscheduleDAO.getWorkDay(staffID, Integer.toString(currentMonthValue), Integer.toString(currentYearValue));
-
-                    for (int day : Workday) {
-                        boolean check = false;
-                        for (int slot : staffscheduleDAO.getWorkSlots(Integer.toString(day), Integer.toString(currentMonthValue), Integer.toString(currentYearValue), staffID)) {
-                            if (reservationDAO.checkSlotForAvailable(Integer.toString(slot), staffID, Integer.toString(day), Integer.toString(currentMonthValue), Integer.toString(currentYearValue))) {
-                                check = true;
-                                break;
-                            }
-                        }
-                        if (check) {
-                            fullDay.remove(Integer.valueOf(day));
-                        }
-                    }
-
-                    request.setAttribute("Workday", Workday);
-                    request.setAttribute("fullDay", fullDay);
-
-                    if (action != null) {
-                        String reservationID = request.getParameter("reservationID");
-                        if (reservationID != null && isNumeric(reservationID)) {
-                            Reservation reservation = reservationDAO.getReservationByID(Integer.parseInt(reservationID));
-                            if (reservation.getUserID() != userDAO.getUser(email).getUserID()) {
-                                response.sendRedirect("404");
-                                return;
-                            }
-                            request.setAttribute("dateChange", reservation.getReservationDate());
-                            request.setAttribute("reservationID", reservation.getReservationID());
-                            request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
-                        } else {
-                            response.sendRedirect("404");
-                        }
-                    } else {
-                        request.getRequestDispatcher("/view/reservationdetail.jsp").include(request, response);
-                    }
                 } else {
                     response.sendRedirect("404");
                 }
-            } 
+            }
         }
     }
 

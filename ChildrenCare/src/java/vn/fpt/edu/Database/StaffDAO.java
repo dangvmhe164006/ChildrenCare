@@ -164,7 +164,7 @@ public class StaffDAO extends MyDAO {
     }
 
     public Staff getDocByStaffId(int staffID) {
-        Staff staff = null;
+        Staff staff = new Staff();
         xSql = "SELECT *  FROM [dbo].[Staff] where StaffID = ?";
         try {
             ps = con.prepareStatement(xSql);
@@ -360,4 +360,12 @@ public class StaffDAO extends MyDAO {
             e.printStackTrace();
         }
     }
+  public static void main(String args[]) {
+       StaffDAO s =  new StaffDAO();
+       Staff ss = s.getDocByStaffId(1);
+       System.out.println(ss.getFullName());
+    }
+
 }
+
+  

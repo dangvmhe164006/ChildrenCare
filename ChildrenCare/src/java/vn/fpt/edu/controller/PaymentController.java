@@ -37,55 +37,8 @@ public class PaymentController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User users = (User) session.getAttribute("user");
-        String payment = request.getParameter("payment");
-        int reservationID = Integer.parseInt(request.getParameter("reservation"));
-        ReservationDAO reservationDAO = new ReservationDAO();
-        reservationDAO.updateDatabase();
-        Reservation reservation = reservationDAO.getReservationByID(reservationID);
-        ServiceDAO serviceDAO = new ServiceDAO();
-        Service service = serviceDAO.getServiceByID(String.valueOf(reservation.getServiceID()));
-        StaffDAO staffDAO = new StaffDAO();
-        Staff doctor = staffDAO.getStaffByStaffId(reservation.getStaffID());
-        ChildrenDAO childrenDAO = new ChildrenDAO();
-        Children children = childrenDAO.getChildrenByChildrenId(String.valueOf(reservation.getChildID()));
-        CategoryServiceDAO cateDAO = new CategoryServiceDAO();
-        CategoryService cate = cateDAO.getCategoryServiceByID(String.valueOf(service.getServiceID()));
-        request.setAttribute("reservation", reservation);
-        request.setAttribute("service", service);
-        request.setAttribute("doctor", doctor);
-        request.setAttribute("children", children);
-        request.setAttribute("cate", cate);
-        if (payment.equals("offline")) {
-            com.google.gson.JsonObject job = new JsonObject();
-            if (reservation.getStatus().equals("pending")) {
-                job.addProperty("code", "00");
-                job.addProperty("message", "success");
-                reservation.setPayment("Pay at Center");
-                reservationDAO.update(reservation);
-                String paymentUrl = getServletContext().getContextPath() + "/check?method=off&reservation=" + reservationID;
-                job.addProperty("data", paymentUrl);
-                Gson gson = new Gson();
-                try {
-                    response.getWriter().write(gson.toJson(job));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                job.addProperty("code", "01");
-                job.addProperty("message", "You have the same examinaton!");
-                String paymentUrl = getServletContext().getContextPath() + "/check?method=off&reservation=" + reservationID;
-                job.addProperty("data", paymentUrl);
-                Gson gson = new Gson();
-                try {
-                    response.getWriter().write(gson.toJson(job));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        
 
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -115,7 +68,30 @@ public class PaymentController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        User users = (User) session.getAttribute("user");
+        int reservationID = Integer.parseInt(request.getParameter("reservation"));
+        ReservationDAO reservationDAO = new ReservationDAO();
+        reservationDAO.updateDatabase();
+        Reservation reservation = reservationDAO.getReservationByID(reservationID);
+        ServiceDAO serviceDAO = new ServiceDAO();
+        Service service = serviceDAO.getServiceByID(String.valueOf(reservation.getServiceID()));
+        StaffDAO staffDAO = new StaffDAO();
+        Staff doctor = staffDAO.getStaffByStaffId(reservation.getStaffID());
+        ChildrenDAO childrenDAO = new ChildrenDAO();
+        Children children = childrenDAO.getChildrenByChildrenId(String.valueOf(reservation.getChildID()));
+        CategoryServiceDAO cateDAO = new CategoryServiceDAO();
+        CategoryService cate = cateDAO.getCategoryServiceByID(String.valueOf(service.getServiceID()));
+        reservationDAO.updatePayment("Pay Off",request.getParameter("reservation") );
+        reservationDAO.updateStatus("waiting for examination", request.getParameter("reservation"));
+        request.setAttribute("reservation", reservation);
+        request.setAttribute("service", service);
+        request.setAttribute("doctor", doctor);
+        request.setAttribute("children", children);
+        request.setAttribute("cate", cate);
+        request.getRequestDispatcher("/view/reservationstatus.jsp").include(request, response);
+
+
     }
 
     /**

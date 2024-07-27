@@ -84,7 +84,6 @@
                             <table class="table custom-table">
                                 <thead>
                                     <tr>
-                                        <th class="align-middle">Reservation ID</th>
                                         <th class="align-middle">Service</th>
                                         <th class="align-middle">Doctor</th>
                                         <th class="align-middle">Appointment Time</th>
@@ -93,9 +92,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>${reservation.reservationID}</td>
                                         <td>${service.title}</td>
-                                        <td>${doctor.staffName}</td>
+                                        <td>${doc.getFullName()}</td>
                                         <td>Time:<c:choose>
                                                 <c:when test="${reservation.reservationSlot eq 1}">7:00 - 8:00</c:when>
                                                 <c:when test="${reservation.reservationSlot eq 2}">8:00 - 9:00</c:when>
@@ -251,24 +249,17 @@
                                     </c:choose>
 
                                     <input type="hidden" id="language" name="language" value="en">
-                                    <input type="hidden" id="reserv" name="reservation" value="${reservation.reservationID}">
+                                    <input type="hidden" id="reserv" name="reservation" value="${id}">
                                 </div>
                             </div>
                         </div>
                                 
                         <div class="d-flex al justify-content-around mt-5 mb-5">
-                            <button type="button" class="btn btn-none btn-block border-m btn-transparent" onclick="goBack()">
-                                <span class="d-flex align-items-center bold">
-                                    Back
-                                </span>
-                            </button>
-
                             <button type="submit" class="btn-continue btn btn-block text-white">
                                 <span class="d-flex align-items-center">
                                     Continue
                                 </span>
                             </button>
-
                         </div>
                     </form>
 
@@ -284,42 +275,7 @@
 </div>
 
 <jsp:include page="layout/footer.jsp"/>
-<script type="text/javascript">
-                                $("#frmCreateOrder").submit(function () {
-                                    var postData = $("#frmCreateOrder").serialize();
-                                    var submitUrl = $("#frmCreateOrder").attr("action");
-                                    console.log("Data being sent:", postData);
-
-                                    $.ajax({
-                                        type: "POST",
-                                        url: submitUrl,
-                                        data: postData,
-                                        dataType: 'JSON',
-                                        success: function (x) {
-                                            if (x.code === '00') {
-                                                if (x.data && x.data !== "") {
-                                                    // Nếu có dữ liệu trả về từ máy chủ
-                                                    if (window.vnpay) {
-                                                        vnpay.open({width: 768, height: 600, url: x.data});
-                                                    } else {
-                                                        location.href = x.data;
-                                                    }
-                                                } else {
-                                                    location.href = "./view/reservationstatus.jsp";
-                                                }
-                                            } else {
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Oops...',
-                                                    text: x.message
-                                                })
-                                            }
-                                        }
-                                    });
-
-                                    return false;
-                                });
-</script>    
+    
 <script>
     function getReservationTime(id) {
         switch (id) {
@@ -339,9 +295,7 @@
                 return "Unknown";
         }
     }
-    function goBack() {
-        window.history.back();
-    }
+  
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

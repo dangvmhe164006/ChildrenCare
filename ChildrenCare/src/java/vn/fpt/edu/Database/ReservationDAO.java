@@ -343,53 +343,6 @@ public class ReservationDAO extends MyDAO {
         return count;
     }
 
-    public int countApoinmentTodayOfStaff(String staffID) {
-        int count = 0;
-        xSql = "select COUNT(*) from Reservations WHERE ReservationDate = CAST(GETDATE() AS DATE) AND StaffID = ?;";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setString(1, staffID);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                count = rs.getInt(1);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    public List<Reservation> getApoinmentTodayOfStaff(String staffID) {
-        List<Reservation> list = new ArrayList<>();
-        String sql = "SELECT * FROM [dbo].[Reservations] WHERE ReservationDate = CAST(GETDATE() AS DATE) AND StaffID = ? AND Status <> ? ";
-
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, staffID);
-            ps.setString(2, "pending");
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                // Lấy dữ liệu từ ResultSet và thêm vào danh sách
-                int ReservationID = rs.getInt("ReservationID");
-                int UserID = rs.getInt("UserID");
-                int ServiceID = rs.getInt("ServiceID");
-                Date ReservationDate = rs.getDate("ReservationDate");
-                int ReservationSlot = rs.getInt("ReservationSlot");
-                Timestamp CreatedDate = rs.getTimestamp("CreatedDate");
-                float Cost = rs.getFloat("Cost");
-                String Status = rs.getString("Status");
-                int StaffID = rs.getInt("StaffID");
-                int ChildID = rs.getInt("ChildID");
-                Reservation reservation = new Reservation(ReservationID, UserID, ServiceID, StaffID, ChildID, ReservationDate, ReservationSlot, CreatedDate, Cost, Status);
-                list.add(reservation);
-            }
-            rs.close();
-            ps.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
 
     public List<Reservation> getReservationByStaffID(String staffID) {
         List<Reservation> list = new ArrayList<>();
@@ -938,15 +891,15 @@ public class ReservationDAO extends MyDAO {
         }
     }
 
-    public int findReservationID(int userID, String childID, String serviceID, Date reservationDate, int slot) {
+    public int findReservationID(int userID, String childID, String serviceID, String reservationDate, int slot) {
         int id = -1;
         xSql = "select * from [dbo].[Reservations] where UserID = ? "
-                + "and ServiceID = ? and ReservationDate = ? and ReservationSlot = ? and ChildID = ? and Status <> 'cancel'";
+                + "and ServiceID = ? and ReservationDate = ? and ReservationSlot = ? and ChildID = ? ";
         try {
             ps = con.prepareStatement(xSql);
             ps.setString(1, Integer.toString(userID));
             ps.setString(2, serviceID);
-            ps.setDate(3, reservationDate);
+            ps.setString(3, reservationDate);
             ps.setInt(4, slot);
             ps.setString(5, childID);
             rs = ps.executeQuery();
@@ -960,82 +913,6 @@ public class ReservationDAO extends MyDAO {
             e.printStackTrace();
         }
         return id;
-    }
-
-    public boolean checkSlotForAvailable(String slot, String staffID, String selectedDate, String selectedMonth, String selectedYear) {
-        boolean result = true;
-        xSql = "select * from [dbo].[Reservations]\n"
-                + "where ReservationSlot = ? and StaffID = ? and DAY(ReservationDate) = ? \n"
-                + "and MONTH(ReservationDate) = ? and YEAR(ReservationDate) = ? \n"
-                + "and Status <> 'cancel'";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setString(1, slot);
-            ps.setString(2, staffID);
-            ps.setString(3, selectedDate);
-            ps.setString(4, selectedMonth);
-            ps.setString(5, selectedYear);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                result = false;
-                break;
-            }
-            rs.close();
-            ps.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public boolean checkSlotThatSelfBooked(String slot, String staffID, String childID, String selectedDate, String selectedMonth, String selectedYear) {
-        boolean result = false;
-        xSql = "select * from [dbo].[Reservations]\n"
-                + "where ReservationSlot = ? and StaffID = ? and DAY(ReservationDate) = ? \n"
-                + "and MONTH(ReservationDate) = ? and YEAR(ReservationDate) = ? \n"
-                + "and Status <> 'cancel'";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setString(1, slot);
-            ps.setString(2, staffID);
-            ps.setString(3, selectedDate);
-            ps.setString(4, selectedMonth);
-            ps.setString(5, selectedYear);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                result = false;
-                break;
-            }
-            rs.close();
-            ps.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public List<Integer> getListSelfBookedSlot(String ChildID, String selectedDate, String selectedMonth, String selectedYear) {
-        List<Integer> list = new ArrayList<>();
-        xSql = "select ReservationSlot from [dbo].[Reservations] \n"
-                + "  where ChildID = ? and DAY(ReservationDate) = ? \n"
-                + "  and MONTH(ReservationDate) = ? and YEAR(ReservationDate) = ?\n"
-                + "  and Status <> 'cancel'";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setString(1, ChildID);
-            ps.setString(2, selectedDate);
-            ps.setString(3, selectedMonth);
-            ps.setString(4, selectedYear);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(rs.getInt("ReservationSlot"));
-            }
-            rs.close();
-            ps.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
     }
 
     public boolean validateReservationByChildrenID(String ChildID, int ReservationSlot, Date ReservationDate) {
@@ -1195,40 +1072,6 @@ public class ReservationDAO extends MyDAO {
         return 0;
     }
 
-    public int countNewlyReservedMember(Date startDate, Date endDate) {
-        xSql = "  select count(*) as TotalCount  from (\n"
-                + "  select distinct UserID from Reservations\n"
-                + "  where DATEDIFF(DAY, ?, CreatedDate) >= 0 AND DATEDIFF(DAY, ?, CreatedDate) <= 0\n"
-                + "  ) as tempTable";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setDate(1, startDate);
-            ps.setDate(2, endDate);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("TotalCount");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    public int getReservationTotalEachDay(Date reservationDate) {
-        xSql = "select count(*) as TotalCount from [dbo].[Reservations] where ReservationDate = ?";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setDate(1, reservationDate);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("TotalCount");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
     public int getReservationTotalEachMonth(Date reservationDate) {
         xSql = "select count(*) as TotalCount from [dbo].[Reservations] where MONTH(ReservationDate) = MONTH(?) and YEAR(ReservationDate) = YEAR(?)";
         try {
@@ -1245,36 +1088,7 @@ public class ReservationDAO extends MyDAO {
         return 0;
     }
 
-    public int getReservationDoneEachDay(Date reservationDate) {
-        xSql = "select count(*) as TotalCount from [dbo].[Reservations] where ReservationDate = ? and Status = 'done'";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setDate(1, reservationDate);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("TotalCount");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    public int getReservationDoneEachMonth(Date reservationDate) {
-        xSql = "select count(*) as TotalCount from [dbo].[Reservations] where MONTH(ReservationDate) = MONTH(?) and YEAR(ReservationDate) = YEAR(?) and Status = 'done'";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setDate(1, reservationDate);
-            ps.setDate(2, reservationDate);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("TotalCount");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
+  
 
     public void updatePayment(String payment, String reservationID) {
         xSql = "UPDATE Reservations\n"
@@ -1311,10 +1125,7 @@ public class ReservationDAO extends MyDAO {
 
     public static void main(String args[]) {
         ReservationDAO rd = new ReservationDAO();
-      // List<Reservation> listreservation = rd.getReservationByUserID(2);
-//        System.out.println(rd.getTotalReservationBySearch("v"));
-//        for(Reservation reservation : listreservation){
-//            System.out.println(reservation.getServiceID());
-//        }
+    int id = rd.findReservationID(4, "3", "9", "2024-08-01", 1);
+        System.out.println(id);
     }
 }

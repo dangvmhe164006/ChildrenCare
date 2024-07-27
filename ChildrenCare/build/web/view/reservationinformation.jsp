@@ -126,9 +126,7 @@
         <div id="groupButton" class="text-center" style="margin:30px;">
 
         </div>
-        <footer style="padding-top:500px" >
-            <jsp:include page="layout/footer.jsp"/>
-        </footer>
+      
         <script>
             var groupButton = document.getElementById("groupButton");
             var status = "<%=reservation.getStatus()%>";
