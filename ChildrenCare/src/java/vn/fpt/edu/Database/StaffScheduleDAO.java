@@ -1,4 +1,3 @@
-
 package vn.fpt.edu.Database;
 
 import java.sql.Date;
@@ -31,7 +30,7 @@ public class StaffScheduleDAO extends MyDAO {
         }
         return staffScheduleList;
     }
-    
+
     public List<StaffSchedule> getStaffUnconfirmSchedules(int page, int pageSize) {
         List<StaffSchedule> staffScheduleList = new ArrayList<>();
         xSql = "SELECT * FROM [dbo].[StaffSchedules] where Status = 'unconfirmed'"
@@ -46,13 +45,13 @@ public class StaffScheduleDAO extends MyDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 int ScheduleID = rs.getInt("ScheduleID");
-                int staffID= rs.getInt("StaffID");
+                int staffID = rs.getInt("StaffID");
 
                 Date Workday = rs.getDate("Workday");
                 int Slot = rs.getInt("Slot");
 
                 String status = rs.getString("Status");
-                StaffSchedule ss = new StaffSchedule(ScheduleID,staffID, Workday,Slot, status);
+                StaffSchedule ss = new StaffSchedule(ScheduleID, staffID, Workday, Slot, status);
                 staffScheduleList.add(ss);
             }
             rs.close();
@@ -62,8 +61,9 @@ public class StaffScheduleDAO extends MyDAO {
         }
         return staffScheduleList;
     }
+
     public void updateStaffSchedule(StaffSchedule staffSchedule) {
-        try{
+        try {
             String sql = "UPDATE StaffSchedules SET StaffID = ?, Workday = ?, Slot = ?, Status = ? WHERE ScheduleID = ?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, staffSchedule.getStaffID());
@@ -76,6 +76,7 @@ public class StaffScheduleDAO extends MyDAO {
             e.printStackTrace();
         }
     }
+
     public StaffSchedule getStaffScheduleByID(int scheduleID) {
         StaffSchedule staffSchedule = null;
 
@@ -101,11 +102,11 @@ public class StaffScheduleDAO extends MyDAO {
 
         return staffSchedule;
     }
-    
+
     public int countStaffUnconfirmSchedules() {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM [dbo].[StaffSchedules] where Status = 'unconfirmed'";
-        
+
         try {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -117,7 +118,7 @@ public class StaffScheduleDAO extends MyDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return count;
     }
 
@@ -165,7 +166,7 @@ public class StaffScheduleDAO extends MyDAO {
         }
         return slot;
     }
-   
+
     public List<Integer> getWorkdayByServiceID(String serviceID, String month, String year) {
         List<Integer> day = new ArrayList<>();
         xSql = "WITH AvailableSlots AS (\n"
@@ -406,7 +407,7 @@ public class StaffScheduleDAO extends MyDAO {
             ps.setString(3, staffID);
             rs = ps.executeQuery();
             if (rs.next()) {
-                 int ScheduleID = rs.getInt("ScheduleID");
+                int ScheduleID = rs.getInt("ScheduleID");
                 Date Workday = rs.getDate("Workday");
                 int Slot = rs.getInt("Slot");
                 StaffSchedule ss = new StaffSchedule(ScheduleID, Slot, Workday, Slot);
@@ -434,12 +435,67 @@ public class StaffScheduleDAO extends MyDAO {
         }
     }
 
+  public List<StaffSchedule> getAvailableStaffSchedules(String staffID) {
+        List<StaffSchedule> staffScheduleList = new ArrayList<>();
+        xSql = "WITH SlotTimes AS ("
+                + "    SELECT 1 AS Slot, '07:00:00' AS StartTime, '08:00:00' AS EndTime"
+                + "    UNION ALL"
+                + "    SELECT 2, '08:00:01', '09:00:00'"
+                + "    UNION ALL"
+                + "    SELECT 3, '09:00:01', '10:00:00'"
+                + "    UNION ALL"
+                + "    SELECT 4, '10:00:01', '11:00:00'"
+                + "    UNION ALL"
+                + "    SELECT 5, '14:00:01', '15:00:00'"
+                + "    UNION ALL"
+                + "    SELECT 6, '15:00:01', '16:00:00'"
+                + ")"
+                + "SELECT ss.StaffID, ss.Workday, ss.Slot, ss.ScheduleID, ss.Status"
+                + " FROM StaffSchedules ss"
+                + " LEFT JOIN Reservations r"
+                + " ON ss.StaffID = r.StaffID"
+                + " AND ss.Workday = r.ReservationDate"
+                + " AND ss.Slot = r.ReservationSlot"
+                + " LEFT JOIN SlotTimes st"
+                + " ON ss.Slot = st.Slot"
+                + " WHERE ss.Status = 'confirm'"
+                + " AND r.ReservationSlot IS NULL"
+                + " AND ss.Workday >= CAST(GETDATE() AS DATE)"
+                + " AND ("
+                + "     (ss.Workday = CAST(GETDATE() AS DATE)"
+                + "     AND CAST(GETDATE() AS TIME) <= st.StartTime)"
+                + "     OR"
+                + "     (ss.Workday > CAST(GETDATE() AS DATE))"
+                + " )"
+                + " AND ss.StaffID = ?";
+
+        try  {
+           ps = con.prepareStatement(xSql);
+            ps.setString(1, staffID);
+            rs = ps.executeQuery();
+                while (rs.next()) {
+                    int staffIDInt = rs.getInt("StaffID");
+                    Date workday = rs.getDate("Workday");
+                    int slot = rs.getInt("Slot");
+                    int scheduleID = rs.getInt("ScheduleID");
+                    String status = rs.getString("Status");
+                    StaffSchedule ss = new StaffSchedule(scheduleID, staffIDInt, workday, slot, status);
+                    staffScheduleList.add(ss);
+                }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return staffScheduleList;
+    }
+
+
     public static void main(String args[]) {
         StaffScheduleDAO staffScheduleDAO = new StaffScheduleDAO();
-       List<Integer> l = staffScheduleDAO.getFullDayByServiceID("1", "7", "2024");
-        for (Integer integer : l) {
-            System.out.println(integer.byteValue());
-            
+        List<StaffSchedule> l = staffScheduleDAO.getAvailableStaffSchedules("1");
+        for (StaffSchedule staffSchedule : l) {
+            System.out.println(staffSchedule.getWorkday());
         }
+
     }
 }

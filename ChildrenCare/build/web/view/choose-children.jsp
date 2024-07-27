@@ -272,9 +272,9 @@
                                                     </div>
                                                     <div>
 
-                                                        <form action="reservationdetail?" method="POST" id="reservationForm">
+                                                        <form action="reservationdetail?" method="POST" id="reservationForm${c.childID}">
                                                             <input type="hidden" name="serviceID" value="${service.serviceID}">
-                                                            <input type="hidden" name="staffID" id="staffIDHidden${c.childID}" >
+                                                            <input type="hidden" name="staffID" id="staffIDHidden${c.childID}">
                                                             <input type="hidden" name="childID" value="${c.childID}">
                                                             <button type="submit" class="btn-continue btn btn-block text-white">
                                                                 <span class="d-flex align-items-center">
@@ -282,6 +282,9 @@
                                                                 </span>
                                                             </button>
                                                         </form>
+                                                        <div id="error-message${c.childID}" class="error-message" style="color: red; display: none;">
+                                                            The service does not have a doctor, 
+                                                            please choose another service.                                                        </div>
 
                                                     </div>
                                                 </div>
@@ -559,23 +562,39 @@
                                             document.addEventListener('DOMContentLoaded', function () {
                                                 var doctorSelect = document.getElementById('doctorSelect');
 
-                                                // Cập nhật staffIDHidden khi doctorSelect thay đổi
+                                                // Khi doctorSelect thay đổi, cập nhật giá trị cho các input ẩn tương ứng
                                                 doctorSelect.addEventListener('change', function () {
                                                     var selectedStaffID = doctorSelect.value;
 
-                                                    // Cập nhật tất cả các input staffIDHidden trong các form
-                                                    document.querySelectorAll('input[id^="staffIDHidden"]').forEach(function (staffIDHidden) {
-                                                        staffIDHidden.value = selectedStaffID;
+                                                    // Duyệt qua tất cả các form và cập nhật giá trị cho input ẩn tương ứng
+                                                    document.querySelectorAll('form[id^="reservationForm"]').forEach(function (form) {
+                                                        var staffIDHidden = form.querySelector('input[id^="staffIDHidden"]');
+                                                        if (staffIDHidden) {
+                                                            staffIDHidden.value = selectedStaffID;
+                                                        }
                                                     });
                                                 });
 
                                                 // Khởi tạo giá trị của staffIDHidden khi trang tải xong
                                                 var initialStaffID = doctorSelect.value;
-                                                document.querySelectorAll('input[id^="staffIDHidden"]').forEach(function (staffIDHidden) {
-                                                    staffIDHidden.value = initialStaffID;
+                                                document.querySelectorAll('form[id^="reservationForm"]').forEach(function (form) {
+                                                    var staffIDHidden = form.querySelector('input[id^="staffIDHidden"]');
+                                                    if (staffIDHidden) {
+                                                        staffIDHidden.value = initialStaffID;
+                                                    }
+
+                                                    // Thêm sự kiện submit cho form để kiểm tra staffID
+                                                    form.addEventListener('submit', function (event) {
+                                                        if (!staffIDHidden.value) {
+                                                            event.preventDefault(); // Ngăn không cho form gửi đi
+                                                            var errorMessage = form.nextElementSibling;
+                                                            if (errorMessage && errorMessage.classList.contains('error-message')) {
+                                                                errorMessage.style.display = 'block';
+                                                            }
+                                                        }
+                                                    });
                                                 });
                                             });
-
 
                                             function readURL(input) {
                                                 console.log(input.files);
