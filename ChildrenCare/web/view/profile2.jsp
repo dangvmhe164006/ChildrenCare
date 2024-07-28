@@ -28,7 +28,7 @@
                 <!-- Breadcrumb -->
                 <nav aria-label="breadcrumb" class="main-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="home">Home</a></li>
+                        <li class="breadcrumb-item"><a href="../home">Home</a></li>
                     </ol>
                 </nav>
                 <!-- /Breadcrumb -->
@@ -38,16 +38,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-<!--                                    <img src="<%=curUser.getProfileImage()%>" alt="Admin" class="rounded-circle" width="150">-->
-                                    <label for="file"><img id="img-preview" style="height: 160px;width: 160px;" 
-                                                           class="rounded-circle mx-auto d-block" 
-                                                           src="<%=curUser.getProfileImage()%>"  />
-                                        <i class="bi bi-pencil-square "></i>
-                                    </label>
+                                    <img src="../<%=curUser.getProfileImage()%>" alt="Admin" class="rounded-circle" width="150">
                                     <div class="mt-3">
                                         <h4><%=curUser.getLastName()%></h4>
                                         <p class="text-secondary mb-1"><%=curUser.getEmail()%></p>
-                                        <p class="text-muted font-size-sm"><%=curUser.getPhoneNumber()%></p>
                                     </div>
                                 </div>
                             </div>
@@ -83,6 +77,16 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Gender</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input value="Male" type="radio" readonly="" <%= curUser.getGender().equals("Male") ? "checked" : "" %>> Male</label>
+                                        <br><!-- comment -->
+                                        <input value="Female" type="radio" readonly="" <%= curUser.getGender().equals("Female") ? "checked" : "" %>> Female</label>
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
