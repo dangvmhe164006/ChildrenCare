@@ -90,6 +90,9 @@
                 </div>
             </div>
         </div>
+        <div>
+            <jsp:include page="layout/footer.jsp" />
+        </div>
 
         <script>
             function toggleCheckOutButton(radio) {

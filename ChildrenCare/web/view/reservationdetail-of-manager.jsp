@@ -277,52 +277,13 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, <%=reservation.getReservationID()%>)">cancel</a></li>
                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, <%=reservation.getReservationID()%>)">pending</a></li>
-                                            <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, <%=reservation.getReservationID()%>)">awaiting confirmation</a></li>
                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, <%=reservation.getReservationID()%>)">waiting for examination</a></li>
                                             <li><a class="dropdown-item status-change" href="#" onclick="changestatus(this, <%=reservation.getReservationID()%>)">done</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive p-4 mt-2">
-                                <%if(curStaff!=null){%>
-                                <table class="table table-striped table-hover">
-                                    <thead class="text-light" style="background: #1977cc;">
-                                        <tr>
-                                            <th scope="col">Service name</th>
-                                            <th scope="col">Category</th>
-                                            <th scope="col">Cost</th>
-                                            <th scope="col">Number Of Person</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <%
-                                        List<Integer> serviceIDList = reservationDAO.getListServiceIDByUser(reservation.getUserID()+"");
-                                        if(serviceIDList!=null){
-                                        for (Integer integer : serviceIDList) {
-                                        Service service = serviceDAO.getServiceByID(integer+"");
-                                        %>
-                                        <tr>
-                                            <th scope="row">
-                                                <div class="d-flex align-items-center">
-                                                    <img src="<%=service.getThumbnail()%>" class="me-2 rounded-3 object-cover" width="30px" height="30px"/>
-                                                    <p class="m-0"><%=service.getTitle()%></p>
-                                                </div>
-                                            </th>
-                                            <td><%=categoryServiceDAO.getCategoryServiceByID(service.getCategoryID()+"").getCategoryName()%></td>
-                                            <td><%if(service.getSalePrice()<=0){%>
-                                                <span class="price"> $<%=service.getOriginalPrice()%> </span>
-                                                <%}else{%>
-                                                <span class="price"> $<%=service.getSalePrice()%> </span>
-                                                <%}%></td>
-                                            <td><%=reservationDAO.countReservationsByStaffAndService(curStaff.getStaffID()+"",service.getServiceID()+"")%></td>
-                                        </tr>
-                                        <%}}%>
-
-                                    </tbody>
-                                </table>
-                                <%}%>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

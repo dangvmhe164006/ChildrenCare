@@ -199,25 +199,19 @@
                                     <input type="text" name="customerName" id="customerName" class="mt-2 form-control" placeholder="Search Customer Name">
                                 </div>
                                 <div class="col-md-4 px-4 d-flex">
-                                    <div class="input-group mb-3 text-black-50">
-                                        <input type="date" class="form-control" name="from" id="from">
-                                        <span class="input-group-text">to</span>
-                                        <input type="date" class="form-control"name="to" id="to">
-                                    </div>
+                                   
                                 </div>
                                 <div class="col-md-3 px-4">
                                     <select class="form-select" id="sort">
                                         <option selected value="">Sort By</option>
                                         <option value="customername">Customer Name</option>
                                         <option value="status">Status</option>
-                                        <option value="price-high">Highest Cost</option>
-                                        <option value="price-low">Lowest Cost</option>
                                         <option value="date-latest">Latest Booking Date</option> 
                                         <option value="date-earliest">Earliest Booking Date</option>
                                     </select>
                                     <select class="form-select mt-2" id="status">
                                         <option selected value="">Status</option>
-                                        <option value="pending">Accept</option>
+                                        <option value="pending">pending</option>
                                         <option value="waiting for examination">Waiting For Examination</option> 
                                         <option value="done">Done</option>
                                         <option value="cancel">Cancel</option>
