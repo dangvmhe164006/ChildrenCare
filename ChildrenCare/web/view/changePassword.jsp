@@ -96,11 +96,7 @@
     <body>
         <div class="popup-overlay" id="overlay"></div>
         <form style="z-index: 200;position: relative;" action="changepassword" method="POST" >
-
             <div class="d-flex justify-content-center">
-
-
-
                 <div class=" popup" > 
                     <div class="popuptext" id="myPopup"> 
                         <div class="title1"><h1 style="font-family: 'Poppins';color: gray;">CHANGE PASSWORD</h1></div> 
@@ -129,16 +125,10 @@
                         </div> 
                         <p>
                         <div id="error" style="color: red;"></div>
-
-
                     </div>
                 </div>
             </div>
-
-
         </form>
-
-
 
         <script>
 // When the user clicks on div, open the popup

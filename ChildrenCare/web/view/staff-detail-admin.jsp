@@ -237,7 +237,6 @@
                                                     Admin<%}else{%>
                                                     <select class="form-control" onchange="changeRole(this.value,<%=user.getStaffID()%>)">
                                                         <option value="doctor" <%=user.getRole().equals("doctor") ? "selected" : ""%>>Doctor</option>
-                                                        <option value="nurse" <%=user.getRole().equals("nurse") ? "selected" : ""%>>Nurse</option>
                                                         <option value="manager" <%=user.getRole().equals("manager") ? "selected" : ""%>>Manager</option>
                                                     </select>
                                                     <%}%>
