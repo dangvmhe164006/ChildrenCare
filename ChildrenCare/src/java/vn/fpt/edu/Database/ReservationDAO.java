@@ -1072,21 +1072,7 @@ public class ReservationDAO extends MyDAO {
         return 0;
     }
 
-    public int getReservationTotalEachMonth(Date reservationDate) {
-        xSql = "select count(*) as TotalCount from [dbo].[Reservations] where MONTH(ReservationDate) = MONTH(?) and YEAR(ReservationDate) = YEAR(?)";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setDate(1, reservationDate);
-            ps.setDate(2, reservationDate);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("TotalCount");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
+
 
   
 
@@ -1105,23 +1091,7 @@ public class ReservationDAO extends MyDAO {
         }
     }
 
-    public int countUserTodayReservations(String userID, String childID) {
-        xSql = "select count(*) as TotalRecord from Reservations "
-                + "where UserID = ? and ChildID = ? "
-                + "and datediff(DAY, GETDATE(), CreatedDate) = 0 and status <> 'cancel' ";
-        try {
-            ps = con.prepareStatement(xSql);
-            ps.setString(1, userID);
-            ps.setString(2, childID);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                return rs.getInt("TotalRecord");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
+ 
 
     public static void main(String args[]) {
         ReservationDAO rd = new ReservationDAO();
